@@ -21,4 +21,3 @@ class config
     }
 }
 ?>
-aaa
