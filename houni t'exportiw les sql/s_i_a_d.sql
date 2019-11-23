@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 22, 2019 at 02:40 PM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Generation Time: Nov 22, 2019 at 07:17 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,26 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `s.i.a.d`
+-- Database: `s_i_a_d`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `administrateur`
---
-
-DROP TABLE IF EXISTS `administrateur`;
-CREATE TABLE IF NOT EXISTS `administrateur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `tel` int(11) NOT NULL,
-  `mdp` varchar(30) NOT NULL,
-  `cin` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -66,25 +48,6 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) NOT NULL,
   PRIMARY KEY (`id_categorie`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `client`
---
-
-DROP TABLE IF EXISTS `client`;
-CREATE TABLE IF NOT EXISTS `client` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `tel` int(11) NOT NULL,
-  `mdp` varchar(30) NOT NULL,
-  `cin` int(11) NOT NULL,
-  `adresse` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,21 +87,19 @@ CREATE TABLE IF NOT EXISTS `livraison` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `livreur`
+-- Table structure for table `membre`
 --
 
-DROP TABLE IF EXISTS `livreur`;
-CREATE TABLE IF NOT EXISTS `livreur` (
+DROP TABLE IF EXISTS `membre`;
+CREATE TABLE IF NOT EXISTS `membre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cin` int(11) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `etat` varchar(20) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `mdp` varchar(30) NOT NULL,
-  `reference_licence` int(11) NOT NULL,
-  `date_fin` date NOT NULL,
-  `type_permis` varchar(3) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `motdepasse` text NOT NULL,
+  `confirmkey` varchar(255) NOT NULL,
+  `confirme` int(1) NOT NULL,
+  `avatar` varchar(255) NOT NULL,
+  `role` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
