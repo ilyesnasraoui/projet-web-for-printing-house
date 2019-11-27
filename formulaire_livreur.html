@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Login</title>
+  <title>Aroma Shop - Login</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -23,8 +23,8 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
+          <a class="navbar-brand logo_h" href="index.html"><img src="logo.png" alt="" style="height: 100px"></a>
+          <a class="navbar-brand logo_h" href="index.html"><img src="logo2.png" alt="" style="height: 50px"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -34,7 +34,6 @@
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
               <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
@@ -46,13 +45,13 @@
                   <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
                 </ul>
 							</li>
-
+              
 							<li class="nav-item active submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>									
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
                 </ul>
               </li>
@@ -70,91 +69,127 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-
-  <!-- ================ start banner area ================= -->
+  
+  <!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
-					<h1>Register</h1>
+					<h1>Join us!</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Register</li>
             </ol>
           </nav>
-
 				</div>
 			</div>
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-
+  
   <!--================Login Box Area =================-->
-	<section class="login_box_area section-margin">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="login_box_img">
-						<div class="hover">
-							<h4>Already have an account?</h4>
-							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="button button-account" href="login.html">Login Now</a>
-              <br>
-              <br>
-              <br>
-             <a class="button button-account" href="formulaire_livreur.html"><h4>Do you want to work with us?</h2></a>
-						</div>
-					</div>
-				</div>
+	<center><section class="login_box_area section-margin">
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
-						<h3>Create an account</h3>
-						<form class="row login_form" action="#/" id="register_form" >
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-							</div>
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="email" name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
+						<h3>Sign Up</h3>
+						<form class="row login_form"  id="register_form" method="POST" action="ajoutLivreur.php" onsubmit="return controle()" >
+						<!------------------------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------------------------->	
+             <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'lastname'">
               </div>
+              <div id="erreur3" style="color: red"></div>
+
+
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="First name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'firstname'">
               </div>
+              <div id="erreur2" style="color: red"></div>
+
+              
+
+
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
-							</div>
+                <input type="text" class="form-control" id="cin" name="cin" placeholder="CIN" onfocus="this.placeholder = ''" onblur="this.placeholder = 'CIN'">
+              </div>
+              <div id="erreur1" style="color: red"></div>
+
+              <div class="col-md-12 form-group">
+                <div  class="form-control" style="color:grey;font-size:16px; border: 0">Birthday:</div>
+                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Birthday" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Birthday'">
+              </div>
+             <!-- <div id="erreur" style="color: red"></div>-->
+
+
+
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="telephone" name="telephone" placeholder="telephone" onfocus="this.placeholder = ''" onblur="this.placeholder = 'telephone'">
+              </div>
+              <div id="erreur4" style="color: red"></div>
+
+              
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adresse'">
+              </div>
+              <div id="erreur6" style="color: red"></div>
+              
+
+
+
+
+
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="license" name="license" placeholder="License code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'License code'">
+              </div>
+              <div id="erreur5" style="color: red"></div>
+
+              
+
+
+              <div class="col-md-12 form-group">
+                <div  class="form-control" style="color:grey;font-size:16px; border: 0">License end of validity date: </div>
+                <input type="date" class="form-control" id="license_validity" name="license_validity" placeholder="date" onfocus="this.placeholder = ''" onblur="this.placeholder = 'date'">
+              </div>
+
+
+
+
+              <!------------------------------------------------------------------------------------------------------->
+              <!------------------------------------------------------------------------------------------------------->
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
+									
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">Register</button>
+								<input type="submit" value="Register" class="button button-register w-100">
 							</div>
+              
 						</form>
+            <script src="controle.js"></script>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section></center>
 	<!--================End Login Box Area =================-->
 
 
 
-  <!--================ Start footer Area  =================-->
+  <!--================ Start footer Area  =================-->	
 	<footer class="footer">
     <div class="footer-area">
       <div class="container">
         <div class="row section_gap">
           <div class="col-lg-3 col-md-6 col-sm-6">
-
+            
           </div>
           <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-
+            
           </div>
           <div class="col-lg-2 col-md-6 col-sm-6">
-
+          
           </div>
           <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
             <div class="single-footer-widget tp_widgets">
@@ -165,7 +200,7 @@
                   Head Office
                 </p>
                 <p>AV habib borguiba, Grombalia</p>
-
+  
                 <p class="sm-head">
                   <span class="fa fa-phone"></span>
                   Phone Number
@@ -174,14 +209,14 @@
                   +216 72 211 611 <br>
                   +216 98 319 629
                 </p>
-
+  
                 <p class="sm-head">
                   <span class="fa fa-envelope"></span>
                   Email
                 </p>
                 <p>
                   impaicha96@yahoo.fr <br>
-
+                  
                 </p>
               </div>
             </div>

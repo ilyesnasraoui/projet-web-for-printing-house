@@ -89,6 +89,11 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
                     </ul>
                   </li>
 
+                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
+                      </ul>
+                  </li>
                   
                   
                   
