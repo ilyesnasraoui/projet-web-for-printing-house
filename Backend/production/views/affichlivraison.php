@@ -131,6 +131,7 @@
                        <ul class="nav child_menu">
                       <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
                       <li><a href="liste_livreur.php">Livreurs </a></li>
+                      <li><a href="affichlivraison.php">livraison </a></li>                     
 
                       </ul>
                   </li>
@@ -282,59 +283,7 @@
 
     <fieldset >
  <!----------------------------------------------------------------------------------------------------------------------->
- <?php
-
-include 'livreurC.php';
-//include "extraire_donnes_livreur.php";
-/*$livreur_accepte= new livreur_accepteC;
-$liste_accepte=$livreur_accepte->infoLivreur();*/
-$livreur = new livreurC();
-$listlivreur = $livreur->afficherLivreur();
-
-  
-
-
-?>
-<table border="2" >
-    <tr><center>Demandes livreurs</center></tr>
-    <tr>
-        <td>CIN</td>
-        <td>Nom</td>
-        <td>Prenom</td>
-        <td>Date Naissance</td>
-        <td>telephone</td>
-        <td>license</td>
-        <td>license_validity</td>
-        <td>adresse</td>
-        <td>supprimer</td>
-    </tr>
-<?php
-
-foreach ($listlivreur as $row)
-{
-    echo '
-        <tr>
-            <td>'.$row["cin"].'</td>
-            <td>'.$row["nom"].'</td>
-            <td>'.$row["prenom"].'</td>
-            <td>'.$row["birthday"].'</td>
-            <td>'.$row["telephone"].'</td>
-            <td>'.$row["license"].'</td>
-            <td>'.$row["license_validity"].'</td>
-            <td>'.$row["adresse"].'</td>
-            <td> 
-                <form action="suppLivreur.php" method="post">
-                    <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
-                    <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
-                </form>
-            </td>
-        </tr>
-    ';
-}
-?>
-</table>
-<!----------------------------------------------------------------------------------------------------------------------->
- <div class="right_col" role="main">
+  <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -353,70 +302,73 @@ foreach ($listlivreur as $row)
 
    <fieldset >
       
-      <form   method="POST" action="acceptlivreur.php" >
-        <center><legend><h2>Ajouter Livreur</h2></legend></center>
+      <form   method="POST" action="affecterlivraison.php" >
+        <center><legend><h2>affecter Livraison</h2></legend></center>
         <table id="example1" class="table table-striped">
           <tr>
-            <th> CIN </th>
+            <th> Id livraison </th>
+            <th><input type="number" name="id_livraison" id="id_livraison" /></th>
+          </tr>
+    
+          <tr>
+            <th> Id livreur </th>
             <th><input type="number" name="cin" id="cin" /></th>
           </tr>
     
           <tr>
-            <th> Prenom </th>
-            <th><input type="text" name="prenom" id="prenom" value=""/></th>
-          </tr>
-    
-          <tr>
-            <th> Nom </th>
-            <th><input type="text" name="nom" id="nom" value=""/></th>
+            <th> Date livraison </th>
+            <th><input type="date" name="dteliv" id="dteliv" value=""/></th>
           </tr>
           <tr>
-          <th> Telephone </th>
-          <th><input type="number" name="telephone" id="telephone" value=""/></th>
-        </tr>
-
-        <tr>
-            <th> Adresse </th>
-            <th><input type="text" name="adresse" id="adresse" value=""/></th>
-          </tr>
-
+          
           <tr>
-            <th> Birthday </th>
-            <th><input type="date" name="birthday" id="birthday" value=""/></th>
+            <th> Id commande </th>
+            <th><input type="text" name="id_commande" id="id_commande" value=""/></th>
           </tr>
-
           <tr>
-            <th> License </th>
-            <th><input type="text" name="license" id="license" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> License End  of validity date </th>
-            <th><input type="Date" name="license_validity" id="license_validity" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> Joiniabilité (si oui->1 sinon->0) </th>
-            <th><input type="number" name="joiniable" id="joiniable" value=""/></th>
-          </tr>
-        
-          <tr>
-            <th> Login </th>
-            <th><input type="text" name="login" id="login" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> PassWord </th>
-            <th><input type="PassWord" name="mdp" id="mdp" value=""/></th>
-          </tr>
+                    
 
         </table>
         <br>
         <center>
-        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
+        <td><button type="submit" name="Ajouter" value="Affecter" class="btn btn-danger">Affecter</button></td>
       </center>
       </form>
 
+
+
+    </fieldset>
+
+  </body>
+</html>
+
+              </div>
+</div>
+              <div class="title_right">
+                
+              </div>
+            </div>
+
+
+<!----------------------------------------------------------------------------------------------------------------------->
+ <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                  <div class=" col-xs-20">
+                <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Livreur</title>
+  </head>
+  <body>
+    <div class=" col-xs-20">
+
+
+
+
+   
 
 
     </fieldset>
