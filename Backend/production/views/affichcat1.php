@@ -33,7 +33,8 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-            <?php include "sidebar.php";
+        
+             <?php include "sidebar.php";
         ?>
 
         <!-- top navigation -->
@@ -151,10 +152,10 @@
   <body>
    <?php
 include"../config.php";
-include"../core/ProduitC.php";
+include"../core/CategorieC.php";
 
-$Prod=new ProduitC();
-$liste=$Prod->afficherProduits();
+$Cat=new CategorieC();
+$liste=$Cat->afficherCategorie();
 
 
 ?>
@@ -164,13 +165,8 @@ $liste=$Prod->afficherProduits();
 <table   id="example1" class="table table-striped">
   <thead>
     <tr>
-      <th >Code Produit</th>
-      <th> Image </th>
-      <th >nom</th>
-      <th >Description</th>
-      <th >Type</th>
-      <th> Prix </th>
-      <th >Categorie</th>
+      <th>id categorie</th>
+     <th>nom categorie</th>
     </tr>
   </thead>
   <tbody>
@@ -179,21 +175,20 @@ foreach ($liste as $res) {
 
 echo '
 <tr>
-  <td>'.$res['id_produit'].'</td>
-  <td><a><img class="" src="'.$res['image'].'" style="width: 100px; height:100px;"></a></td>
+  
+  <td>'.$res['id_cat'].'</td>
   <td>'.$res['nom'].'</td>
-  <td>'.$res['description'].'</td>
-  <td>'.$res['type'].'</td>
-  <td>'.$res['prix'].'</td>
-  <td>'.$res['fk_id_categorie'].'</td>
+  
+ 
+ 
   <td>
-  <form method="POST" action="suppcat.php">
+  <form method="POST" action="suppp.php">
   <input type="submit" class="btn btn-danger" value="Supprimer">
-  <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
+  <input type="hidden" name="deleteID" value="'.$res['id_cat'].'">
   </form>
-  <form method="POST" action="updatep.php">
+  <form method="POST" action="uppcat1.php">
   <input type="submit" class="btn btn" value="Modifier">
-  <input type="hidden" name="updateID" value="'.$res['id_produit'].'">
+  <input type="hidden" name="updateID" value="'.$res['id_cat'].'">
   </form>
 
 
@@ -210,6 +205,7 @@ echo '
         <td><button type="submit" name="Imprimer" value="Imprimer" class="btn btn-danger">Imprimer</button></td>
       </center>
     </form>
+    
     </fieldset>  
   </body>
 </html>

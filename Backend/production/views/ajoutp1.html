@@ -270,17 +270,18 @@
   </head>
   <body>
     <fieldset >
-      <form name="f1"  method="POST" action="ajoutp.php" onSubmit="return verif()" >
+      <form name="f1" style="height: 800px;" method="POST" action="ajoutp.php" onSubmit="return verif() " >
  <center><legend><h2> Ajout Produit </h2></legend></center>
          <table id="example1" class="table table-striped">
           <tr>
-            <th> Code Produit </th>
+            <th> id Produit </th>
             <th><input type="number" name="codeProd" value=""/></th>
           </tr>
           <tr>
             <th> Image </th>
             <th><input type="file" name="image" value=""/></th>
           </tr>
+          
           <tr>
           <th> nom </th>
           <th><input type="text" name="nom" value=""/></th>
@@ -288,6 +289,10 @@
         <tr>
             <th> Couleur </th>
             <th><input type="text" name="couleur" value=""/></th>
+          </tr>
+          <tr>
+            <th>description</th>
+            <th><textarea name="couleur" value=""/></textarea> </th>
           </tr>
          <tr>
 <td>type</td>
@@ -308,6 +313,7 @@
             <th> Date Creation  </th>
             <th><input type="date" name="dateC" value=""/></th>
           </tr>
+          
        
         </table>
         <center>
@@ -317,6 +323,7 @@
     </fieldset>
   </body>
 </html>
+
 
               </div>
 

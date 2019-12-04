@@ -187,7 +187,7 @@ echo '
   <td>'.$res['prix'].'</td>
   <td>'.$res['fk_id_categorie'].'</td>
   <td>
-  <form method="POST" action="suppcat.php">
+  <form method="POST" action="suppp.php">
   <input type="submit" class="btn btn-danger" value="Supprimer">
   <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
   </form>

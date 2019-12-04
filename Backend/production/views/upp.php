@@ -1,9 +1,10 @@
 <?php
 require_once "../config.php";
 require_once "../core/ProduitC.php";
-if(isset($_POST['id_produit']) and isset($_POST['nom'])  and isset($_POST['prix']) and isset($_POST['typee']) and isset($_POST['description']) and isset($_POST['dateC'])) {
+if(isset($_POST['nom']) and isset($_POST['prix']) and isset($_POST['typee']) and isset($_POST['description']) and isset($_POST['quantite'])) {
    echo "here";
 
+if(isset($_FILES['image'])){
 	$errors= array();
       $file_name = $_FILES['image']['name'];
       $file_size =$_FILES['image']['size'];
@@ -31,13 +32,22 @@ if(isset($_POST['id_produit']) and isset($_POST['nom'])  and isset($_POST['prix'
       }else{
          print_r($errors);
       }
-      $file_name="images/".$file_name;
+      if($file_name=="")
+      {
+         $tmpP=new ProduitC();
+         $result=$tmpP->getProduit($_POST['id_produit']);
+         foreach($result as $rw)
+            $file_name=$rw['image'];
+      }
+      else
+      $file_name="images/".$file_name;}
+      
 
 	$prod=new Produit($_POST['id_produit'],$_POST['nom'],$_POST['prix'],$_POST['description'],$_POST['quantite'],$_POST['typee'],1,$file_name);
 	$prod2=new ProduitC();
-	$prod2->ajouterProduit($prod);
+	$prod2->modifierProduit($prod);
 
-   header('Location: ajoutp1.php');
+   header('Location: afichprod1.php');
 
 	
 }
