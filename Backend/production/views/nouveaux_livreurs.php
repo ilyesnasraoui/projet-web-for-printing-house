@@ -28,6 +28,54 @@
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <title>ajout prod</title>
+  <script type="text/javascript">
+    function verif()
+    {
+      var i=0;
+      if(f1.codeProd.value=="")
+      {
+        alert("saisir votre code de produit");
+        i--;
+        return false;
+      }
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
+      {
+        return true;
+      }
+    }
+
+    </script>
   </head>
 
   <body class="nav-md">
@@ -56,7 +104,7 @@
             <br />
 
             <!-- sidebar menu -->
-               <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
@@ -67,7 +115,7 @@
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
                      
-                    </ul>
+                    </ul>                  
                   </li>
 
                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
@@ -81,11 +129,11 @@
                   </li>
                   <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
                        <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
+                      <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
+                      <li><a href="liste_livreur.php">Livreurs </a></li>
+
                       </ul>
                   </li>
-                  
-
                   
                   
                   
@@ -228,99 +276,167 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-    <!DOCTYPE html>
+
+
+
+
+    <fieldset >
+ <!----------------------------------------------------------------------------------------------------------------------->
+ <?php
+
+include 'livreurC.php';
+//include "extraire_donnes_livreur.php";
+/*$livreur_accepte= new livreur_accepteC;
+$liste_accepte=$livreur_accepte->infoLivreur();*/
+$livreur = new livreurC();
+$listlivreur = $livreur->afficherLivreur();
+
+  
+
+
+?>
+<table border="2" >
+    <tr><center>Demandes livreurs</center></tr>
+    <tr>
+        <td>CIN</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Date Naissance</td>
+        <td>telephone</td>
+        <td>license</td>
+        <td>license_validity</td>
+        <td>adresse</td>
+        <td>supprimer</td>
+    </tr>
+<?php
+
+foreach ($listlivreur as $row)
+{
+    echo '
+        <tr>
+            <td>'.$row["cin"].'</td>
+            <td>'.$row["nom"].'</td>
+            <td>'.$row["prenom"].'</td>
+            <td>'.$row["birthday"].'</td>
+            <td>'.$row["telephone"].'</td>
+            <td>'.$row["license"].'</td>
+            <td>'.$row["license_validity"].'</td>
+            <td>'.$row["adresse"].'</td>
+            <td> 
+                <form action="suppLivreur.php" method="post">
+                    <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
+                    <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
+                </form>
+            </td>
+        </tr>
+    ';
+}
+?>
+</table>
+<!----------------------------------------------------------------------------------------------------------------------->
+ <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                  <div class=" col-xs-20">
+                <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>affichage stock</title>
+    <title>Livreur</title>
   </head>
-<body>
-   <?php
-  include "../config.php";
-  include "../core/produit.php";
-  $c=new config();
-  $conn=$c->getConnection();
-  $e=new produit(2486,"aa","IBM","noir","ordinateur",55,"2019-05-20");
-  $resultat=$e->afficher($conn);
-  
-?>
-<center>
-<form name="Form2" method="POST" onsubmit="chercher.php">
-</centre>
+  <body>
+    <div class=" col-xs-20">
 
-  <fieldset>
 
-    
-    <h4>Rechercher <input type="number" name="recherch" >
-    <button type="submit" name="chercher" value="chercher" class="btn btn-danger">chercher</button></h4>
-    
-    <div align="center" >
-    <table   id="example1" class="table table-striped">
-  <thead>
-    <tr>
-      <th >Code Produit</th>
-      <th> Image </th>
-      <th >nom</th>
-      <th >Couleur</th>
-      <th >Type</th>
-      <th> Prix </th>
-      <th >Date</th>
-      <th> Supprimer Produit</th>
-      <th> Modifier Produit</th>
-    </tr>
-  </thead>
-  <tbody>
-      <?php 
+
+
+   <fieldset >
       
-if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST['recherch']))
-   ))) {
+      <form   method="POST" action="acceptlivreur.php" >
+        <center><legend><h2>Ajouter Livreur</h2></legend></center>
+        <table id="example1" class="table table-striped">
+          <tr>
+            <th> CIN </th>
+            <th><input type="number" name="cin" id="cin" /></th>
+          </tr>
+    
+          <tr>
+            <th> Prenom </th>
+            <th><input type="text" name="prenom" id="prenom" value=""/></th>
+          </tr>
+    
+          <tr>
+            <th> Nom </th>
+            <th><input type="text" name="nom" id="nom" value=""/></th>
+          </tr>
+          <tr>
+          <th> Telephone </th>
+          <th><input type="number" name="telephone" id="telephone" value=""/></th>
+        </tr>
 
-      foreach ($resultat as $res){
-      ?>
-      <tr>
-        <td><?php echo $res['codeProd'];?></td>
-        <td><a><img class="" src="<?php echo $res['image'];?>" style="width: 100px; height:100px;"></a></td>
-        <td><?php echo $res['nom'];?></td>
-        <td><?php echo $res['couleur'];?></td>
-        <td><?php echo $res['typee'];?></td>
-        <td><?php echo $res['prix'];?></td>
-        <td><?php echo $res['dateC'];?></td>
-       <td><a href="sprod1.html">Supprimer</a></td>
-       <td><a href="mprod1.html">Modifier</a></td>
+        <tr>
+            <th> Adresse </th>
+            <th><input type="text" name="adresse" id="adresse" value=""/></th>
+          </tr>
 
-      
-      </tr>
-      <?php
-      }
-    }
-    else
-    {
-      if(($_POST['recherch'])!=null){
-      $fourat=$e->rechercher($_POST['recherch'],$conn);
-      foreach ($fourat as $res){
-      ?>
-      <tr>
-        <td><?php echo $res['codeProd'];?></td>
-        <td><a><img class="" src="<?php echo $res['image'];?>" style="width: 100px; height:100px;"></a></td>
-        <td><?php echo $res['nom'];?></td>
-        <td><?php echo $res['couleur'];?></td>
-        <td><?php echo $res['typee'];?></td>
-        <td><?php echo $res['prix'];?></td>
-        <td><?php echo $res['dateC'];?></td>
-       <td><a href="sprod1.html">Supprimer</a></td>
-       <td><a href="mprod1.html">Modifier</a></td>
+          <tr>
+            <th> Birthday </th>
+            <th><input type="date" name="birthday" id="birthday" value=""/></th>
+          </tr>
+
+          <tr>
+            <th> License </th>
+            <th><input type="text" name="license" id="license" value=""/></th>
+          </tr>
+
+          <tr>
+            <th> License End  of validity date </th>
+            <th><input type="Date" name="license_validity" id="license_validity" value=""/></th>
+          </tr>
+
+          <tr>
+            <th> Joiniabilité (si oui->1 sinon->0) </th>
+            <th><input type="number" name="joiniable" id="joiniable" value=""/></th>
+          </tr>
         
-      </tr>
-      <?php
-    }
-    }
-  }
-    ?>
+          <tr>
+            <th> Login </th>
+            <th><input type="text" name="login" id="login" value=""/></th>
+          </tr>
 
-      </tbody>
-</table>
+          <tr>
+            <th> PassWord </th>
+            <th><input type="PassWord" name="mdp" id="mdp" value=""/></th>
+          </tr>
+
+        </table>
+        <br>
+        <center>
+        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
+      </center>
+      </form>
 
 
+
+    </fieldset>
+
+  </body>
+</html>
+
+              </div>
+</div>
+              <div class="title_right">
+                
+              </div>
+            </div>
+
+
+
+
+
+ <!----------------------------------------------------------------------------------------------------------------------->     
+    </fieldset>
   </body>
 </html>
 
