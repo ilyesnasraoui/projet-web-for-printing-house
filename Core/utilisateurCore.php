@@ -1,14 +1,14 @@
-<?php 
-include "../config.php";
+<?php
+ include "../config.php";
 class utilisateurCore{
  function inscritption($utilisateur,$confirmkey)
- {    
+ {
   $confirme=0;
             $sql="insert into membre (pseudo,mail,motdepasse,confirmkey,confirme) values (:pseudo,:mail,:motdepasse,:confirmkey,:confirme)";
         $db = config::getConnexion();
         try{
         $req=$db->prepare($sql);
-        
+
         $pseudo=$utilisateur->getPseudo();
         $mail=$utilisateur->getEmail();
         $motdepasse=$utilisateur->getMotdepasse();
@@ -18,13 +18,13 @@ class utilisateurCore{
         $req->bindValue(':confirmkey',$confirmkey);
         $req->bindValue(':confirme',$confirme);
             $req->execute();
-           
+
         }
         catch (Exception $e){
             echo 'Erreur: '.$e->getMessage();
         }
 }
-function connection($utilisateur){   
+function connection($utilisateur){
     $db = config::getConnexion();
     $mailconnect=$utilisateur->getPseudo();
     $mdpconnect=$utilisateur->getEmail();
@@ -35,22 +35,22 @@ function connection($utilisateur){
 return array($userexist,$requser);
 }
 function modifierUser($param,$condition,$id){
-    
-    $bdd = config::getConnexion(); 
+
+    $bdd = config::getConnexion();
     //pseudo
   if ($condition == 1) {
        $insertpseudo = $bdd->prepare("UPDATE membre SET  pseudo = ? WHERE id = ?");
        $insertpseudo->execute(array($param, $id));
   }
-   //pseudo 
-  
+   //pseudo
+
   //mail
   if ($condition == 2) {
        $insertmail = $bdd->prepare("UPDATE membre SET mail = ? WHERE id = ?");
        $insertmail->execute(array($param,$id));
   }
   //mail
-  //motdepasse 
+  //motdepasse
   if ($condition == 3) {
         $insertmdp = $bdd->prepare("UPDATE membre SET motdepasse = ? WHERE id = ?");
         $insertmdp->execute(array($param,$id));
@@ -66,9 +66,9 @@ function modifierUser($param,$condition,$id){
     }
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        } 
+        }
   }
- 
+
 function SupprimerAdmin($pseudo){
   $sql="DELETE FROM membre where pseudo= :pseudo";
     $db = config::getConnexion();
@@ -92,7 +92,7 @@ function ModifierAdmin($utilisateur,$id){
         $umail = $db->prepare("UPDATE membre SET mail = ? WHERE id= ?");
       $umail->execute(array($mail,$id));
         $umotdepasse = $db->prepare("UPDATE membre SET motdepasse = ? WHERE id= ?");
-      $umotdepasse->execute(array($motdepasse,$id));       
+      $umotdepasse->execute(array($motdepasse,$id));
 }
 //verifier unicité de mail
 function VerifierEmail($mail){
@@ -121,7 +121,7 @@ $message='
 mail($mail, "Activation de compte FashionMakeup", $message, $header);
 }
 //Envoie de mail
-//Envoie de mail de rénitialisation de mot de passe 
+//Envoie de mail de rénitialisation de mot de passe
 function RecupererMail($pseudo,$recup_code,$recup_mail){
       $header="MIME-Version: 1.0\r\n";
          $header.='From:"fashionmakeup.com"<support@fashionmakeup.com>'."\n";
@@ -139,11 +139,11 @@ function RecupererMail($pseudo,$recup_code,$recup_mail){
                <table width="600px">
                  <tr>
                    <td>
-                     
+
                      <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
-                     cliquer <a href="http://localhost/myFiles/fashionmakeup/client/views/recupererMdp.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe 
+                     cliquer <a href="http://localhost/myFiles/fashionmakeup/client/views/recupererMdp.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe
                      A bientôt !
-                     
+
                    </td>
                  </tr>
                  <tr>
@@ -184,7 +184,7 @@ function RecupNewsletter(){
     }
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        } 
+        }
 }
 function EnvoyerNewsletter($mail,$msg){
   $header="MIME-Version: 1.0\r\n";
@@ -193,14 +193,14 @@ $header.='Content-Type:text/html; charset="uft-8"'."\n";
 $header.='Content-Transfer-Encoding: 8bit';
 $message=$msg;
 mail($mail, "Newsletter FashionMakeup", $message, $header);
-      
+
 }
 //Newsletter
 //chat
 function chat($pseudo,$message){
 $bdd = config::getConnexion();
 $insertmsg = $bdd->prepare('INSERT INTO chat(pseudo,message) VALUES(?, ?)');
-$insertmsg->execute(array($pseudo,$message)); 
+$insertmsg->execute(array($pseudo,$message));
 }
 //chat
 }
