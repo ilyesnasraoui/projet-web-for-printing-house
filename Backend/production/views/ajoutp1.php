@@ -28,6 +28,78 @@
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <title>ajout prod</title>
+  <script type="text/javascript">
+
+    function verif_date() {
+  var today = new Date();
+  var date_from = document.getElementById("dateC").value;
+  date_from = new Date(date_from);
+  console.log(date_from);
+  console.log(today);
+  if (today >= date_from) {
+    var element = document.getElementById("dateC");
+  element.classList.add("erreur");
+  return false;
+  }
+  else{
+    var element = document.getElementById("dateC");
+  element.classList.remove("erreur");
+  return true;
+  }
+}
+    function verif()
+    {
+      var i=0;
+      if(f1.id_produit.value=="")
+      {
+        alert("saisir votre code de produit");
+        i--;
+        return false;
+      }
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
+      {
+        return true;
+      }
+    }
+
+    </script>
   </head>
 
   <body class="nav-md">
@@ -141,7 +213,7 @@
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class=" col-xs-20">
+              <div class="title_left">
                 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -149,70 +221,65 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-   <?php
-include"../config.php";
-include"../core/ProduitC.php";
+    <fieldset >
+      <form name="f1" style="height: 800px;" method="POST" action="ajoutp.php" onSubmit="return verif() " enctype="multipart/form-data" >
+ <center><legend><h2> Ajout Produit </h2></legend></center>
+         <table id="example1" class="table table-striped">
+          <tr>
+            <th> id Produit </th>
+            <th><input id="prod" type="number" name="id_produit" value=""/></th>
+          </tr>
+          <tr>
+            <th> Image </th>
+            <th><input type="file" name="image" value=""/></th>
+          </tr>
+          <tr>
+          <th> quantite</th>
+          <th><input type="number" name="quantite" value=""/></th>
+        </tr>
+          
+          <tr>
+          <th> nom </th>
+          <th><input type="text" name="nom" value=""/></th>
+        </tr>
+        <tr>
+            <th> Couleur </th>
+            <th><input type="text" name="couleur" value=""/></th>
+          </tr>
+          <tr>
+            <th>description</th>
+            <th><textarea name="description" value=""/></textarea> </th>
+          </tr>
+         <tr>
+<td>type</td>
+<td><select name="typee" >
 
-$Prod=new ProduitC();
-$liste=$Prod->afficherProduits();
+    <option value="bague ">bague  </option>
+    <option value="collier">collier</option>
+        <option value="boucle">boucle</option>
+            <option value="autre">autre</option>
 
+  </select></td>
+</tr>
+            <th> Prix </th>
+            <th><input type="number" name="prix" value=""/></th>
+          </tr>
 
-?>
-
-
-
-<table   id="example1" class="table table-striped">
-  <thead>
-    <tr>
-      <th >Code Produit</th>
-      <th> Image </th>
-      <th >nom</th>
-      <th >Description</th>
-      <th >Type</th>
-      <th> Prix </th>
-      <th >Categorie</th>
-    </tr>
-  </thead>
-  <tbody>
-          <?php
-foreach ($liste as $res) {
-
-echo '
-<tr>
-  <td>'.$res['id_produit'].'</td>
-  <td><a><img class="" src="'.$res['image'].'" style="width: 100px; height:100px;"></a></td>
-  <td>'.$res['nom'].'</td>
-  <td>'.$res['description'].'</td>
-  <td>'.$res['type'].'</td>
-  <td>'.$res['prix'].'</td>
-  <td>'.$res['fk_id_categorie'].'</td>
-  <td>
-  <form method="POST" action="suppcat.php">
-  <input type="submit" class="btn btn-danger" value="Supprimer">
-  <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
-  </form>
-  <form method="POST" action="updatep.php">
-  <input type="submit" class="btn btn" value="Modifier">
-  <input type="hidden" name="updateID" value="'.$res['id_produit'].'">
-  </form>
-
-
-</tr>';
-
-}
-?>
-    </tbody>
-</table>
-
-<br>
+          <tr>
+            <th> Date Creation  </th>
+            <th><input  onchange="verif_date()" id="dateC" type="date" name="dateC" value=""/></th>
+          </tr>
+          
+       
+        </table>
         <center>
-        	<form name="f1"  method="POST" action="pdf.php" onSubmit="return verif()" >
-        <td><button type="submit" name="Imprimer" value="Imprimer" class="btn btn-danger">Imprimer</button></td>
+        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
       </center>
-    </form>
-    </fieldset>  
+      </form>
+    </fieldset>
   </body>
 </html>
+
 
               </div>
 

@@ -1,4 +1,15 @@
-  <!DOCTYPE html>
+  
+  <?php
+  require_once"../config.php";
+  require_once"../core/ProduitC.php";
+  $prod=new ProduitC();
+  if(isset($_POST['updateID']))
+  {
+    $list=$prod->getProduit($_POST['updateID']);
+  }
+
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,7 +17,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+  <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Société Imprimerie Aicha De Distribution! | </title>
 
@@ -18,7 +29,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+  
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -28,12 +39,60 @@
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <title>ajout prod</title>
+  <script type="text/javascript">
+    function verif()
+    {
+      var i=0;
+      if(f1.codeProd.value=="")
+      {
+        alert("saisir votre code de produit");
+        i--;
+        return false;
+      }
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
+      {
+        return true;
+      }
+    }
+
+    </script>
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-            <?php include "sidebar.php";
+        <?php include "sidebar.php";
         ?>
 
         <!-- top navigation -->
@@ -141,7 +200,7 @@
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class=" col-xs-20">
+              <div class="title_left">
                 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -149,70 +208,62 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-   <?php
-include"../config.php";
-include"../core/ProduitC.php";
+    <fieldset >
+      <?php foreach($list as $row)
+      {
 
-$Prod=new ProduitC();
-$liste=$Prod->afficherProduits();
+        ?>
+      <form name="f1" style="height: 800px;" method="POST" action="upp.php" onSubmit="return verif() " enctype="multipart/form-data" >
+ <center><legend><h2> Ajout Produit </h2></legend></center>
+         <table id="example1" class="table table-striped">
+          
+          <tr>
+            <th> Image </th>
+            <th><input type="file" name="image" value=""/></th>
+          </tr>
+          
+          
+          <tr>
+          <th> nom </th>
+          <th><input type="text" name="nom" value="<?php echo $row['nom']; ?>"/></th>
+        </tr>
+        
+          <tr>
+            <th>description</th>
+            <th><textarea name="description" value="<?php echo $row['description']; ?>"/><?php echo $row['description']; ?></textarea> </th>
+          </tr>
+         <tr>
+<td>type</td>
+<td><select name="typee" >
 
+    <option value="bague ">bague  </option>
+    <option value="collier">collier</option>
+        <option value="boucle">boucle</option>
+            <option value="autre">autre</option>
 
-?>
+  </select></td>
+</tr>
+            <th> Prix </th>
+            <th><input type="number" name="prix" value="<?php echo $row['prix']; ?>"/></th>
+          </tr>
+          </tr>
+            <th> Quantite </th>
+            <th><input type="number" name="quantite" value="<?php echo $row['quantite'];} ?>"/></th>
+          </tr>
 
-
-
-<table   id="example1" class="table table-striped">
-  <thead>
-    <tr>
-      <th >Code Produit</th>
-      <th> Image </th>
-      <th >nom</th>
-      <th >Description</th>
-      <th >Type</th>
-      <th> Prix </th>
-      <th >Categorie</th>
-    </tr>
-  </thead>
-  <tbody>
-          <?php
-foreach ($liste as $res) {
-
-echo '
-<tr>
-  <td>'.$res['id_produit'].'</td>
-  <td><a><img class="" src="'.$res['image'].'" style="width: 100px; height:100px;"></a></td>
-  <td>'.$res['nom'].'</td>
-  <td>'.$res['description'].'</td>
-  <td>'.$res['type'].'</td>
-  <td>'.$res['prix'].'</td>
-  <td>'.$res['fk_id_categorie'].'</td>
-  <td>
-  <form method="POST" action="suppcat.php">
-  <input type="submit" class="btn btn-danger" value="Supprimer">
-  <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
-  </form>
-  <form method="POST" action="updatep.php">
-  <input type="submit" class="btn btn" value="Modifier">
-  <input type="hidden" name="updateID" value="'.$res['id_produit'].'">
-  </form>
-
-
-</tr>';
-
-}
-?>
-    </tbody>
-</table>
-
-<br>
+          
+          
+       
+        </table>
         <center>
-        	<form name="f1"  method="POST" action="pdf.php" onSubmit="return verif()" >
-        <td><button type="submit" name="Imprimer" value="Imprimer" class="btn btn-danger">Imprimer</button></td>
+          <input type="hidden" name="id_produit" value="<?php echo $_POST['updateID']; ?>">
+        <td><button type="submit" name="Ajouter" value="Update" class="btn btn-danger">Update</button></td>
       </center>
-    </form>
-    </fieldset>  
+      </form>
+    </fieldset>
   </body>
 </html>
+
 
               </div>
 
@@ -287,7 +338,6 @@ echo '
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+  
   </body>
 </html>
-  
