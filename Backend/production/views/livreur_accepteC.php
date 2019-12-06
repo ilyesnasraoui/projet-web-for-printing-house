@@ -102,6 +102,21 @@ class livreur_accepteC
         {
             die('Erreur: '.$e->getMessage());
         }
-    }
+    }/*
+    function rechercherLivreur($cin)
+    {
+        $sql="select * from livreur wher";//changer le nom du tableau 
 
+        $db = config::getConnexion();
+        try
+        {
+            $list=$db->query($sql);
+            return $list;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }   
+    }
+    */
 }
