@@ -27,7 +27,7 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -56,7 +56,7 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Admin</h2>
               </div>
             </div>
@@ -75,7 +75,7 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
-                     
+
                     </ul>
                   </li>
 
@@ -94,12 +94,20 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
                       <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
                       </ul>
                   </li>
-                  
-                  
-                  
-                  
-                  
-    
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ajouterCommande.php">ajout commande</a></li>
+                      <li><a href="afficherCommande.php">afficher produit</a></li>
+                      <li><a href="modifierCommande.php">reglage commande</a></li>
+
+
+                    </ul>
+                  </li>
+
+
+
+
+
               </div>
 
             </div>
@@ -223,18 +231,18 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                
+
               </div>
 
               <div class="title_right">
-                
+
               </div>
               <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
@@ -262,31 +270,31 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
 </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -329,12 +337,12 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
   <?php
 }
 else{
-  header("location: login.php"); 
+  header("location: login.php");
 }
 ?>
 </html>

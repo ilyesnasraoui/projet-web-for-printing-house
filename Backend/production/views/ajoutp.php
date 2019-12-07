@@ -1,16 +1,46 @@
 <?php
-include "../config.php";
-include "../core/produit.php";
-$c=new config();
-$conn=$c->getConnection();
-$e=new produit(2486,"aa","IBM","noir","ordinateur",55,"2019-05-20");
-if(isset($_POST['Ajouter']))
-{
-$myDate = strtotime($_POST["dateC"]);
-$myDate = date('Y-m-d H:i:s', $myDate);
-$soi=new produit($_POST['codeProd'],$_POST['image'],$_POST['nom'],$_POST['couleur'],$_POST['typee'],$_POST['prix'],$myDate);
-$soi->ajouter($soi,$conn);
+require_once "../config.php";
+require_once "../core/ProduitC.php";
+if(isset($_POST['id_produit']) and isset($_POST['nom'])  and isset($_POST['prix']) and isset($_POST['typee']) and isset($_POST['description']) and isset($_POST['dateC'])) {
+   echo "here";
+
+	$errors= array();
+      $file_name = $_FILES['image']['name'];
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      
+      $extensions= array("png","jpg","jpeg");
+      
+      if(in_array($file_ext,$extensions)=== false){
+         $errors[]="extension not allowed.";
+      }
+      
+      if($file_size > 20971520){
+         $errors[]='File size must be excately 20 MB';
+      }
+      
+      if(empty($errors)==true){
+         move_uploaded_file($file_tmp,"images/".$file_name);
+        
+         /*echo '<script language="javascript">';
+         echo 'alert("Success!");
+         document.location.href = "index.php";';
+         echo '</script>';*/
+      }else{
+         print_r($errors);
+      }
+      $file_name="images/".$file_name;
+
+	$prod=new Produit($_POST['id_produit'],$_POST['nom'],$_POST['prix'],$_POST['description'],$_POST['quantite'],$_POST['typee'],1,$file_name);
+	$prod2=new ProduitC();
+	$prod2->ajouterProduit($prod);
+
+   header('Location: ajoutp1.php');
+
+	
 }
 
-header('LOCATION:ajoutp1.html');
-?>
+
+

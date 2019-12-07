@@ -33,95 +33,8 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                
-                <h2>Fourat</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
-            <!-- sidebar menu -->
-               <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="AfficherRec.php">Afficher</a></li>
-                      <li><a href="pdf/index.php">Imprimer</a></li>
-                      <li><a href="StatRec.php">Stat</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Demande<span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="AfficherDem.php">Afficher</a></li>
-                      <li><a href="pdfD/index.php">Imprimer</a></li>
-                    </ul>
-                  </li>
-
-
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
-                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-              </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
-                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-              </a>
-            </div>
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
+            <?php include "sidebar.php";
+        ?>
 
         <!-- top navigation -->
         <div class="top_nav">
@@ -238,17 +151,15 @@
   <body>
    <?php
 include"../config.php";
-include"../core/produit.php";
-$c=new config();
-$conn=$c->getConnection();
-$e=new produit(69,"aa","dell","noir","laptop",55,"1998-05-03");
-$e1=new produit(252,"aa","hp","rouge","tel",22,"2015-09-01");
-$resultat=$e->afficher($conn);
-$e1->afficher($conn);
+include"../core/ProduitC.php";
+
+$Prod=new ProduitC();
+$liste=$Prod->afficherProduits();
+
 
 ?>
 
-<form name="f1"  method="POST" action="pdf.php" onSubmit="return verif()" >
+
 
 <table   id="example1" class="table table-striped">
   <thead>
@@ -256,29 +167,38 @@ $e1->afficher($conn);
       <th >Code Produit</th>
       <th> Image </th>
       <th >nom</th>
-      <th >Couleur</th>
+      <th >Description</th>
       <th >Type</th>
       <th> Prix </th>
-      <th >Date</th>
+      <th >Categorie</th>
     </tr>
   </thead>
   <tbody>
           <?php
-foreach ($resultat as $res) {
+foreach ($liste as $res) {
 
-  ?>
+echo '
 <tr>
-  <td><?php echo $res['codeProd']; ?></td>
-  <td><a><img class="" src="<?php echo $res['image'];?>" style="width: 100px; height:100px;"></a></td>
-  <td><?php echo $res['nom']; ?></td>
-  <td><?php echo $res['couleur']; ?></td>
-  <td><?php echo $res['typee']; ?></td>
-  <td><?php echo $res['prix']; ?></td>
-  <td><?php echo $res['dateC']; ?></td>
+  <td>'.$res['id_produit'].'</td>
+  <td><a><img class="" src="'.$res['image'].'" style="width: 100px; height:100px;"></a></td>
+  <td>'.$res['nom'].'</td>
+  <td>'.$res['description'].'</td>
+  <td>'.$res['type'].'</td>
+  <td>'.$res['prix'].'</td>
+  <td>'.$res['fk_id_categorie'].'</td>
+  <td>
+  <form method="POST" action="suppcat.php">
+  <input type="submit" class="btn btn-danger" value="Supprimer">
+  <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
+  </form>
+  <form method="POST" action="updatep.php">
+  <input type="submit" class="btn btn" value="Modifier">
+  <input type="hidden" name="updateID" value="'.$res['id_produit'].'">
+  </form>
 
 
-</tr>
-<?php
+</tr>';
+
 }
 ?>
     </tbody>
@@ -286,6 +206,7 @@ foreach ($resultat as $res) {
 
 <br>
         <center>
+        	<form name="f1"  method="POST" action="pdf.php" onSubmit="return verif()" >
         <td><button type="submit" name="Imprimer" value="Imprimer" class="btn btn-danger">Imprimer</button></td>
       </center>
     </form>
