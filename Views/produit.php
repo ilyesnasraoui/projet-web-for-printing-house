@@ -1,3 +1,8 @@
+<?php
+session_start ();
+require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
+$i= new fonctionC();
+$c=$i->getCart(getHostByName(getHostName()));?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,7 +64,7 @@
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
+              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"><?php echo $c->rowCount()?></span></button></a> </li>
             </ul>
           </div>
         </div>
@@ -134,9 +139,7 @@
           </div>
           </div>
 <?php
-include "../Core/panier&commande_CORE.php";
-$f=new fonctionC();
-$p=$f->getProds();
+$p=$i->getProds();
 ?>
 <section class="cat_product_area section_gap">
   <div class="container">
