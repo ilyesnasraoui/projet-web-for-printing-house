@@ -26,7 +26,7 @@ $listcartef = $cartef->affichercartef();
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -105,7 +105,7 @@ $listcartef = $cartef->affichercartef();
                 <img src="../img/logo.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Mohamed Ilyes Nasraoui</h2>
               </div>
             </div>
@@ -124,7 +124,7 @@ $listcartef = $cartef->affichercartef();
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
-                     
+
                     </ul>
                   </li>
 
@@ -132,8 +132,8 @@ $listcartef = $cartef->affichercartef();
                     <ul class="nav child_menu">
                       <li><a href="ajoutpromotions.html">ajout promotion</a></li>
                       <li><a href="affichepromotion.php">afficher promotion</a></li>
-                      
-                     
+
+
                     </ul>
                   </li>
 
@@ -141,11 +141,15 @@ $listcartef = $cartef->affichercartef();
                     <ul class="nav child_menu">
                       <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
                       <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
-                      
-                     
+
+
                     </ul>
                   </li>>
-
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="order.php">tous les commande</a></li>
+                    </ul>
+                  </li>
 
 
                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
@@ -160,12 +164,12 @@ $listcartef = $cartef->affichercartef();
 
 
 
-                    
-                  
-                  
-                  
-                  
-    
+
+
+
+
+
+
               </div>
 
             </div>
@@ -289,14 +293,14 @@ $listcartef = $cartef->affichercartef();
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left"> 
-   
+              <div class="title_left">
+
 
    <table class="table table-hover" border="3">
     <tr>
@@ -304,7 +308,7 @@ $listcartef = $cartef->affichercartef();
         <td style="background-color: black;font-size: 20px;">points</td>
 
         <td style="background-color: black;font-size: 20px;" >id_client</td>
-        
+
         <td style="background-color: black;font-size: 20px;">Modifier</td>
 
         <td style="background-color: black;font-size: 20px;">supprimer</td>
@@ -321,19 +325,19 @@ foreach ($listcartef as $row)
             <td>'.$row["id_carte"].'</td>
             <td>'.$row["points"].'</td>
             <td>'.$row["id_client"].'</td>
-        
+
             <td>
                 <form action="modifiercartefidelite.php" method="post">
                     <input type="hidden"
                      name="id_carte" value="'.$row["id_carte"].'">
                     <input type="hidden"  name="points" value="'.$row["points"].'">
-                   
+
                     <input type="hidden" name="id_client" value="'.$row["id_client"].'">
-                    
+
                     <input class="btn btn-warning"type="submit" value="modifier">
                 </form>
             </td>
-            <td> 
+            <td>
                 <form action="supprimercartefidelite.php" method="post">
                     <input type="hidden"  name="id_carte" value="'.$row["id_carte"].'">
                     <input class="btn btn-danger" type="submit" value="supprimer">
@@ -346,41 +350,41 @@ foreach ($listcartef as $row)
 ?>
 </table>
 
-     
+
   </body>
 </html>
 
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -423,7 +427,6 @@ foreach ($listcartef as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  

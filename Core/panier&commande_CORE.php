@@ -240,7 +240,6 @@ class fonctionC
         {
             echo 'error :'.$e->getMessage();
         }
-
       }
 
   function getOrders($uname=null,$inno=null)

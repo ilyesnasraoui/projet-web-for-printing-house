@@ -33,26 +33,25 @@
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Blog Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="produit.php">Product</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
                 </ul>
-							</li>
-              
-							<li class="nav-item active submenu dropdown">
+              </li>
+              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>									
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
+                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -60,8 +59,7 @@
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
             </ul>
           </div>
         </div>
@@ -69,8 +67,8 @@
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-  
-  <!-- ================ start banner area ================= -->	
+
+  <!-- ================ start banner area ================= -->
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
@@ -87,7 +85,7 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-  
+
   <!--================Login Box Area =================-->
 	<center><section class="login_box_area section-margin">
 				<div class="col-lg-6">
@@ -95,7 +93,7 @@
 						<h3>Sign Up</h3>
 						<form class="row login_form"  id="register_form" method="POST" action="ajoutLivreur.php" onsubmit="return controle()" >
 						<!------------------------------------------------------------------------------------------------------->
-            <!------------------------------------------------------------------------------------------------------->	
+            <!------------------------------------------------------------------------------------------------------->
              <div class="col-md-12 form-group">
                 <input type="text" class="form-control" id="nom" name="nom" placeholder="Last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'lastname'">
               </div>
@@ -107,7 +105,7 @@
               </div>
               <div id="erreur2" style="color: red"></div>
 
-              
+
 
 
               <div class="col-md-12 form-group">
@@ -128,12 +126,12 @@
               </div>
               <div id="erreur4" style="color: red"></div>
 
-              
+
               <div class="col-md-12 form-group">
                 <input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Adresse'">
               </div>
               <div id="erreur6" style="color: red"></div>
-              
+
 
 
 
@@ -144,7 +142,7 @@
               </div>
               <div id="erreur5" style="color: red"></div>
 
-              
+
 
 
               <div class="col-md-12 form-group">
@@ -159,13 +157,13 @@
               <!------------------------------------------------------------------------------------------------------->
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
-									
+
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="submit" value="Register" class="button button-register w-100">
 							</div>
-              
+
 						</form>
             <script src="controle.js"></script>
 					</div>
@@ -177,19 +175,19 @@
 
 
 
-  <!--================ Start footer Area  =================-->	
+  <!--================ Start footer Area  =================-->
 	<footer class="footer">
     <div class="footer-area">
       <div class="container">
         <div class="row section_gap">
           <div class="col-lg-3 col-md-6 col-sm-6">
-            
+
           </div>
           <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
-            
+
           </div>
           <div class="col-lg-2 col-md-6 col-sm-6">
-          
+
           </div>
           <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
             <div class="single-footer-widget tp_widgets">
@@ -200,7 +198,7 @@
                   Head Office
                 </p>
                 <p>AV habib borguiba, Grombalia</p>
-  
+
                 <p class="sm-head">
                   <span class="fa fa-phone"></span>
                   Phone Number
@@ -209,14 +207,14 @@
                   +216 72 211 611 <br>
                   +216 98 319 629
                 </p>
-  
+
                 <p class="sm-head">
                   <span class="fa fa-envelope"></span>
                   Email
                 </p>
                 <p>
                   impaicha96@yahoo.fr <br>
-                  
+
                 </p>
               </div>
             </div>

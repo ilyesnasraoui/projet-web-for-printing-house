@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -95,7 +95,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -114,8 +114,8 @@
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
+
+                    </ul>
                   </li>
 
                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
@@ -131,15 +131,20 @@
                        <ul class="nav child_menu">
                       <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
                       <li><a href="liste_livreur.php">Livreurs </a></li>
-                      <li><a href="affichlivraison.php">livraison </a></li>                     
+                      <li><a href="affichlivraison.php">livraison </a></li>
 
                       </ul>
                   </li>
-                  
-                  
-                  
-                  
-    
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="order.php">tous les commande</a></li>
+                    </ul>
+                  </li>
+
+
+
+
+
               </div>
 
             </div>
@@ -263,7 +268,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -301,7 +306,7 @@
 
 
    <fieldset >
-      
+
       <form   method="POST" action="affecterlivraison.php" >
         <center><legend><h2>affecter Livraison</h2></legend></center>
         <table id="example1" class="table table-striped">
@@ -309,24 +314,24 @@
             <th> Id livraison </th>
             <th><input type="number" name="id_livraison" id="id_livraison" /></th>
           </tr>
-    
+
           <tr>
             <th> Id livreur </th>
             <th><input type="number" name="cin" id="cin" /></th>
           </tr>
-    
+
           <tr>
             <th> Date livraison </th>
             <th><input type="date" name="dteliv" id="dteliv" value=""/></th>
           </tr>
           <tr>
-          
+
           <tr>
             <th> Id commande </th>
             <th><input type="text" name="id_commande" id="id_commande" value=""/></th>
           </tr>
           <tr>
-                    
+
 
         </table>
         <br>
@@ -345,7 +350,7 @@
               </div>
 </div>
               <div class="title_right">
-                
+
               </div>
             </div>
 
@@ -368,7 +373,7 @@
 
 
 
-   
+
 
 
     </fieldset>
@@ -379,7 +384,7 @@
               </div>
 </div>
               <div class="title_right">
-                
+
               </div>
             </div>
 
@@ -387,7 +392,7 @@
 
 
 
- <!----------------------------------------------------------------------------------------------------------------------->     
+ <!----------------------------------------------------------------------------------------------------------------------->
     </fieldset>
   </body>
 </html>
@@ -395,34 +400,34 @@
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -465,7 +470,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  

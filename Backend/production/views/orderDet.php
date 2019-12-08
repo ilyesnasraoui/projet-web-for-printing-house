@@ -9,74 +9,175 @@ $add=$i->showAdress(null,$_POST["add"])->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
-  <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
-  <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
-  <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
-  <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
+    <title>Société Imprimerie Aicha De Distribution! | </title>
 
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
+    <!-- Bootstrap -->
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
+  </head>
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">Prods</a></li>
+                            <li class="active">Orders</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body class="nav-md">
+  <div class="container body">
+    <div class="main_container">
+      <div class="col-md-3 left_col">
+        <div class="left_col scroll-view">
+          <div class="navbar nav_title" style="border: 0;">
+            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <!-- menu profile quick info -->
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+
+              <h2></h2>
+            </div>
+          </div>
+          <!-- /menu profile quick info -->
+
+          <br />
+
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>General</h3>
+              <ul class="nav side-menu">
+                <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                    <li><a href="ajoutp1.html">ajout produit</a></li>
+                    <li><a href="afichprod1.php">afficher produit</a></li>
+                    <li><a href="cher1.php">reglage produits produit</a></li>
+                    <li><a href="stat.php">statistique produit</a></li>
+
+                  </ul>
+                </li>
+
+                <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                    <li><a href="ajouts1.html">ajout stock</a></li>
+                    <li><a href="mstock1.html">modifier stock</a></li>
+                    <li><a href="sstock1.html">supprimer stock</a></li>
+                    <li><a href="afichstock1.php">afficher stock</a></li>
+                    <li><a href="tri1.php">trier stock</a></li>
+                  </ul>
+                </li>
+
+                <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                    <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
+
+                    </ul>
+                </li>
+                <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                    <li><a href="order.php">tous les commande</a></li>
+                  </ul>
+                </li>
+
+
+
+
+            </div>
+
+          </div>
+          <!-- /sidebar menu -->
+
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
+        </div>
+      </div>
+
+      <!-- top navigation -->
+      <div class="top_nav">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="images/img.jpg" alt="">Fourat
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
 
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
 <main style="margin:10% auto;">
     <div class="container adresses-container">
         <div class="row">
@@ -104,7 +205,7 @@ $add=$i->showAdress(null,$_POST["add"])->fetch();
                             echo'
                                 <tr>
                                     <th scope="row">'.$x.'</th>
-                                    <td>'.$p["nom_produit"].'</td>
+                                    <td>'.$p["nom"].'</td>
                                     <td>'.$o["qty"].'</td>
                                     <td>'.$p["prix"].' TND</td>
                                 </tr>
@@ -112,7 +213,7 @@ $add=$i->showAdress(null,$_POST["add"])->fetch();
                             $v=$v+$o["qty"]*$p["prix"];
                             $x++;
                         }
-                        $discount=$i->getOrders(null,$_POST["inno"]);
+                        $discount="0";
 
                         ?>
                         </tbody>
@@ -145,75 +246,48 @@ $add=$i->showAdress(null,$_POST["add"])->fetch();
         </div>
     </div>
 </main>
-<footer class="footer">
-  <div class="footer-area">
-    <div class="container">
-      <div class="row section_gap">
-        <div class="col-lg-3 col-md-6 col-sm-6">
+<div class="clearfix"></div>
+</div>
 
-        </div>
-        <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+<!-- jQuery -->
+<script src="../../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../../vendors/nprogress/nprogress.js"></script>
+<!-- Chart.js -->
+<script src="../../vendors/Chart.js/dist/Chart.min.js"></script>
+<!-- gauge.js -->
+<script src="../../vendors/gauge.js/dist/gauge.min.js"></script>
+<!-- bootstrap-progressbar -->
+<script src="../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+<!-- iCheck -->
+<script src="../../vendors/iCheck/icheck.min.js"></script>
+<!-- Skycons -->
+<script src="../../vendors/skycons/skycons.js"></script>
+<!-- Flot -->
+<script src="../../vendors/Flot/jquery.flot.js"></script>
+<script src="../../vendors/Flot/jquery.flot.pie.js"></script>
+<script src="../../vendors/Flot/jquery.flot.time.js"></script>
+<script src="../../vendors/Flot/jquery.flot.stack.js"></script>
+<script src="../../vendors/Flot/jquery.flot.resize.js"></script>
+<!-- Flot plugins -->
+<script src="../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+<script src="../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+<script src="../../vendors/flot.curvedlines/curvedLines.js"></script>
+<!-- DateJS -->
+<script src="../../vendors/DateJS/build/date.js"></script>
+<!-- JQVMap -->
+<script src="../../vendors/jqvmap/dist/jquery.vmap.js"></script>
+<script src="../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script src="../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="../../vendors/moment/min/moment.min.js"></script>
+<script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-        </div>
-        <div class="col-lg-2 col-md-6 col-sm-6">
+<!-- Custom Theme Scripts -->
+<script src="../../build/js/custom.min.js"></script>
 
-        </div>
-        <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
-          <div class="single-footer-widget tp_widgets">
-            <h4 class="footer_title">Contact Us</h4>
-            <div class="ml-40">
-              <p class="sm-head">
-                <span class="fa fa-location-arrow"></span>
-                Head Office
-              </p>
-              <p>AV habib borguiba, Grombalia</p>
-
-              <p class="sm-head">
-                <span class="fa fa-phone"></span>
-                Phone Number
-              </p>
-              <p>
-                +216 72 211 611 <br>
-                +216 98 319 629
-              </p>
-
-              <p class="sm-head">
-                <span class="fa fa-envelope"></span>
-                Email
-              </p>
-              <p>
-                impaicha96@yahoo.fr <br>
-
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    <div class="container">
-      <div class="row d-flex">
-        <p class="col-lg-12 footer-text text-center">
-          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-      </div>
-    </div>
-  </div>
-</footer>
-<!--================ End footer Area  =================-->
-
-
-
-<script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-<script src="vendors/skrollr.min.js"></script>
-<script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-<script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-<script src="vendors/jquery.ajaxchimp.min.js"></script>
-<script src="vendors/mail-script.js"></script>
-<script src="js/main.js"></script>
 </body>
-</html>

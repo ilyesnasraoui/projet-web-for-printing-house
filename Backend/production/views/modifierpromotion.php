@@ -1,7 +1,7 @@
 <?php
 include "../entites/promotion.php";
 include "../core/promotionc.php";
-   
+
     $pourcentage=$_POST["pourcentage"];
     $delai=$_POST["delai"];
     $fk_id_produit=$_POST["fk_id_produit"];
@@ -29,7 +29,7 @@ include "../core/promotionc.php";
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -106,7 +106,7 @@ include "../core/promotionc.php";
                 <img src="../img/logo.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Mohamed Ilyes Nasraoui</h2>
               </div>
             </div>
@@ -125,7 +125,7 @@ include "../core/promotionc.php";
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
-                     
+
                     </ul>
                   </li>
 
@@ -133,8 +133,8 @@ include "../core/promotionc.php";
                     <ul class="nav child_menu">
                       <li><a href="ajoutpromotions.html">ajout promotion</a></li>
                       <li><a href="affichepromotion.php">afficher promotion</a></li>
-                      
-                     
+
+
                     </ul>
                   </li>
 
@@ -143,8 +143,8 @@ include "../core/promotionc.php";
                     <ul class="nav child_menu">
                       <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
                       <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
-                      
-                     
+
+
                     </ul>
                   </li>>
 
@@ -160,14 +160,19 @@ include "../core/promotionc.php";
                     </ul>
                   </li>
 
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="order.php">tous les commande</a></li>
+                    </ul>
+                  </li>
 
 
-                    
-                  
-                  
-                  
-                  
-    
+
+
+
+
+
+
               </div>
 
             </div>
@@ -291,7 +296,7 @@ include "../core/promotionc.php";
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -308,7 +313,7 @@ include "../core/promotionc.php";
     <fieldset >
       <h1 style="font-size: 40px;">Modifier promotion</h1>
 <form  method="post" action="modprom.php" onsubmit="return verif()">
-    <table>     
+    <table>
         <tr>
             <td><label for="pourcentage">pourcentage</label></td>
             <td><input type="text" name="pourcentage" value="<?php echo $pourcentage ?>"></td>
@@ -334,34 +339,34 @@ include "../core/promotionc.php";
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -404,10 +409,10 @@ include "../core/promotionc.php";
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  
+
 
 
 
@@ -417,4 +422,3 @@ include "../core/promotionc.php";
 
 
 <!--     !-->
-

@@ -4,14 +4,16 @@ require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 require_once "D:\wamp64\www\projet\projet\Entities\addresse.php";
 $a=new fonctionC();
 $uname1="YOUSSEF";
-$listA=$a->showAdress($uname1);
+// $listA=$a->showAdress($uname1);
+$_SESSION['uname']="YOUSSEF";
+$listA=$a->showAdress($_SESSION['uname']);
 ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
+  <title>S.I.A.D- My addresses</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -40,26 +42,25 @@ $listA=$a->showAdress($uname1);
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
                <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
+              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="produit.php">Product</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
                 </ul>
-							</li>
-
-							<li class="nav-item submenu dropdown">
+              </li>
+              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -67,8 +68,7 @@ $listA=$a->showAdress($uname1);
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
             </ul>
           </div>
         </div>
@@ -186,7 +186,7 @@ echo '
                                               <span aria-hidden="true">&times;</span>
                                             </button>
                                           </div>
-                                          <form action="D:\wamp64\www\projet\projet\Backend\production\views\forms.php" method="post">
+                                          <form action="D:/wamp64/www/projet/projet/Backend/production/views/forms.php" method="post">
                                             <div class="modal-body mx-3">
                                             <div class="md-form mb-5">
                                               <p class="text-center"> Address Name </p>

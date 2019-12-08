@@ -543,3 +543,17 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="js/main.js"></script>
 </body>
 </html>
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About

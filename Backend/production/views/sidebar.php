@@ -12,7 +12,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -31,8 +31,8 @@
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="ajoutCat1.php">Ajouter Categorie</a></li>
                       <li><a href="affichcat1.php">afficher categorie</a></li>
-                     
-                    </ul>                  
+
+                    </ul>
                   </li>
 
                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
@@ -44,11 +44,16 @@
                       <li><a href="tri1.php">trier stock</a></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="order.php">tous les commande</a></li>
+                    </ul>
+                  </li>
 
-                  
-                  
-                  
-    
+
+
+
+
               </div>
 
             </div>

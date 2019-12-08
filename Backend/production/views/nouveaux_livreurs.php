@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -95,7 +95,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -114,8 +114,8 @@
                       <li><a href="afichprod1.php">afficher produit</a></li>
                       <li><a href="cher1.php">reglage produits produit</a></li>
                       <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
+
+                    </ul>
                   </li>
 
                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
@@ -134,11 +134,16 @@
 
                       </ul>
                   </li>
-                  
-                  
-                  
-                  
-    
+
+                  <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="order.php">tous les commande</a></li>
+                    </ul>
+                  </li>
+
+
+
+
               </div>
 
             </div>
@@ -262,7 +267,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -291,7 +296,7 @@ $liste_accepte=$livreur_accepte->infoLivreur();*/
 $livreur = new livreurC();
 $listlivreur = $livreur->afficherLivreur();
 
-  
+
 
 
 ?>
@@ -322,7 +327,7 @@ foreach ($listlivreur as $row)
             <td>'.$row["license"].'</td>
             <td>'.$row["license_validity"].'</td>
             <td>'.$row["adresse"].'</td>
-            <td> 
+            <td>
                 <form action="suppLivreur.php" method="post">
                     <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
                     <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
@@ -352,7 +357,7 @@ foreach ($listlivreur as $row)
 
 
    <fieldset >
-      
+
       <form   method="POST" action="acceptlivreur.php" >
         <center><legend><h2>Ajouter Livreur</h2></legend></center>
         <table id="example1" class="table table-striped">
@@ -360,12 +365,12 @@ foreach ($listlivreur as $row)
             <th> CIN </th>
             <th><input type="number" name="cin" id="cin" /></th>
           </tr>
-    
+
           <tr>
             <th> Prenom </th>
             <th><input type="text" name="prenom" id="prenom" value=""/></th>
           </tr>
-    
+
           <tr>
             <th> Nom </th>
             <th><input type="text" name="nom" id="nom" value=""/></th>
@@ -399,7 +404,7 @@ foreach ($listlivreur as $row)
             <th> Joiniabilité (si oui->1 sinon->0) </th>
             <th><input type="number" name="joiniable" id="joiniable" value=""/></th>
           </tr>
-        
+
           <tr>
             <th> Login </th>
             <th><input type="text" name="login" id="login" value=""/></th>
@@ -427,7 +432,7 @@ foreach ($listlivreur as $row)
               </div>
 </div>
               <div class="title_right">
-                
+
               </div>
             </div>
 
@@ -435,7 +440,7 @@ foreach ($listlivreur as $row)
 
 
 
- <!----------------------------------------------------------------------------------------------------------------------->     
+ <!----------------------------------------------------------------------------------------------------------------------->
     </fieldset>
   </body>
 </html>
@@ -443,34 +448,34 @@ foreach ($listlivreur as $row)
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -513,7 +518,6 @@ foreach ($listlivreur as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  
