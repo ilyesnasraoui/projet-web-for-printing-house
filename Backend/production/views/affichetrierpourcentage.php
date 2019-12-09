@@ -1,15 +1,14 @@
 <?php
 
-include '../core/cartefc.php';
+include '../core/promotionc.php';
 
-$cartef = new cartefc();
-$listcartef = $cartef->affichercartef();
+$promotion = new promotionc();
+$listpromotion = $promotion->afficherpromotiontrier();
 ?>
 <!-- ************************  !-->
   <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -25,7 +24,6 @@ $listcartef = $cartef->affichercartef();
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
-
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
   
@@ -146,7 +144,7 @@ $listcartef = $cartef->affichercartef();
                       
                      
                     </ul>
-                  </li>
+                  </li>>
 
 
 
@@ -298,72 +296,51 @@ $listcartef = $cartef->affichercartef();
           <div class="">
             <div class="page-title">
               <div class="title_left"> 
+   
 
-  
-
-   <table  class="table table-hover" border="3" style="margin-left:150px; margin-top: 100px; ">
+   <table class="table table-hover" border="3">
     <tr>
-        <td style="background-color: black;font-size: 20px;" >id_carte</td>
-        <td style="background-color: black;font-size: 20px;">points</td>
+        <td style="background-color: black;font-size: 20px;" >id_promo</td>
+        <td style="background-color: black;font-size: 20px;">pourcentage</td>
+        <td style="background-color: black;font-size: 20px"> delai promotion </td>
 
-        <td style="background-color: black;font-size: 20px;" >id_client</td>
+        <td style="background-color: black;font-size: 20px;" >fk_id_produit</td>
         
         <td style="background-color: black;font-size: 20px;">Modifier</td>
 
         <td style="background-color: black;font-size: 20px;">supprimer</td>
-        <td style="background-color: black;font-size: 20px;">telecharger un pdf </td>
     </tr>
 <?php
 
 
 
 
-foreach ($listcartef as $row)
+foreach ($listpromotion as $row)
 {
     echo '
         <tr>
-            <td>'.$row["id_carte"].'</td>
-            <td>'.$row["points"].'</td>
-            <td>'.$row["id_client"].'</td>
+            <td>'.$row["id_promo"].'</td>
+            <td>'.$row["pourcentage"].'</td>
+            <td>'.$row["delai"].'</td>
+            <td>'.$row["fk_id_produit"].'</td>
         
             <td>
-                <form action="modifiercartefidelite.php" method="post">
+                <form action="modifierpromotion.php" method="post">
                     <input type="hidden"
-                     name="id_carte" value="'.$row["id_carte"].'">
-                    <input type="hidden"  name="points" value="'.$row["points"].'">
-                   
-                    <input type="hidden" name="id_client" value="'.$row["id_client"].'">
+                     name="id_promo" value="'.$row["id_promo"].'">
+                    <input type="hidden"  name="pourcentage" value="'.$row["pourcentage"].'">
+                    <input type="hidden"  name="delai" value="'.$row["delai"].'">
+                    <input type="hidden" name="fk_id_produit" value="'.$row["fk_id_produit"].'">
                     
                     <input class="btn btn-warning"type="submit" value="modifier">
                 </form>
             </td>
             <td> 
-                <form action="supprimercartefidelite.php" method="post">
-                    <input type="hidden"  name="id_carte" value="'.$row["id_carte"].'">
+                <form action="supprimerpromotion.php" method="post">
+                    <input type="hidden"  name="id_promo" value="'.$row["id_promo"].'">
                     <input class="btn btn-danger" type="submit" value="supprimer">
                 </form>
             </td>
-
-             
-             <td>
-                <form action="testpdf.php" method="post">
-                    <input type="hidden"
-                     name="id_carte" value="'.$row["id_carte"].'">
-                    <input type="hidden"  name="points" value="'.$row["points"].'">
-                   
-                    <input type="hidden" name="id_client" value="'.$row["id_client"].'">
-                    
-                    <input class="btn btn-success btn-lg btn-block"type="submit" value="telecharger un pdf" >
-                </form>
-            </td>
-
-
-
-
-
-
-
-
         </tr>
 
     ';
@@ -371,8 +348,6 @@ foreach ($listcartef as $row)
 ?>
 </table>
 
-
- <a href="" onclick='window.print();return false'>Imprimer le contenue du la page
      
   </body>
 </html>
@@ -450,13 +425,6 @@ foreach ($listcartef as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-
-
-
-    
-
   
   </body>
 </html>
-  
-
