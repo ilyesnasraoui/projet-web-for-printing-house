@@ -23,7 +23,7 @@ else if($_POST["form"]=="deleteCart")
     {
         $u=new fonctionC();
         $u->deleteCart($_POST["pId"]);
-        header("location:../produit.php");
+      header("location:D:/wamp64/www/projet/projet/views/produit.php");
     }
     else
     {
@@ -36,7 +36,7 @@ else if($_POST["form"]=="updateCart")
     {
         $u=new fonctionC();
         $u->updateCart($_POST["pId"],$_POST["qty"]);
-        header("location:../produit.php");
+      header("location:D:/wamp64/www/projet/projet/views/produit.php");
     }
     else
     {
