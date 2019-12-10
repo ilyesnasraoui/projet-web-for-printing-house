@@ -19,53 +19,9 @@
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="produit.php">Product</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
-                </ul>
-              </li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+	<?php 
+  include "header.php";
+  ?>
   <section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
@@ -134,9 +90,13 @@
           </div>
           </div>
 <?php
-include "../Core/panier&commande_CORE.php";
-$f=new fonctionC();
-$p=$f->getProds();
+include_once "../config.php";
+include "../core/ProduitC.php";
+$f=new ProduitC();
+if(isset($_GET['ID_Cat']))
+$p=$f->afficherProduits_Cat($_GET['ID_Cat']);
+else
+$p=$f->afficherProduits();
 ?>
 <section class="cat_product_area section_gap">
   <div class="container">
@@ -153,14 +113,14 @@ $p=$f->getProds();
                               echo '
                               <div class="card-body">
                                 <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
-                                <p class="card-product__price">'.$t["prix"].'</p>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col-md-6 col-lg-4">
+                                
+                                <div class="col-md-6 col-lg-6">
                             <div class="card text-center card-product">
                               <div class="card-product__img">
-                                <img class="card-img" src="../views/img/'.$t["image"].'" alt="product img">
+                              <a href="single-product.php?ID='.$t["id_produit"].'">
+                                <img class="card-img" src="../Backend/production/views/'.$t["image"].'" alt="product img"></a>
+                                <p class="card-product__price">'.$t["prix"].' DT</p>
+                                
                                 <form style="display: inline-block;"  method="post" action="..\Backend\production\views\forms.php">
                                                    <input type="hidden" name="pId" value="'.$t["id_produit"].'" >
                                                     <input type="hidden" name="form" value="addCart" >
@@ -171,6 +131,11 @@ $p=$f->getProds();
                                                     </ul>
                                             </form>
                               </div>
+                            </div>
+                          </div>
+                              </div>
+                              
+                          
                               ';
                             }
                            ?>

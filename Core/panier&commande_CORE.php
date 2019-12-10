@@ -1,6 +1,6 @@
 <?php
 
-require_once "D:/wamp64/www/projet/projet/views/config.php";
+require_once "../config.php";
 class fonctionC
 {
   public function addAddress($address)

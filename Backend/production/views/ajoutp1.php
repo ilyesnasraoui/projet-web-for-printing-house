@@ -225,10 +225,7 @@
       <form name="f1" style="height: 800px;" method="POST" action="ajoutp.php" onSubmit="return verif() " enctype="multipart/form-data" >
  <center><legend><h2> Ajout Produit </h2></legend></center>
          <table id="example1" class="table table-striped">
-          <tr>
-            <th> id Produit </th>
-            <th><input id="prod" type="number" name="id_produit" value=""/></th>
-          </tr>
+          
           <tr>
             <th> Image </th>
             <th><input type="file" name="image" value=""/></th>
@@ -251,13 +248,16 @@
             <th><textarea name="description" value=""/></textarea> </th>
           </tr>
          <tr>
-<td>type</td>
-<td><select name="typee" >
-
-    <option value="bague ">bague  </option>
-    <option value="collier">collier</option>
-        <option value="boucle">boucle</option>
-            <option value="autre">autre</option>
+<td>Categorie</td>
+<td><select name="idcat" >
+<?php
+include_once "../config.php";
+include "../core/CategorieC.php";
+$cat=new CategorieC();
+$lst=$cat->afficherCategorie();
+foreach ($lst as $rw) 
+                    echo'
+    <option value="'.$rw['id_cat'].'">'.$rw['nom'].'</option>'; ?>
 
   </select></td>
 </tr>
