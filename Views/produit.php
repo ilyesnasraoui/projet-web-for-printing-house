@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>S.I.A.D- produit</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+  <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
@@ -19,24 +19,24 @@
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-	<?php 
+  <?php 
   include "header.php";
   ?>
   <section class="blog-banner-area" id="category">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>Shop products</h1>
-					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+    <div class="container h-100">
+      <div class="blog-banner">
+        <div class="text-center">
+          <h1>Shop products</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Shop products</li>
             </ol>
           </nav>
-				</div>
-			</div>
+        </div>
+      </div>
     </div>
-	</section>
+  </section>
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
