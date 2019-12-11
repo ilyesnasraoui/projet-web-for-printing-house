@@ -1,9 +1,3 @@
-
-<?php
-$message = "Un code de verification est envoyé à votre adresse mail.";
-echo "<script>alert('$message');</script>";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

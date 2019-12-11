@@ -17,7 +17,7 @@ $section = "";
 if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
 
 
-header('Location:../views/index.php');
+header('Location:../views/index.html');
 
    if(!empty($_POST['recup_mail'])) {
       $recup_mail = htmlspecialchars($_POST['recup_mail']);
