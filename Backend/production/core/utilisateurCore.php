@@ -1,6 +1,6 @@
 
 <?php
- //include "../config.php";
+ include "../config.php";
 class utilisateurCore{
  function inscritption($utilisateur,$confirmkey)
  {
@@ -116,7 +116,7 @@ $message='
 <html>
     <body>
         <div align="center">
-         <a href="http://localhost/projett/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
+         <a href="http://localhost/projet/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
         </div>
     </body>
 </html>

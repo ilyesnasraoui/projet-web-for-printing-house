@@ -1,5 +1,5 @@
 <?php
-include "../config.php";
+require_once('../config.php');
 include "../Entities/utilisateur.php";
 include "../Core/utilisateurCore.php";
 session_start();
@@ -33,7 +33,7 @@ $confirm=0;
                         $utilisateur1 = new utilisateur($pseudo,$mail,$mdp);
                         $utilisateur1C = new utilisateurCore();
                       $utilisateur1C->EnvoyerMail($mail,$pseudo,$key);
-                     $erreur = "Votre compte a bien été créé !";
+                     $erreur = "Votre compte a bien été créé , un mail de verification est envoyé a votre adresse mail.";
                       }else{
         $erreur="captcha invalide";
     }
@@ -53,6 +53,7 @@ $confirm=0;
    } else {
       $erreur = "Tous les champs doivent être complétés !";
    }
+
 }
 ?>
 
