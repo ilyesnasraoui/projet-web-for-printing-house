@@ -1,10 +1,59 @@
+<?php
+include "../core/utilisateurCore.php";
+require_once('../config.php');
+session_start();
+$bdd = config::getConnexion();
+if(isset($_POST['recup_submit'],$_POST['recup_mail'])) {
+   if(!empty($_POST['recup_mail'])) {
+      $recup_mail = htmlspecialchars($_POST['recup_mail']);
+      if(filter_var($recup_mail,FILTER_VALIDATE_EMAIL)) {
+         $mailexist = $bdd->prepare('SELECT id,pseudo FROM membre WHERE mail = ?');
+         $mailexist->execute(array($recup_mail));
+         $mailexist_count = $mailexist->rowCount();
+         if($mailexist_count == 1) {
+            $pseudo = $mailexist->fetch();
+            $pseudo = $pseudo['pseudo'];
+            
+            $recup_code = "";
+            for($i=0; $i < 8; $i++) { 
+               $recup_code .= mt_rand(0,9);
+            }
+            $mail_recup_exist = $bdd->prepare('SELECT id FROM recuperation WHERE mail = ?');
+            $mail_recup_exist->execute(array($recup_mail));
+            $mail_recup_exist = $mail_recup_exist->rowCount();
+            if($mail_recup_exist == 1) {
+               $recup_insert = $bdd->prepare('UPDATE recuperation SET code = ? WHERE mail = ?');
+               $recup_insert->execute(array($recup_code,$recup_mail));
+            } else {
+               $recup_insert = $bdd->prepare('INSERT INTO recuperation(mail,code) VALUES (?, ?)');
+               $recup_insert->execute(array($recup_mail,$recup_code));
+            }
+        //appel de foncton de mail  
+        $utilisateur1C = new utilisateurCore();
+         $utilisateur1C->RecupererMail($pseudo,$recup_code,$recup_mail);
+                     $_SESSION['recup_mail'] = $recup_mail;
+         } else {
+            $error = "Cette adresse mail n'est pas enregistrée";
+         }
+      } else {
+         $error = "Adresse mail invalide";
+      }
+   } else {
+      $error = "Veuillez entrer votre adresse mail";
+   }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>s_i_a_d- Login</title>
+  <title>S.I.A.D- Login</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -32,25 +81,27 @@
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="produit.php">Product</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
+                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-product.html">Blog Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
                 </ul>
-              </li>
-              <li class="nav-item submenu dropdown">
+							</li>
+
+							<li class="nav-item active submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -58,7 +109,8 @@
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
             </ul>
           </div>
         </div>
@@ -100,23 +152,15 @@
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
-						<h3>Log in to enter</h3>
-						<form class="row login_form" action="connexion.php"  method="POST" name="formconnexion" >
+						<h3>PASSWORD RECOVERY</h3>
+						<form class="row login_form" action="recuperer.php"  method="POST">
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="nameconnect" name="nameconnect" placeholder="E-Mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-Mail'">
+								<input type="text" class="form-control" id="nameconnect" name="recup_mail" placeholder="E-Mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-Mail'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="mdpconnect" name="mdpconnect" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<input type="checkbox" name="rememberme" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
-								</div>
-							</div>
-							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-login w-100"  onClick="proceed();" name="formconnexion">Log In</button>
-								<a href="recuperer1.php">Forgot Password?</a>
+								<button type="submit" value="submit" class="button button-login w-100"  onClick="proceed();" name="recup_submit">OK</button>
 							</div>
 						</form>
 					</div>
@@ -124,6 +168,12 @@
 			</div>
 		</div>
 	</section>
+  <?php 
+     if(isset($erreur))
+             {
+                echo '<font color="red">'.$erreur."</font>";
+             }
+     ?>
 	<!--================End Login Box Area =================-->
 
 
