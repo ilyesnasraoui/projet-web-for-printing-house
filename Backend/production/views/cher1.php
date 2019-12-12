@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -47,7 +47,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -56,44 +56,8 @@
             <br />
 
             <!-- sidebar menu -->
-               <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
-                      </ul>
-                  </li>
-                  
-
-                  
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
+            <?php include "sidebar.php";
+       ?>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -214,7 +178,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -242,7 +206,7 @@
   $conn=$c->getConnection();
   $e=new produit(2486,"aa","IBM","noir","ordinateur",55,"2019-05-20");
   $resultat=$e->afficher($conn);
-  
+
 ?>
 <center>
 <form name="Form2" method="POST" onsubmit="chercher.php">
@@ -250,10 +214,10 @@
 
   <fieldset>
 
-    
+
     <h4>Rechercher <input type="number" name="recherch" >
     <button type="submit" name="chercher" value="chercher" class="btn btn-danger">chercher</button></h4>
-    
+
     <div align="center" >
     <table   id="example1" class="table table-striped">
   <thead>
@@ -270,8 +234,8 @@
     </tr>
   </thead>
   <tbody>
-      <?php 
-      
+      <?php
+
 if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST['recherch']))
    ))) {
 
@@ -288,7 +252,7 @@ if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST
        <td><a href="sprod1.html">Supprimer</a></td>
        <td><a href="mprod1.html">Modifier</a></td>
 
-      
+
       </tr>
       <?php
       }
@@ -309,7 +273,7 @@ if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST
         <td><?php echo $res['dateC'];?></td>
        <td><a href="sprod1.html">Supprimer</a></td>
        <td><a href="mprod1.html">Modifier</a></td>
-        
+
       </tr>
       <?php
     }
@@ -327,34 +291,34 @@ if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -397,7 +361,6 @@ if((!isset($_POST['chercher'])) || ((isset($_POST['chercher']) && (!isset($_POST
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  

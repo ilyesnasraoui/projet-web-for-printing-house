@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -95,7 +95,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -104,47 +104,8 @@
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
-                      <li><a href="liste_livreur.php">Livreurs </a></li>
-                      <li><a href="affichlivraison.php">livraison </a></li>                     
-
-                      </ul>
-                  </li>
-                  
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
+            <?php include "sidebar.php";
+       ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -263,7 +224,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -290,7 +251,7 @@ include 'livreur_accepteC.php';
 $livreur = new livreur_accepteC();
 $listlivreur = $livreur->afficherLivreur();
 
-  
+
 
 
 ?>
@@ -309,7 +270,7 @@ $listlivreur = $livreur->afficherLivreur();
         <td>password</td>
         <td>modifier</td>
         <td>supprimer</td>
-        
+
     </tr>
 <?php
 
@@ -336,7 +297,7 @@ foreach ($listlivreur as $row)
                 </form>
                 </td>
 
-            <td> 
+            <td>
                 <form action="supprimerLivreur.php" method="post">
                     <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
                     <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
@@ -365,7 +326,7 @@ foreach ($listlivreur as $row)
 
 
 
-   
+
 
 
     </fieldset>
@@ -376,7 +337,7 @@ foreach ($listlivreur as $row)
               </div>
 </div>
               <div class="title_right">
-                
+
               </div>
             </div>
 
@@ -384,7 +345,7 @@ foreach ($listlivreur as $row)
 
 
 
- <!----------------------------------------------------------------------------------------------------------------------->     
+ <!----------------------------------------------------------------------------------------------------------------------->
     </fieldset>
   </body>
 </html>
@@ -392,34 +353,34 @@ foreach ($listlivreur as $row)
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -462,7 +423,6 @@ foreach ($listlivreur as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  

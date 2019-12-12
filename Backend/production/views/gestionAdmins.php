@@ -2,7 +2,7 @@
 include "../entities/utilisateur.php";
 include "../core/utilisateurCore.php";
 $utilisateurC=new utilisateurCore();
-$listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste 
+$listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
 
 
 
@@ -29,7 +29,7 @@ $listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-   
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -106,7 +106,7 @@ $listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -115,58 +115,8 @@ $listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                     <li><a><i class="fa fa-edit"></i> Admins <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouterAdmin.php">Ajouter Admin</a></li>
-                      <li><a href="gestionAdmins.php">Gestion Admins</a></li>
-                    </ul>
-                  </li>
-
-                    <li><a><i class="fa fa-edit"></i> Clients <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="TabClients.php">Afficher clients</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
-
-                      </ul>
-                  </li>
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
+            <?php include "sidebar.php";
+       ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -285,7 +235,7 @@ $listeAdmins=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -331,7 +281,7 @@ foreach($listeAdmins as $row){
 	</td>
 
 	</tr>
-	
+
 	<?php
 }
 }
@@ -346,37 +296,37 @@ foreach($listeAdmins as $row){
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
-   
+
 
 
     <!-- jQuery -->
@@ -419,7 +369,6 @@ foreach($listeAdmins as $row){
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-   
+
   </body>
 </html>
-  

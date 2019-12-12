@@ -26,7 +26,7 @@ $listpromotion = $promotion->afficherpromotiontrier();
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -105,7 +105,7 @@ $listpromotion = $promotion->afficherpromotiontrier();
                 <img src="../img/logo.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Mohamed Ilyes Nasraoui</h2>
               </div>
             </div>
@@ -113,60 +113,8 @@ $listpromotion = $promotion->afficherpromotiontrier();
 
             <br />
 
-             <!-- sidebar menu -->
-             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" >
-              <div class="menu_section" style="height: 500px">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Prmotion <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutpromotions.html">ajout promotion</a></li>
-                      <li><a href="affichepromotion.php">afficher promotion</a></li>
-                      
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> carte fidelité <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
-                      <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
-                      
-                     
-                    </ul>
-                  </li>>
-
-
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-
-
-                    
-                  
-                  
-                  
-                  
-    
-              </div>
+            <?php include "sidebar.php";
+       ?>
 
             </div>
             <!-- /sidebar menu -->
@@ -289,14 +237,14 @@ $listpromotion = $promotion->afficherpromotiontrier();
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left"> 
-   
+              <div class="title_left">
+
 
    <table class="table table-hover" border="3">
     <tr>
@@ -305,7 +253,7 @@ $listpromotion = $promotion->afficherpromotiontrier();
         <td style="background-color: black;font-size: 20px"> delai promotion </td>
 
         <td style="background-color: black;font-size: 20px;" >fk_id_produit</td>
-        
+
         <td style="background-color: black;font-size: 20px;">Modifier</td>
 
         <td style="background-color: black;font-size: 20px;">supprimer</td>
@@ -323,7 +271,7 @@ foreach ($listpromotion as $row)
             <td>'.$row["pourcentage"].'</td>
             <td>'.$row["delai"].'</td>
             <td>'.$row["fk_id_produit"].'</td>
-        
+
             <td>
                 <form action="modifierpromotion.php" method="post">
                     <input type="hidden"
@@ -331,11 +279,11 @@ foreach ($listpromotion as $row)
                     <input type="hidden"  name="pourcentage" value="'.$row["pourcentage"].'">
                     <input type="hidden"  name="delai" value="'.$row["delai"].'">
                     <input type="hidden" name="fk_id_produit" value="'.$row["fk_id_produit"].'">
-                    
+
                     <input class="btn btn-warning"type="submit" value="modifier">
                 </form>
             </td>
-            <td> 
+            <td>
                 <form action="supprimerpromotion.php" method="post">
                     <input type="hidden"  name="id_promo" value="'.$row["id_promo"].'">
                     <input class="btn btn-danger" type="submit" value="supprimer">
@@ -348,41 +296,41 @@ foreach ($listpromotion as $row)
 ?>
 </table>
 
-     
+
   </body>
 </html>
 
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -425,6 +373,6 @@ foreach ($listpromotion as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
