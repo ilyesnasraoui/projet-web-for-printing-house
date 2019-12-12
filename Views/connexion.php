@@ -1,25 +1,70 @@
+<?php
+session_start();
+include "../Entities/utilisateur.php";
+include "../Core/utilisateurCore.php";
+include_once ('cookieconnect.php');
+   if(isset($_POST['formconnexion'])) {
+   $nameconnect = ($_POST['nameconnect']);
+   $mdpconnect = ($_POST['mdpconnect']);
+   $empty="test";
+    if(!empty($nameconnect) AND !empty($mdpconnect)) {
+  $utilisateur1 = new utilisateur($nameconnect,$mdpconnect,$empty);
+                        $utilisateur1C = new utilisateurCore();
+                        $tab=$utilisateur1C->connection($utilisateur1);
+                        $userexist=$tab[0];
+                        $requser=$tab[1];
+echo $userexist;
+      if($userexist == 1) {
+         if (isset($_POST['rememberme'])) {
+                setcookie('email',$mailconnect,time()+365*24*3600,null,null,false,true);
+                setcookie('password',$mdpconnect,time()+365*24*3600,null,null,false,true);
+            }
+       $userinfo = $requser->fetch();
+      $confirme =  $userinfo['confirme'];
+       if ($userinfo['role']==0 && $confirme == 1)   {
+         $_SESSION['id'] = $userinfo['id'];
+         $_SESSION['pseudo'] = $userinfo['pseudo'];
+         $_SESSION['mail'] = $userinfo['mail'];
+         $_SESSION['role'] = $userinfo['role'];
+         header("Location: userProfile.php?id=".$_SESSION['id']);}
+         else{
+           $erreur ="votre compte n'est pas encore confirmé";
+         }
+         if ($userinfo['role']==2) { header("Location: ../Backend/production/views/template.html");}
+        if ($userinfo['role']==1) { header("Location: ../Backend/production/views/template2.html");}
+        }   
+        else {
+         $erreur = "Mauvais mail ou mot de passe !";
+      }
+   } else {
+      $erreur = "Tous les champs doivent être complétés !";
+   }
+}
+?>
+ 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>s_i_a_d- Login</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+  <title>S.I.A.D- Login</title>
+  <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<!--================ Start Header Menu Area =================-->
-	<header class="header_area">
+  <!--================ Start Header Menu Area =================-->
+  <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -33,25 +78,27 @@
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="produit.php">Product</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
-                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
+                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-product.html">Blog Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
                 </ul>
               </li>
-              <li class="nav-item submenu dropdown">
+
+              <li class="nav-item active submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
                   <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                   <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
@@ -59,103 +106,85 @@
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
             </ul>
           </div>
         </div>
       </nav>
     </div>
   </header>
-	<!--================ End Header Menu Area =================-->
+  <!--================ End Header Menu Area =================-->
 
   <!-- ================ start banner area ================= -->
-	<section class="blog-banner-area" id="category">
-		<div class="container h-100">
-			<div class="blog-banner">
-				<div class="text-center">
-					<h1>Register</h1>
-					<nav aria-label="breadcrumb" class="banner-breadcrumb">
+  <section class="blog-banner-area" id="category">
+    <div class="container h-100">
+      <div class="blog-banner">
+        <div class="text-center">
+          <h1>Login / Register</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Register</li>
+              <li class="breadcrumb-item active" aria-current="page">Login/Register</li>
             </ol>
           </nav>
-
-				</div>
-			</div>
+        </div>
+      </div>
     </div>
-	</section>
-	<!-- ================ end banner area ================= -->
-
-  <!--================Login Box Area =================-->
-	<section class="login_box_area section-margin">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="login_box_img">
-						<div class="hover">
-							<h4>Already have an account?</h4>
-							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="button button-account" href="login.html">Login Now</a>
-              <br>
-              <br>
-              <br>
-             <a class="button button-account" href="formulaire_livreur.html"><h4>Do you want to work with us?</h2></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="login_form_inner register_form_inner">
-						<h3>Create an account</h3>
-						<form class="row login_form" action="register.php" id="register_form" method="post" name="forminscription">
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-							</div>
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="mail" name="mail" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
-              </div>
-              <div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="mdp" name="mdp" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
-              </div>
-              <div class="col-md-12 form-group">
-								<input type="password" class="form-control" id="mdp2" name="mdp2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
-							 </div>
-              <div class="col-md-12 form-group">
-                <div class="creat_account">
-                  <input type="checkbox" id="f-option2" name="selector">
-                  <label for="f-option2">Keep me logged in</label>
-                </div>
-              </div>
-                  <div class="col-md-12 form-group">
-                   
-  <table>
-      <td><img src="captcha.php"> </td>
-      <td><input type="text" name="captcha" class="form-control"></td>
-  </table>
-
-
-                                        </div>
-							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100" onClick="proceed();" name="forminscription" >Register</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-    <?php 
+  </section>
+   <?php 
      if(isset($erreur))
              {
                 echo '<font color="red">'.$erreur."</font>";
              }
          ?>
-	<!--================End Login Box Area =================-->
+  <!-- ================ end banner area ================= -->
+
+  <!--================Login Box Area =================-->
+  <section class="login_box_area section-margin">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="login_box_img">
+            <div class="hover">
+              <h4>New to our website?</h4>
+              <p>There are advances being made in science and technology everyday, and a good example of this is the</p>
+              <a class="button button-account" href="register.html">Create an Account</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="login_form_inner">
+            <h3>Log in to enter</h3>
+            <form class="row login_form" action="connexion.php"  method="POST" name="formconnexion" >
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="nameconnect" name="nameconnect" placeholder="E-mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-mail'">
+              </div>
+              <div class="col-md-12 form-group">
+                <input type="text" class="form-control" id="mdpconnect" name="mdpconnect" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+              </div>
+              <div class="col-md-12 form-group">
+                <div class="creat_account">
+                  <input type="checkbox" name="rememberme" id="f-option2" name="selector">
+                  <label for="f-option2">Keep me logged in</label>
+                </div>
+              </div>
+              <div class="col-md-12 form-group">
+                <button type="submit" value="submit" class="button button-login w-100"  onClick="proceed();" name="formconnexion">Log In</button>
+                <a href="recuperer1.php">Forgot Password?</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--================End Login Box Area =================-->
 
 
 
   <!--================ Start footer Area  =================-->
-	<footer class="footer">
+  <footer class="footer">
     <div class="footer-area">
       <div class="container">
         <div class="row section_gap">
@@ -213,7 +242,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
       </div>
     </div>
   </footer>
-	<!--================ End footer Area  =================-->
+  <!--================ End footer Area  =================-->
 
 
 
