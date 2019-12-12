@@ -28,7 +28,14 @@
 	include_once "../config.php";
 include "../core/ProduitC.php";
 $f=new ProduitC();
-if(isset($_GET['ID']))
+if(isset($_GET['QID']))
+{
+	$QRCode= $_GET["QID"]/33;
+        $QRCode=$QRCode-(35+15*242-10+14*15556);
+        $QRCode/=255;
+	$prod=$f->getProduit($QRCode);
+}
+else if(isset($_GET['ID']))
 $prod=$f->getProduit($_GET['ID']);
 else
 header('Location: index.php');
@@ -95,6 +102,12 @@ header('Location: index.php');
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
 						</div>
+						<form method="POST" action="QRCode.php">
+                              <li class="col-md-3">
+                              <input type="submit" name="update" class="btn btn-dark" value="Code QR" class="btn" >
+                              </li>
+                              <input type="hidden" value="<?php echo $row["id_produit"]; ?>" name="ID">
+                              </form>
 					</div>
 				</div>
 			</div>

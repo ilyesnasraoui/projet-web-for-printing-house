@@ -18,6 +18,26 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  
+
+  <script>
+function showResult(str) {
+  
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("DATA").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","SearchP.php?<?php if(isset($_GET['ID_Cat'])) if($_GET['ID_Cat']!="") echo"ID_Cat=".$_GET['ID_Cat']."&"; ?>kword=".concat(document.getElementById("kword").value));
+  xmlhttp.send();
+}
+</script>
   <!--================ Start Header Menu Area =================-->
   <?php 
   include "header.php";
@@ -79,10 +99,11 @@
             </div>
             <div>
               <div class="input-group filter-bar-search">
-                <input type="text" placeholder="Search">
+                <input type="text" placeholder="Search" id="kword" onkeyup="showResult(this.value)">
                 <div class="input-group-append">
-                  <button type="button"><i class="ti-search"></i></button>
+                 <a href="QRReader.php"> <button type="button"><i class="ti-search"></i></button></a>
                 </div>
+
               </div>
             </div>
           </div>
@@ -104,13 +125,15 @@ $p=$f->afficherProduits();
           <div class="col-lg-9">
               <div class="product_top_bar">
                   <div class="left_dorp">
-                      <div class="latest_product_inner">
-                        <div class="row">
-                          <?php
+                      <div class="latest_product_inner" id="DATA">
+
+                        <?php
                             foreach ($p as $t)
                             {
 
                               echo '
+                        <div class="row">
+                          
                               <div class="card-body">
                                 <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
                                 
@@ -136,12 +159,12 @@ $p=$f->afficherProduits();
                               </div>
                               
                           
-                              ';
+                              
+
+
+                        </div>';
                             }
                            ?>
-
-
-                        </div>
                     </div>
                 </div>
             </div>

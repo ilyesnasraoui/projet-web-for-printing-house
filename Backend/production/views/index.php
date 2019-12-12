@@ -1,6 +1,11 @@
   <?php
 session_start();
-if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
+require_once "../config.php";
+require_once "../core/ProduitC.php";
+require_once "../core/CategorieC.php";
+
+//if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin")
+{
 ?>
 
 
@@ -144,7 +149,43 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
         <!-- page content -->
           <!-- top tiles -->
-        
+          <?php $ps=new ProduitC();
+                                      $data=$ps->countProd();
+                                      $count=0;
+                                      foreach($data as $rw)
+                                        $count=$rw['count'];
+                                      $cat=new CategorieC();
+                                      $array=$cat->afficherCategorie();
+                                      $prod=new ProduitC();
+
+
+                                ?>
+         <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row" style="display: inline-block;" >
+                      <div class="tile_count">
+
+            <?php
+                                        foreach($array as $row)
+                                        {
+                                            $cnt=0;
+                                            $data2=$prod->countProd_Cat($row['id_cat']);
+                                            foreach($data2 as $rw2)
+                                                $cnt=$rw2['count'];
+                                            $prc=$cnt/$count;
+                                            $prc*=100;
+                                            $prc=round($prc,2);
+                                            echo'
+          
+            <div class="col-md-3 col-sm-4  tile_stats_count">
+              <span class="count_top"><i class="fa fa-database"></i> '.$row['nom'].'</span>
+              <div class="count">'.$prc.'%</div>
+              <span class="count_bottom" ><i class="green">
+              '.$cnt.' </i> From Total Products</span>
+            </div>';} ?>
+            
+          </div>
+        </div>
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -254,8 +295,9 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
   </body>
   <?php
 }
-else{
-header("location: ajoutp1.php"); 
-}
+/*else
+{
+header("location: index.php"); 
+}*/
 ?>
 </html>

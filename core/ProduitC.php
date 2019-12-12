@@ -26,7 +26,7 @@ class ProduitC {
 
 	function afficherProduits(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From produits ";
+		$sql="SElECT * From produits ORDER BY prix";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -36,10 +36,39 @@ class ProduitC {
             die('Erreur: '.$e->getMessage());
         }	
 	}
+
+	function countProd()
+  {
+    $sql="SElECT count(*)count From produit ORDER BY prix";
+    $db = config::getConnexion();
+    try
+      {
+    $liste=$db->query($sql);
+    return $liste;
+      }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        } 
+  }
+  function countProd_Cat($id)
+  {
+    $sql="SElECT count(*)count From produit where id_categorie=".$id;
+    $db = config::getConnexion();
+    try
+      {
+    $liste=$db->query($sql);
+    return $liste;
+      }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        } 
+  }
 
 	function afficherProduits_Cat($id){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT * From produits WHERE fk_id_categorie= ".$id;
+		$sql="SElECT * From produits WHERE fk_id_categorie= ".$id." ORDER BY prix";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -49,10 +78,33 @@ class ProduitC {
             die('Erreur: '.$e->getMessage());
         }	
 	}
-
+	function afficherProduits_Cat_kword($id,$kword){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From produits WHERE fk_id_categorie= ".$id." and nom LIKE '".$kword."%' ORDER BY prix";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
+	function afficherProduits_kword($kword){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From produits WHERE nom LIKE '".$kword."%' ORDER BY prix";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 	function afficherProduits2(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
-		$sql="SElECT id_produit,nom,desc From produits ";
+		$sql="SElECT id_produit,nom,desc From produits ORDER BY prix";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
