@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- produit</title>
+  <title>s_i_a_d- produit</title>
   <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -37,9 +37,9 @@ function showResult(str) {
   xmlhttp.open("GET","SearchP.php?<?php if(isset($_GET['ID_Cat'])) if($_GET['ID_Cat']!="") echo"ID_Cat=".$_GET['ID_Cat']."&"; ?>kword=".concat(document.getElementById("kword").value));
   xmlhttp.send();
 }
-</script>
+</script>h
   <!--================ Start Header Menu Area =================-->
-  <?php 
+  <?php
   include "header.php";
   ?>
   <section class="blog-banner-area" id="category">
@@ -136,14 +136,14 @@ $p=$f->afficherProduits();
                           
                               <div class="card-body">
                                 <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
-                                
                                 <div class="col-md-6 col-lg-6">
+
                             <div class="card text-center card-product">
                               <div class="card-product__img">
                               <a href="single-product.php?ID='.$t["id_produit"].'">
                                 <img class="card-img" src="../Backend/production/views/'.$t["image"].'" alt="product img"></a>
                                 <p class="card-product__price">'.$t["prix"].' DT</p>
-                                
+
                                 <form style="display: inline-block;"  method="post" action="..\Backend\production\views\forms.php">
                                                    <input type="hidden" name="pId" value="'.$t["id_produit"].'" >
                                                     <input type="hidden" name="form" value="addCart" >
@@ -157,9 +157,17 @@ $p=$f->afficherProduits();
                             </div>
                           </div>
                               </div>
+<<<<<<< HEAD
                               
                           
                               
+=======
+
+
+                              ';
+                            }
+                           ?>
+>>>>>>> cc7b4b3f7548f5ff96ee0db4f99e026ee9beda9b
 
 
                         </div>';

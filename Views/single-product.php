@@ -18,11 +18,11 @@
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
-	<?php 
+	<?php
   include "header.php";
   ?>
 	<!--================ End Header Menu Area =================-->
-	
+
 	<!-- ================ start banner area ================= -->
 	<?php
 	include_once "../config.php";
@@ -96,7 +96,11 @@ header('Location: index.php');
 							<input type=items"text" name="qty" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
                class="reduced items-count" type="button"><i class="ti-angle-right"></i></button>
-							<a class="button primary-btn" href="#">Add to Cart</a>               
+                          <form style="display: inline-block;"  method="post" action="..\Backend\production\views\forms.php">
+                                             <input type="hidden" name="pId" value=<?php $_GET['ID']?> >
+                                              <input type="hidden" name="form" value="addCart" >
+                                              <button type="button" name="button">add</button>
+                                      </form>
 						</div>
 						<div class="card_area d-flex align-items-center">
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
@@ -432,7 +436,7 @@ header('Location: index.php');
 	</section>
 	<!--================End Product Description Area =================-->
 
-	<!--================ Start related Product area =================-->  
+	<!--================ Start related Product area =================-->
 	<section class="related-product-area section-margin--small mt-0">
 		<div class="container">
 			<div class="section-intro pb-60px">
@@ -546,9 +550,9 @@ header('Location: index.php');
       </div>
 		</div>
 	</section>
-	<!--================ end related Product area =================-->  	
+	<!--================ end related Product area =================-->
 
-  <!--================ Start footer Area  =================-->	
+  <!--================ Start footer Area  =================-->
 	<footer>
 		<div class="footer-area footer-only">
 			<div class="container">
@@ -557,11 +561,11 @@ header('Location: index.php');
 						<div class="single-footer-widget tp_widgets ">
 							<h4 class="footer_title large_title">Our Mission</h4>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no
 								divided deep moved us lan Gathering thing us land years living.
 							</p>
 							<p>
-								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved 
+								So seed seed green that winged cattle in. Gathering thing made fly you're no divided deep moved
 							</p>
 						</div>
 					</div>
@@ -600,7 +604,7 @@ header('Location: index.php');
 									Head Office
 								</p>
 								<p>123, Main Street, Your City</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-phone"></span>
 									Phone Number
@@ -609,7 +613,7 @@ header('Location: index.php');
 									+123 456 7890 <br>
 									+123 456 7890
 								</p>
-	
+
 								<p class="sm-head">
 									<span class="fa fa-envelope"></span>
 									Email

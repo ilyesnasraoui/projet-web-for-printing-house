@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Login</title>
+  <title>s_i_a_d- Login</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -107,7 +107,7 @@
 				<div class="col-lg-6">
 					<div class="login_form_inner register_form_inner">
 						<h3>Create an account</h3>
-						<form class="row login_form" action="#/" id="register_form" >
+						<form class="row login_form" action="register.php" id="register_form" method="post" name="forminscription">
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
@@ -115,19 +115,28 @@
 								<input type="text" class="form-control" id="mail" name="mail" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
               </div>
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="mdp" name="mdp" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="mdp" name="mdp" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
               </div>
               <div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
-							</div>
+								<input type="password" class="form-control" id="mdp2" name="mdp2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
+							 </div>
+              <div class="col-md-12 form-group">
+                <div class="creat_account">
+                  <input type="checkbox" id="f-option2" name="selector">
+                  <label for="f-option2">Keep me logged in</label>
+                </div>
+              </div>
+                  <div class="col-md-12 form-group">
+                   
+  <table>
+      <td><img src="captcha.php"> </td>
+      <td><input type="text" name="captcha" class="form-control"></td>
+  </table>
+
+
+                                        </div>
 							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
-									<label for="f-option2">Keep me logged in</label>
-								</div>
-							</div>
-							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-register w-100">Register</button>
+								<button type="submit" value="submit" class="button button-register w-100" onClick="proceed();" name="forminscription" >Register</button>
 							</div>
 						</form>
 					</div>
@@ -135,6 +144,12 @@
 			</div>
 		</div>
 	</section>
+    <?php 
+     if(isset($erreur))
+             {
+                echo '<font color="red">'.$erreur."</font>";
+             }
+         ?>
 	<!--================End Login Box Area =================-->
 
 
