@@ -1,6 +1,6 @@
 
 <?php
- //include "../config.php";
+ include "../config.php";
 class utilisateurCore{
  function inscritption($utilisateur,$confirmkey)
  {
@@ -116,7 +116,7 @@ $message='
 <html>
     <body>
         <div align="center">
-         <a href="http://localhost/projett/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
+         <a href="http://localhost/projet/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
         </div>
     </body>
 </html>
@@ -148,7 +148,9 @@ function RecupererMail($pseudo,$recup_code,$recup_mail){
 
                      <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
                      Voici votre code de récupération: <b>'.$recup_code.'</b>
-                     cliquer <a href="http://localhost/projett/views/recuperer1.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe 
+                     cliquer <a href="http://localhost/projet/views/recuperer1.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe 
+
+                     cliquer <a href="http://localhost/myFiles/fashionmakeup/client/views/recupererMdp.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe A bientôt !
 
                    </td>
                  </tr>

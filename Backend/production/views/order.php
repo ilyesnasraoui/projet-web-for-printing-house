@@ -3,6 +3,7 @@ session_start();
 include "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 $f=new fonctionC();
 $la=$f->getOrders();
+var_dump('$la');
 ?>
 
 <!DOCTYPE html>
@@ -201,7 +202,7 @@ $la=$f->getOrders();
                             <tbody>
                             <?php
                             $x=1;
-                            foreach ($la as $a)
+                            foreach($la as $a)
                             {
                                 echo '
                                 <tr>
