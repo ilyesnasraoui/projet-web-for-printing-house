@@ -157,17 +157,17 @@ $p=$f->afficherProduits();
                             </div>
                           </div>
                               </div>
-<<<<<<< HEAD
+
                               
                           
                               
-=======
+
 
 
                               ';
                             }
                            ?>
->>>>>>> cc7b4b3f7548f5ff96ee0db4f99e026ee9beda9b
+
 
 
                         </div>';
