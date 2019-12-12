@@ -279,6 +279,41 @@ class fonctionC
           echo 'error :'.$e->getMessage();
       }
   }
+  function TRIER($uname=null,$inno=null)
+  {
+    // $uname="YOUSSEF";
+    // $inno="2212341";
+      if ($uname!=null)
+      {
+          $sql="select * from s_i_a_d.orders where uname='$uname' order by dueAmount desc";
+      }
+      else if($inno!=null)
+      {
+          $sql="select * from s_i_a_d.orders where innoNumber='$inno' order by dueAmount desc";
+          $db=config::getConnexion();
+          try
+          {
+              return $db->query($sql)->fetch()["discount"];
+          }
+          catch (Exception $e)
+          {
+              echo 'error :'.$e->getMessage();
+          }
+      }
+      else
+      {
+          $sql="select * from s_i_a_d.orders  order by dueAmount desc";
+      }
+      $db=config::getConnexion();
+      try
+      {
+          return $db->query($sql);
+      }
+      catch (Exception $e)
+      {
+          echo 'error :'.$e->getMessage();
+      }
+  }
   function getOrderProds($inno)
   {
       $sql="select * from s_i_a_d.pending_orders where innoNumb='$inno'";

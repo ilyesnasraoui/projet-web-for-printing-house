@@ -19,8 +19,11 @@
 </head>
 <body>
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 
 
 

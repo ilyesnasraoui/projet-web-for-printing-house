@@ -32,7 +32,7 @@
 
 require_once 'D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php';
 $i= new fonctionC();
-$orders=$i->getOrders($_SESSION["pseudo"]);
+$orders=$i->TRIER($_SESSION["pseudo"]);
 ?>
 
 <main style="margin:10% auto;">
@@ -80,7 +80,6 @@ $orders=$i->getOrders($_SESSION["pseudo"]);
                     $x++;
                 }
                 ?>
-                <a href="orders_tri.php">trier selon prix</a>
                 </tbody>
             </table>
         </div>

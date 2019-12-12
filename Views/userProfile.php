@@ -31,8 +31,11 @@ if(isset($_GET['id']) AND $_GET['id'] > 0) {
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <!--================ End Header Menu Area =================-->
 
   <main class="site-main">

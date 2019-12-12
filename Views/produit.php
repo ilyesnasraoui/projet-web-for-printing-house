@@ -37,11 +37,17 @@ function showResult(str) {
   xmlhttp.open("GET","SearchP.php?<?php if(isset($_GET['ID_Cat'])) if($_GET['ID_Cat']!="") echo"ID_Cat=".$_GET['ID_Cat']."&"; ?>kword=".concat(document.getElementById("kword").value));
   xmlhttp.send();
 }
-</script>h
+</script>
   <!--================ Start Header Menu Area =================-->
   <?php
-  include "header.php";
+  session_start();
   ?>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <section class="blog-banner-area" id="category">
     <div class="container h-100">
       <div class="blog-banner">

@@ -28,8 +28,11 @@ $add=$i->showAdress($_SESSION['pseudo']);
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->

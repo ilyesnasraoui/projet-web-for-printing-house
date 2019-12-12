@@ -29,8 +29,12 @@ $_POST['name']=$_SESSION['pseudo'];
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
+
 <main>
     <div class="container adresses-container" >
         <div class="row">
