@@ -1,5 +1,3 @@
- 
-
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="icon" href="images/favicon.ico" type="image/ico" />
+  <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Société Imprimerie Aicha De Distribution! | </title>
 
@@ -20,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-   
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -86,7 +84,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>s_i_a_d</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -94,63 +92,20 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../img/logo.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
-                <h2>Fourat</h2>
+
+                <h2>Mohamed Ilyes Nasraoui</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                    <li><a><i class="fa fa-edit"></i> Clients <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="TabClients2.php">Afficher clients</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
-
-                      </ul>
-                  </li>
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
+             <!-- sidebar menu -->
+             <?php include "sidebar.php";
+        ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -181,7 +136,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Fourat
+                    <img src="images/img.jpg" alt="">Mohamed Ilyes Nasraoui
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -269,7 +224,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -283,47 +238,69 @@
     <title>Afficher Produit</title>
   </head>
   <body>
+    <fieldset >
+      <form name="f1"  method="POST" action="ajoutepromotion.php" onSubmit="return verif()" >
+ <center><legend><h2> Ajout Promotion </h2></legend></center>
+         <table id="example1" class="table table-striped">
 
-<!--L9ohb -->
+          <tr>
+          <th> id produit </th>
+          <th><input type="text" name="fk_id_produit" value=""/></th>
+        </tr>
+
+            <th> pourcentage du promotion</th>
+            <th><input type="number" name="pourcentage" value=""/></th>
+          </tr>
+
+          <tr>
+            <th> Deadline du promotion  </th>
+            <th><input type="date" name="delai" value=""/></th>
+          </tr>
+
+        </table>
+        <center>
+        <td>
+          <input class="boutton" type="submit" name="Ajouter" value="Ajouter" onsubmit="verif()  " class="btn btn-danger" >
+
+        </td>
+      </center>
+      </form>
+    </fieldset>
   </body>
 </html>
-
 
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
-
-   
-
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -365,7 +342,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-   
+    <script type="text/javascript" src="testpromotion.js"></script>
+
   </body>
 </html>
-  

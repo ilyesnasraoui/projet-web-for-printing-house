@@ -1,3 +1,5 @@
+
+
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+   <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Société Imprimerie Aicha De Distribution! | </title>
 
@@ -18,7 +20,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -81,8 +83,50 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <?php include "sidebar.php";
-        ?>
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+
+                <h2>Fourat</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <?php include "sidebar.php";
+       ?>
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
 
         <!-- top navigation -->
         <div class="top_nav">
@@ -183,7 +227,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -197,25 +241,8 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-    <fieldset >
-      <form name="f1" style="height: 800px;" method="POST" action="ajoutcat.php" onSubmit="return verif() " enctype="multipart/form-data" >
- <center><legend><h2> Ajout Produit </h2></legend></center>
-         <table id="example1" class="table table-striped">
-          <tr>
-            <th> id categorie </th>
-            <th><input type="number" name="id_categorie" value=""/></th>
-          </tr>
-          <tr>
-            <th> nom categorie </th>
-            <th><input type="text" name="nom_categorie" value=""/></th>
-          </tr>
-          
-        </table>
-        <center>
-        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
-      </center>
-      </form>
-    </fieldset>
+
+<!--L9ohb -->
   </body>
 </html>
 
@@ -223,35 +250,38 @@
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
+
+
+
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -293,7 +323,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
 </html>
-  

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Société Imprimerie Aicha De Distribution! | </title>
 
@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -28,7 +28,7 @@
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <title>ajout prod</title>
+    <title>supp prod</title>
   <script type="text/javascript">
     function verif()
     {
@@ -39,37 +39,7 @@
         i--;
         return false;
       }
-      if(f1.image.value=="")
-      {
-        alert("saisir votre image");
-        i--;
-        return false;
-      }
-      if(f1.nom.value=="")
-      {
-        alert("saisir votre nom");
-        i--;
-        return false;
-      }
-      if(f1.couleur.value=="")
-      {
-        alert("saisir votre couleur");
-        i--;
-        return false;
-      }
-      if(f1.typee.value=="")
-      {
-        alert("saisir votre type");
-        i--;
-        return false;
-      }
-      if(f1.dateC.value=="")
-      {
-        alert("saisir votre date de Creation");
-        i--;
-        return false;
-      }
-      if(i==6)
+      if(i==1)
       {
         return true;
       }
@@ -84,7 +54,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>s_i_a_d</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -92,72 +62,20 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../img/logo.png" alt="..." class="img-circle profile_img">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
-                <h2>Mohamed Ilyes Nasraoui</h2>
+
+                <h2>Admin</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
 
             <br />
 
-             <!-- sidebar menu -->
-             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" >
-              <div class="menu_section" style="height: 500px">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Prmotion <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutpromotions.html">ajout promotion</a></li>
-                      <li><a href="affichepromotion.php">afficher promotion</a></li>
-                      
-                     
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> carte fidelité <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
-                      <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
-                      
-                     
-                    </ul>
-                  </li>>
-
-
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-
-
-                    
-                  
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
+            <!-- sidebar menu -->
+            <?php include "sidebar.php";
+       ?>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -190,7 +108,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Mohamed Ilyes Nasraoui
+                    <img src="images/img.jpg" alt="">Admin
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -278,7 +196,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -292,31 +210,18 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-    <fieldset >
-      <form name="f1"  method="POST" action="ajoutepromotion.php" onSubmit="return verif()" >
- <center><legend><h2> Ajout Promotion </h2></legend></center>
+   <fieldset >
+      <form name="f1"  method="POST" action="sprod.php" onSubmit="return verif()" >
+<center><legend><h2> Supprimer Produit </h2></legend></center>
          <table id="example1" class="table table-striped">
-          
           <tr>
-          <th> id produit </th>
-          <th><input type="text" name="fk_id_produit" value=""/></th>
-        </tr>
-       
-            <th> pourcentage du promotion</th>
-            <th><input type="number" name="pourcentage" value=""/></th>
+            <th> Code Produit   </th>
+            <th><input type="number" name="codeProd" value=""/></th>
           </tr>
 
-          <tr>
-            <th> Deadline du promotion  </th>
-            <th><input type="date" name="delai" value=""/></th>
-          </tr>
-       
         </table>
-        <center>
-        <td>
-          <input class="boutton" type="submit" name="Ajouter" value="Ajouter" onsubmit="verif()  " class="btn btn-danger" >
-          
-        </td>
+       <center>
+        <td><button type="submit" name="Supprimer" value="Supprimer" class="btn btn-danger">Supprimer</button></td>
       </center>
       </form>
     </fieldset>
@@ -326,34 +231,34 @@
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -396,8 +301,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-    <script type="text/javascript" src="testpromotion.js"></script>
-  
+
   </body>
 </html>
-  

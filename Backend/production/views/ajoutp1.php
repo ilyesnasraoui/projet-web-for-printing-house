@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -207,7 +207,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -225,7 +225,7 @@
       <form name="f1" style="height: 800px;" method="POST" action="ajoutp.php" onSubmit="return verif() " enctype="multipart/form-data" >
  <center><legend><h2> Ajout Produit </h2></legend></center>
          <table id="example1" class="table table-striped">
-          
+
           <tr>
             <th> Image </th>
             <th><input type="file" name="image" value=""/></th>
@@ -234,7 +234,7 @@
           <th> quantite</th>
           <th><input type="number" name="quantite" value=""/></th>
         </tr>
-          
+
           <tr>
           <th> nom </th>
           <th><input type="text" name="nom" value=""/></th>
@@ -255,7 +255,7 @@ include_once "../config.php";
 include "../core/CategorieC.php";
 $cat=new CategorieC();
 $lst=$cat->afficherCategorie();
-foreach ($lst as $rw) 
+foreach ($lst as $rw)
                     echo'
     <option value="'.$rw['id_cat'].'">'.$rw['nom'].'</option>'; ?>
 
@@ -269,8 +269,8 @@ foreach ($lst as $rw)
             <th> Date Creation  </th>
             <th><input  onchange="verif_date()" id="dateC" type="date" name="dateC" value=""/></th>
           </tr>
-          
-       
+
+
         </table>
         <center>
         <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
@@ -284,34 +284,34 @@ foreach ($lst as $rw)
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -354,7 +354,6 @@ foreach ($lst as $rw)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
 </html>
-  

@@ -19,8 +19,8 @@ $lst=$cat->afficherCategorie();
           </button>
           <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
             <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
+              <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="Promotions.php">Promotions</a></li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Shop</a>
@@ -37,13 +37,24 @@ $lst=$cat->afficherCategorie();
               </li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">gerer commande</a>
+                <ul class="dropdown-menu">
+
+                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
+                  <li class="nav-item"><a class="nav-link" href="orders.php">Orders</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adresses.php">My adresses</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Pages</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.php">Register</a></li>
                 </ul>
               </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
             </ul>
 
             <ul class="nav-shop">

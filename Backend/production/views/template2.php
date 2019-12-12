@@ -1,3 +1,5 @@
+
+
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+   <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
     <title>Société Imprimerie Aicha De Distribution! | </title>
 
@@ -18,7 +20,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -28,36 +30,48 @@
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <title>ajout stock</title>
+    <title>ajout prod</title>
   <script type="text/javascript">
     function verif()
     {
       var i=0;
-      if(f1.quantite.value=="")
-      {
-        alert("saisir votre quantite");
-        i--;
-        return false;
-      }
-      if(f1.unite.value=="")
-      {
-        alert("saisir votre unite");
-        i--;
-        return false;
-      }
-      if(f1.description.value=="")
-      {
-        alert("saisir votre description");
-        i--;
-        return false;
-      }
-      if(f1.codeprod.value=="")
+      if(f1.codeProd.value=="")
       {
         alert("saisir votre code de produit");
         i--;
         return false;
       }
-      if(i==4)
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
       {
         return true;
       }
@@ -83,8 +97,8 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
-                <h2>Admin</h2>
+
+                <h2>Fourat</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -92,44 +106,8 @@
             <br />
 
             <!-- sidebar menu -->
-              <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
-                      </ul>
-                  </li>
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
+            <?php include "sidebar.php";
+       ?>
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
@@ -161,7 +139,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Admin
+                    <img src="images/img.jpg" alt="">Fourat
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -249,14 +227,13 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                  <div class=" col-xs-20">
                 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -264,69 +241,47 @@
     <title>Afficher Produit</title>
   </head>
   <body>
-    <div class=" col-xs-20">
-   <fieldset >
-      <form name="f1"  method="POST" action="ajouts.php" onSubmit="return verif()">
-        <center><legend><h2>Ajouter Stock</h2></legend></center>
-        <table id="example1" class="table table-striped">
-          <tr>
-            <th> Quantite </th>
-            <th><input type="number" name="quantite" value=""/></th>
-          </tr>
-          <tr>
-            <th> unite </th>
-            <th><input type="number" name="unite" value=""/></th>
-          </tr>
-          <tr>
-            <th> description </th>
-            <th><input type="text" name="description" value=""/></th>
-          </tr>
-          <tr>
-          <th> Code Produit </th>
-          <th><input type="number" name="codeprod" value=""/></th>
-        </tr>
-        </table>
-        <br>
-        <center>
-        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
-      </center>
-      </form>
-    </fieldset>         
+
+<!--L9ohb -->
   </body>
 </html>
 
+
               </div>
-</div>
+
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
+
+
+
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -368,7 +323,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
 </html>
-  

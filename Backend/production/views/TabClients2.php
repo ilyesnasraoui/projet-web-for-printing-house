@@ -2,7 +2,7 @@
 include "../entities/utilisateur.php";
 include "../core/utilisateurCore.php";
 $utilisateurC=new utilisateurCore();
-$listeUtilisateurs=$utilisateurC->afficherUsers(); //bch tet7al fih el liste 
+$listeUtilisateurs=$utilisateurC->afficherUsers(); //bch tet7al fih el liste
 
 
 $bdd = config::getConnexion();
@@ -15,7 +15,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
       $membre = $bdd->query('SELECT * FROM membre WHERE CONCAT(pseudo, contenu) LIKE "%'.$q.'%" ORDER BY id DESC');
    }
 }
-?> 
+?>
 
   <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +37,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-   
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -114,7 +114,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -123,54 +123,8 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                   
-
-                    <li><a><i class="fa fa-edit"></i> Clients <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="TabClients2.php">Afficher clients</a></li>
-                    </ul>
-                  </li>
-
-
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
-
-                      </ul>
-                  </li>
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
+            <?php include "sidebar.php";
+       ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -289,7 +243,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -315,7 +269,7 @@ if(isset($_POST['q']) AND !empty($_POST['q'])) {
 <td>Mail</td>
 </tr>
 <?php if($membre->rowCount() > 0)  { ?>
-  
+
    <?php while($a = $membre->fetch()) { if( $a['role']==0 && $a['confirme']==1) {?>
      <tr>
    <td><?PHP echo $a['id']; ?></td>
@@ -336,37 +290,37 @@ Aucun résultat pour: <?= $q ?>...
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
-   
+
 
 
     <!-- jQuery -->
@@ -409,7 +363,6 @@ Aucun résultat pour: <?= $q ?>...
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-   
+
   </body>
 </html>
-  

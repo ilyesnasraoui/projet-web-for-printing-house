@@ -2,8 +2,7 @@
 session_start();
 include "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 $f=new fonctionC();
-$la=$f->getOrders();
-var_dump('$la');
+$la=$f->getOrders();;
 ?>
 
 <!DOCTYPE html>
@@ -70,66 +69,13 @@ var_dump('$la');
             <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
           </div>
 
-          <div class="clearfix"></div>
-
-          <!-- menu profile quick info -->
-          <div class="profile clearfix">
-            <div class="profile_pic">
-              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-            </div>
-            <div class="profile_info">
-
-              <h2></h2>
-            </div>
-          </div>
           <!-- /menu profile quick info -->
 
           <br />
 
           <!-- sidebar menu -->
-          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-            <div class="menu_section">
-              <h3>General</h3>
-              <ul class="nav side-menu">
-                <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu">
-                    <li><a href="ajoutp1.html">ajout produit</a></li>
-                    <li><a href="afichprod1.php">afficher produit</a></li>
-                    <li><a href="cher1.php">reglage produits produit</a></li>
-                    <li><a href="stat.php">statistique produit</a></li>
-
-                  </ul>
-                </li>
-
-                <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                    <li><a href="ajouts1.html">ajout stock</a></li>
-                    <li><a href="mstock1.html">modifier stock</a></li>
-                    <li><a href="sstock1.html">supprimer stock</a></li>
-                    <li><a href="afichstock1.php">afficher stock</a></li>
-                    <li><a href="tri1.php">trier stock</a></li>
-                  </ul>
-                </li>
-
-                <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                    <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
-
-                    </ul>
-                </li>
-                <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
-                     <ul class="nav child_menu">
-                    <li><a href="order.php">tous les commande</a></li>
-                  </ul>
-                </li>
-
-
-
-
-            </div>
-
-          </div>
-          <!-- /sidebar menu -->
+          <?php include "sidebar.php";
+     ?>
 
           <!-- /menu footer buttons -->
           <div class="sidebar-footer hidden-small">
