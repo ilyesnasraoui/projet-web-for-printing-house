@@ -6,7 +6,7 @@ class livreur_accepteC
 {
     function ajouterLivreur($livreur)//changer le nom de la fonction
     {
-        $sql="INSERT INTO livreur(cin, nom, prenom, birthday, telephone, license, license_validity, adresse,joiniable,login,mdp) VALUES (:cin, :nom, :prenom, :birthday, :telephone, :license, :license_validity, :adresse,:joiniable,:login,:mdp)";//changer le nom du tableau"
+        $sql="INSERT INTO livreur(cin, nom, prenom, birthday, telephone, license, license_validity, adresse,joiniable,login,mdp) VALUES (:cin, :nom, :prenom, :birthday, :telephone, :license, :license_validity, :adresse,:joiniable,:login,:mdp)";
         $db = config::getConnexion();
         try
         {
@@ -59,9 +59,12 @@ class livreur_accepteC
     function afficherLivreur()
     {
 
-        $sql="select * from livreur";//changer le nom du tableau 
-
+         
         $db = config::getConnexion();
+       
+        
+        $sql="select * from livreur ";//changer le nom du tableau
+            
         try
         {
             $list=$db->query($sql);
@@ -87,7 +90,7 @@ class livreur_accepteC
             die('Erreur: '.$e->getMessage());
         }
     }
-
+    
 
 
     function modifierLivreur($cin,$joiniable)
@@ -102,12 +105,16 @@ class livreur_accepteC
         {
             die('Erreur: '.$e->getMessage());
         }
-    }/*
-    function rechercherLivreur($cin)
+    }
+    function trierLivreur_nom()
     {
-        $sql="select * from livreur wher";//changer le nom du tableau 
 
+         
         $db = config::getConnexion();
+       
+        
+        $sql="select * from livreur order by nom  ";//changer le nom du tableau
+            
         try
         {
             $list=$db->query($sql);
@@ -116,7 +123,25 @@ class livreur_accepteC
         catch (Exception $e)
         {
             die('Erreur: '.$e->getMessage());
-        }   
+        }
     }
-    */
+    function trierLivreur_prenom()
+    {
+
+         
+        $db = config::getConnexion();
+       
+        
+        $sql="select * from livreur order by prenom ";//changer le nom du tableau
+            
+        try
+        {
+            $list=$db->query($sql);
+            return $list;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }
+    }
 }

@@ -282,23 +282,56 @@
 
 
     <fieldset >
+
  <!----------------------------------------------------------------------------------------------------------------------->
- <?php
+<?php
 
-include 'livreur_accepteC.php';
+$mysqli = new mysqli("localhost", "root", "", "s_i_a_d.sql");
 
-$livreur = new livreur_accepteC();
-$listlivreur = $livreur->afficherLivreur();
+$output='';
 
+if(isset($_POST['search'])){
+  $searchq=$_POST['search'];
+  $searchq=preg_replace("#[^0-9a-z]#i","", $searchq);
+
+  $query= $mysqli->query("select * from livreur where nom like '%$searchq%' or prenom like '%$searchq%'") or die ("could not search");
   
+  $count=mysqli_num_rows($query);
+  if($count==0)
+   { $output='no result!';}
+  else 
+  {
+    while($row=mysqli_fetch_array($query)){
+      $nom=$row['nom'];
+      $prenom=$row['prenom'];
+      $output .='<div>'.$prenom.''.$nom.'</div>';
+    }
+  }
+}
 
 
+  ?>
+ 
+<form method="post">
+  <center><h2>rechercher:</h2>
+  <input type="text" name="search" placeholder="rechercher...">
+  <input type="submit" name="submit" value="rechercher"></center>
+</form>
+<br>
+<br>
+<?php  print("$output");?>
+
+<?php
+include 'livreur_accepteC.php';
+$livreur = new livreur_accepteC();
+$listelivreur=$livreur->afficherLivreur();
 ?>
-<table border="2">
+
+<table border="2" id="example">
     <tr>
-        <td>CIN</td>
         <td>Nom</td>
         <td>Prenom</td>
+        <td>CIN</td>
         <td>Date Naissance</td>
         <td>telephone</td>
         <td>license</td>
@@ -313,13 +346,13 @@ $listlivreur = $livreur->afficherLivreur();
     </tr>
 <?php
 
-foreach ($listlivreur as $row)
+foreach ($listelivreur as $row)
 {
     echo '
         <tr>
-            <td>'.$row["cin"].'</td>
             <td>'.$row["nom"].'</td>
             <td>'.$row["prenom"].'</td>
+            <td>'.$row["cin"].'</td>
             <td>'.$row["birthday"].'</td>
             <td>'.$row["telephone"].'</td>
             <td>'.$row["license"].'</td>
@@ -347,7 +380,10 @@ foreach ($listlivreur as $row)
 }
 ?>
 </table>
-              <h2></h2>
+<a href="trier_nom.php"><button>trier par nom</button> </a>
+<a href="trier_prenom.php"><button>trier par prenom</button> </a>
+
+
 <!----------------------------------------------------------------------------------------------------------------------->
  <div class="right_col" role="main">
           <div class="">
@@ -391,37 +427,15 @@ foreach ($listlivreur as $row)
 </html>
 
               </div>
-
               <div class="title_right">
-                
               </div>
             </div>
             
-                  
-          
-            
-
-
-
-          
-             
-
-            
-             
-
-                <!-- Start to do list -->
-               
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-               
-        <!-- /page content -->
-
-        <!-- footer content -->
-      
           
          
     </div>
+    
+
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>

@@ -1,3 +1,12 @@
+<?php  
+
+include 'livreur_accepteC.php';
+$db = config::getConnexion();
+
+$livreurC = new livreur_accepteC();
+$listelivreur=$livreurC->trierLivreur_nom();
+
+?>
   <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +38,53 @@
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <title>ajout prod</title>
-  
+  <script type="text/javascript">
+    function verif()
+    {
+      var i=0;
+      if(f1.codeProd.value=="")
+      {
+        alert("saisir votre code de produit");
+        i--;
+        return false;
+      }
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
+      {
+        return true;
+      }
+    }
+
+    </script>
   </head>
 
   <body class="nav-md">
@@ -85,6 +140,7 @@
                        <ul class="nav child_menu">
                       <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
                       <li><a href="liste_livreur.php">Livreurs </a></li>
+                      <li><a href="affichlivraison.php">livraison </a></li>                     
 
                       </ul>
                   </li>
@@ -235,21 +291,46 @@
 
 
     <fieldset >
+
  <!----------------------------------------------------------------------------------------------------------------------->
- <?php
+<?php
 
-include 'livreurC.php';
-//include "extraire_donnes_livreur.php";
-/*$livreur_accepte= new livreur_accepteC;
-$liste_accepte=$livreur_accepte->infoLivreur();*/
-$livreur = new livreurC();
-$listlivreur = $livreur->afficherLivreur();
-?>
-<script src="tableau.js"></script>
-<link rel="stylesheet" type="text/css" href="tableau.css">
+$mysqli = new mysqli("localhost", "root", "", "s_i_a_d.sql");
 
-<table border="2" id="myTable" >
-    <tr><center>Demandes livreurs</center></tr>
+$output='';
+
+if(isset($_POST['search'])){
+  $searchq=$_POST['search'];
+  $searchq=preg_replace("#[^0-9a-z]#i","", $searchq);
+
+  $query= $mysqli->query("select * from livreur where nom like '%$searchq%' or prenom like '%$searchq%'") or die ("could not search");
+  
+  $count=mysqli_num_rows($query);
+  if($count==0)
+   { $output='no result!';}
+  else 
+  {
+    while($row=mysqli_fetch_array($query)){
+      $nom=$row['nom'];
+      $prenom=$row['prenom'];
+      $output .='<div>'.$prenom.''.$nom.'</div>';
+    }
+  }
+}
+
+
+  ?>
+ 
+<form method="post">
+  <center><h2>rechercher:</h2>
+  <input type="text" name="search" placeholder="rechercher...">
+  <input type="submit" name="submit" value="rechercher"></center>
+</form>
+<br>
+<br>
+<?php  print("$output");?>
+
+<table border="2" id="example">
     <tr>
         <td>Nom</td>
         <td>Prenom</td>
@@ -259,15 +340,19 @@ $listlivreur = $livreur->afficherLivreur();
         <td>license</td>
         <td>license_validity</td>
         <td>adresse</td>
+        <td>joiniable</td>
+        <td>login</td>
+        <td>password</td>
+        <td>modifier</td>
         <td>supprimer</td>
+        
     </tr>
 <?php
 
-foreach ($listlivreur as $row)
+foreach ($listelivreur as $row)
 {
     echo '
         <tr>
-            
             <td>'.$row["nom"].'</td>
             <td>'.$row["prenom"].'</td>
             <td>'.$row["cin"].'</td>
@@ -276,8 +361,19 @@ foreach ($listlivreur as $row)
             <td>'.$row["license"].'</td>
             <td>'.$row["license_validity"].'</td>
             <td>'.$row["adresse"].'</td>
+            <td>'.$row["joiniable"].'</td>
+            <td>'.$row["login"].'</td>
+            <td>'.$row["mdp"].'</td>
+            <td>
+            <form action="modifierLivreur.php" method="post">
+                    <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
+                    <input type="hidden" id="joiniable" name="joiniable" value="'.$row["joiniable"].'">
+                    <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="modifier">
+                </form>
+                </td>
+
             <td> 
-                <form action="suppLivreur.php" method="post">
+                <form action="supprimerLivreur.php" method="post">
                     <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
                     <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
                 </form>
@@ -287,11 +383,8 @@ foreach ($listlivreur as $row)
 }
 ?>
 </table>
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );  
-</script>
+<a href="trier_nom.php"><button>trier par nom</button> </a>
+<a href="trier_prenom.php"><button>trier par prenom</button> </a>
 
 
 
@@ -314,79 +407,8 @@ $(document).ready( function () {
 
 
 
-   <fieldset >
-      
-      <form   method="POST" action="acceptlivreur.php" onsubmit="return controle()" >
-        <center><legend><h2>Ajouter Livreur</h2></legend></center>
-        <table id="example1" class="table table-striped">
-          <tr>
-            <th> CIN <div id="erreur1" style="color: red"></div></th>
-            <th><input type="number" name="cin" id="cin" /></th>
-            
-          </tr>
-    
-          <tr>
-            <th> Prenom  <div id="erreur2" style="color: red"></div></th>
-            <th><input type="text" name="prenom" id="prenom" value=""/></th>
-            
-          </tr>
-    
-          <tr>
-            <th> Nom <div id="erreur3" style="color: red"></div></th>
-            <th><input type="text" name="nom" id="nom" value=""/></th>
-            
-          </tr>
-          <tr>
-          <th> Telephone <div id="erreur4" style="color: red"></div></th>
-          <th><input type="number" name="telephone" id="telephone" value=""/></th>
-          
-        </tr>
+   
 
-        <tr>
-            <th> Adresse<div id="erreur6" style="color: red"></div> </th>
-            <th><input type="text" name="adresse" id="adresse" value=""/></th>
-             
-          </tr>
-
-          <tr>
-            <th> Birthday </th>
-            <th><input type="date" name="birthday" id="birthday" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> License <div id="erreur5" style="color: red"></div></th>
-            <th><input type="text" name="license" id="license" value=""/></th>
-            
-          </tr>
-
-          <tr>
-            <th> License End  of validity date </th>
-            <th><input type="Date" name="license_validity" id="license_validity" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> Joiniabilité (si oui->1 sinon->0) </th>
-            <th><input type="number" name="joiniable" id="joiniable" value=""/></th>
-          </tr>
-        
-          <tr>
-            <th> Login </th>
-            <th><input type="text" name="login" id="login" value=""/></th>
-          </tr>
-
-          <tr>
-            <th> PassWord </th>
-            <th><input type="PassWord" name="mdp" id="mdp" value=""/></th>
-          </tr>
-
-        </table>
-        <br>
-        <center>
-        <td><button type="submit" name="Ajouter" value="Ajouter" class="btn btn-danger">Ajouter</button></td>
-      </center>
-      </form>
-
-  <script src="valide.js"></script>
 
     </fieldset>
 
@@ -410,37 +432,15 @@ $(document).ready( function () {
 </html>
 
               </div>
-
-             <div class="title_right">
-                
+              <div class="title_right">
               </div>
             </div>
-          
-                  
-          
             
-
-
-
-          
-             
-
-            
-             
-
-                <!-- Start to do list -->
-               
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-               
-        <!-- /page content -->
-
-        <!-- footer content -->
-      
           
          
     </div>
+    
+
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -485,4 +485,3 @@ $(document).ready( function () {
   
   </body>
 </html>
-  
