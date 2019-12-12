@@ -28,10 +28,10 @@ header('Location:../views/index.html');
          if($mailexist_count == 1) {
             $pseudo = $mailexist->fetch();
             $pseudo = $pseudo['pseudo'];
-            
+
             $_SESSION['recup_mail'] = $recup_mail;
             $recup_code = "";
-            for($i=0; $i < 8; $i++) { 
+            for($i=0; $i < 8; $i++) {
                $recup_code .= mt_rand(0,9);
             }
             $mail_recup_exist = $bdd->prepare('SELECT id FROM recuperation WHERE mail = ?');
@@ -128,56 +128,13 @@ if(isset($_POST['change_submit'])) {
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-  <header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Blog Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <?php
+  session_start();
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <!--================ End Header Menu Area =================-->
 
   <!-- ================ start banner area ================= -->
@@ -214,10 +171,10 @@ if(isset($_POST['change_submit'])) {
         <div class="col-lg-6">
           <div class="login_form_inner">
             <h3>PASSWORD RECOVERY</h3>
-                        
+
 <?php if($section == 'code') { ?>
 Un code de vérification vous a été envoyé par mail: <?= $_SESSION['recup_mail'] ?>
-  
+
 <form class="row login_form"  method="POST">
               <div class="col-md-12 form-group">
                 <input type="text" class="form-control" id="verif_code" name="verif_code" placeholder="Verification Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Verification Code'">
@@ -258,7 +215,7 @@ Nouveau mot de passe pour <?= $_SESSION['recup_mail'] ?>
               </div>
             </form>
 <?php } ?>
-          
+
 
 
           </div>

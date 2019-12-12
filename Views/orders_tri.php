@@ -82,6 +82,9 @@ $orders=$i->TRIER($_SESSION["pseudo"]);
                 ?>
                 </tbody>
             </table>
+            <br>
+            <a href="orders.php">retour</a> <br>
+              <a href="tri_orders.php">trier avec pagination</a>
         </div>
     </div>
 </main>

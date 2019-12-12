@@ -66,7 +66,7 @@
                       </ul>
                   </li>
 
-                  <li><a><i class="fa fa-edit"></i> Prmotion <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Promotion <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="ajoutpromotions.php">ajout promotion</a></li>
                     <li><a href="affichepromotion.php">afficher promotion</a></li>

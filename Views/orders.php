@@ -80,7 +80,8 @@ $orders=$i->getOrders($_SESSION["pseudo"]);
                     $x++;
                 }
                 ?>
-                <a href="orders_tri.php">trier selon prix</a>
+                <a href="orders_tri.php">trier selon prix</a> <br>
+                  <a href="tri_orders.php">trier avec pagination</a>
                 </tbody>
             </table>
         </div>

@@ -19,6 +19,7 @@
 </head>
 <body>
   <?php
+  session_start();
   if (isset($_SESSION['pseudo'])){
      include "header2.php";}
      else
