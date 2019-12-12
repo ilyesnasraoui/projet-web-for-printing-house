@@ -267,7 +267,7 @@ class fonctionC
       }
       else
       {
-          $sql="select * from s_i_a_d..orders  order by OrderDate desc";
+          $sql="select * from s_i_a_d.orders  order by OrderDate desc";
       }
       $db=config::getConnexion();
       try
