@@ -119,7 +119,7 @@ $add=$i->showAdress($_SESSION['pseudo']);
                             <li class="media">
                                 <div class="mb-3">
                                   <a href="#" title="">
-                                    <img style="border: 2px solid #4A8239;" width="50px" class="media-object rounded-circle" src="../views/img/'.$d["image"].'" alt="">
+                                    <img style="border: 2px solid #4A8239;" width="50px" class="media-object rounded-circle" src="../Backend/'.$d["image"].'" alt="">
                                   </a>
                                 </div>
                                 <hr>
