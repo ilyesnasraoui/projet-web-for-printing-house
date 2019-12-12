@@ -26,13 +26,13 @@ $lst=$cat->afficherCategorie();
                   aria-expanded="false">Shop</a>
                 <ul class="dropdown-menu">
                   <?php
-                  foreach ($lst as $rw) 
+                  foreach ($lst as $rw)
                     echo'
                   <li class="nav-item"><a class="nav-link" href="produit.php?ID_Cat='.$rw['id_cat'].'">'.$rw['nom'].'</a></li>';
 
                   ?>
                   <li class="nav-item"><a class="nav-link" href="produit.php">All Products</a></li>
-                  
+
                 </ul>
               </li>
               <li class="nav-item submenu dropdown">

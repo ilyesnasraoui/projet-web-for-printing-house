@@ -118,7 +118,7 @@ class fonctionC
     {
         if($e->getCode()==23000)
         {
-          $sql2="update s_i_a_d.cart set qty = qty+1 where p_id='$p_id'";
+          $sql2="update s_i_a_d.cart set qty=qty+1 where p_id='$p_id'";
           $db = config::getConnexion();
           try
           {
@@ -212,10 +212,12 @@ class fonctionC
               $n=$n+$qty;
               // ta3ti num fatoura lkol produit fel panier
               $sql="insert into s_i_a_d.pending_orders (uname, innoNumb, prodId,idAdd, qty) values ('$uname','$x','$pId','$idAdd','$qty')";
+              $sql4="update s_i_a_d.produits set quantite = quantite- '$qty' where  id_produit='$pId'";
 
               try
               {
                   $db->query($sql);
+                  $db->query($sql4);
               }
               catch (Exception $e)
               {
