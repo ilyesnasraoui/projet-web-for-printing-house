@@ -18,11 +18,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
+
 
   <script>
 function showResult(str) {
-  
+
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -133,7 +133,7 @@ $p=$f->afficherProduits();
 
                               echo '
                         <div class="row">
-                          
+
                               <div class="card-body">
                                 <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
                                 <div class="col-md-6 col-lg-6">
@@ -158,9 +158,9 @@ $p=$f->afficherProduits();
                           </div>
                               </div>
 
-                              
-                          
-                              
+
+
+
 
 
 

@@ -32,7 +32,7 @@ require_once "../core/CategorieC.php";
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -171,19 +171,22 @@ require_once "../core/CategorieC.php";
                                             $cnt=0;
                                             $data2=$prod->countProd_Cat($row['id_cat']);
                                             foreach($data2 as $rw2)
-                                                $cnt=$rw2['count'];
+
+                                            $cnt=$rw2['count'];
                                             $prc=$cnt/$count;
                                             $prc*=100;
                                             $prc=round($prc,2);
                                             echo'
-          
+
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-database"></i> '.$row['nom'].'</span>
-              <div class="count">'.$prc.'%</div>
-              <span class="count_bottom" ><i class="green">
-              '.$cnt.' </i> From Total Products</span>
+              <table>
+                <span class="count_top"><i class="fa fa-database"></i> '.$row['nom'].'</span>
+                <tr>
+            <td>  <pre> '.$prc.'%  </td></pre>
+            <td>'.$cnt.' </i> </br From </br>Total Products</td> </tr>
+              </table>
             </div>';} ?>
-            
+
           </div>
         </div>
           <!-- /top tiles -->
@@ -192,11 +195,11 @@ require_once "../core/CategorieC.php";
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                
+
               </div>
 
               <div class="title_right">
-                
+
               </div>
               <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
@@ -224,31 +227,31 @@ require_once "../core/CategorieC.php";
 
 </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -291,13 +294,13 @@ require_once "../core/CategorieC.php";
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
   <?php
 }
 /*else
 {
-header("location: index.php"); 
+header("location: index.php");
 }*/
 ?>
 </html>

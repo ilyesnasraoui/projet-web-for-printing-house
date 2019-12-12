@@ -86,7 +86,7 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                                       $v=$v+$d["prix"]*$row["qty"];
                                       echo '
                                   <tr>
-                                      <td class="product-thumbnail"><a href="#"><img src="../views/img/'.$d["image"].'" width="80px" alt="product img"></a></td>
+                                      <td class="product-thumbnail"><a href="#"><img src="../Backend/images/'.$d["image"].'" width="80px" alt="product img"></a></td>
                                       <td class="product-name"><a href="#">'.$d["nom"].'</a></td>
                                       <td class="product-price"><span class="amount">'.$d["prix"].' TND</span></td>
                                       <td class="product-quantity">

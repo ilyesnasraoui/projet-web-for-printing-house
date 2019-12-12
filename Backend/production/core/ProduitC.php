@@ -38,6 +38,18 @@ class ProduitC {
             die('Erreur: '.$e->getMessage());
         }
 	}
+	function  trier(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From produits ORDER BY nom";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+	}
 
 	function countProd()
   {

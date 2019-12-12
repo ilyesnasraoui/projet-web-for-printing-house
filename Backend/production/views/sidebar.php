@@ -13,7 +13,7 @@
               </div>
               <div class="profile_info">
 
-                <h2>Fourat</h2>
+                <h2>mohamed ilyes Nasraoui</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->

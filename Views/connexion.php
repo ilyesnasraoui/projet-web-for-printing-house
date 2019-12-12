@@ -30,9 +30,9 @@ echo $userexist;
          else{
            $erreur ="votre compte n'est pas encore confirmé";
          }
-         if ($userinfo['role']==2) { header("Location: ../Backend/production/views/template.html");}
-        if ($userinfo['role']==1) { header("Location: ../Backend/production/views/template2.html");}
-        }   
+         if ($userinfo['role']==2) { header("Location: ../Backend/production/views/template.php");}
+        if ($userinfo['role']==1) { header("Location: ../Backend/production/views/template2.php");}
+        }
         else {
          $erreur = "Mauvais mail ou mot de passe !";
       }
@@ -41,7 +41,7 @@ echo $userexist;
    }
 }
 ?>
- 
+
 
 
 <!DOCTYPE html>
@@ -132,7 +132,7 @@ echo $userexist;
       </div>
     </div>
   </section>
-   <?php 
+   <?php
      if(isset($erreur))
              {
                 echo '<font color="red">'.$erreur."</font>";
