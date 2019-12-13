@@ -248,6 +248,12 @@ $listlivreur = $livreur->afficherLivreur();
 <script src="tableau.js"></script>
 <link rel="stylesheet" type="text/css" href="tableau.css">
 
+<h2>Envoyer un mail de confirmation</h2>
+<form method="post" >
+  <input type="text" name="mail">
+  <a href="sendmail.php"><input type="submit" name="envoyer"></a>
+</form>
+
 <table border="2" id="myTable" >
     <tr><center>Demandes livreurs</center></tr>
     <tr>

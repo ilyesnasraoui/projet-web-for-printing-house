@@ -286,7 +286,7 @@
  <!----------------------------------------------------------------------------------------------------------------------->
 <?php
 
-$mysqli = new mysqli("localhost", "root", "", "s_i_a_d.sql");
+$mysqli = new mysqli("localhost", "root", "", "s_i_a_d");
 
 $output='';
 
@@ -304,7 +304,8 @@ if(isset($_POST['search'])){
     while($row=mysqli_fetch_array($query)){
       $nom=$row['nom'];
       $prenom=$row['prenom'];
-      $output .='<div>'.$prenom.''.$nom.'</div>';
+      $cin=$row['cin'];
+      $output .='<div>'.$prenom.''.$nom.''.$cin.'</div>';
     }
   }
 }
