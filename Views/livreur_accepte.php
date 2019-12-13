@@ -1,5 +1,4 @@
 <?php
-include 'dbconfig.php';
 class livreur
 {
     private $cin;
@@ -10,9 +9,13 @@ class livreur
     private $license;
     private $license_validity;
     private $adresse;
+   
+    private $joiniable;
+    private $login;
+    private $mdp;
 
 
-    function __construct($cin,$nom,$prenom,$birthday,$telephone,$license,$license_validity,$adresse)
+    function __construct($cin,$nom,$prenom,$birthday,$telephone,$license,$license_validity,$adresse,$joiniable,$login,$mdp)
     {
         $this->cin=$cin;
         $this->nom=$nom;
@@ -22,6 +25,11 @@ class livreur
         $this->license=$license;
         $this->license_validity=$license_validity;
         $this->adresse=$adresse;
+        
+        $this->joiniable=$joiniable;
+        
+        $this->login=$login;
+        $this->mdp=$mdp;
     }
 
     /**
@@ -76,7 +84,19 @@ class livreur
     {
         return $this->adresse;
     }
+    public function getJoiniable()
+    {
+        return $this->joiniable;
+    }
     
+    public function getLogin()
+    {
+        return $this->login;
+    }
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
     
     /**
      * @param mixed $cin
@@ -129,6 +149,18 @@ class livreur
     public function setAdresse($adresse)
     {
         $this->adresse=$adresse;
+    }
+    public function setJoiniable($joiniable)
+    {
+        $this->joiniable=$joiniable;
+    }
+    public function setLogin($login)
+    {
+        $this->login=$login;
+    }
+    public function setMdp($mdp)
+    {
+        $this->mdp=$mdp;
     }
     
 }

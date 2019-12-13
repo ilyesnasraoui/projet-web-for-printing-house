@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>s_i_a_d- Login</title>
+  <title>S.I.A.D- Login</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -14,16 +14,61 @@
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
   <link rel="stylesheet" href="vendors/nouislider/nouislider.min.css">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
-  <?php
-  if (isset($_SESSION['pseudo'])){
-     include "header2.php";}
-     else
-         { include "header.php";}
-     ?>
+	<header class="header_area">
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
+          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Shop</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-product.html">Blog Details</a></li>
+                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+                </ul>
+							</li>
+
+							<li class="nav-item active submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Pages</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+
+            <ul class="nav-shop">
+              <li class="nav-item"><button><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 	<!--================ End Header Menu Area =================-->
 
   <!-- ================ start banner area ================= -->
@@ -52,36 +97,46 @@
 					<div class="login_box_img">
 						<div class="hover">
 							<h4>New to our website?</h4>
-							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="button button-account" href="register.html">Create an Account</a>
+							<p>Do you want to work with us as a delivery man?</p>
+							<a class="button button-account" href="formulaire_livreur.html">Join us!</a>
               <br>
               <br>
               <br>
-              <a class="button button-account" href="login_livreur.php">login livreur</a>
+              
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
-						<form class="row login_form" action="connexion.php"  method="POST" name="formconnexion" >
-							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="nameconnect" name="nameconnect" placeholder="E-Mail" onfocus="this.placeholder = ''" onblur="this.placeholder = 'E-Mail'">
+						<!--=========================================================-->
+            <!--=========================================================-->
+            <!--=========================================================-->
+            
+
+            <!--=========================================================-->
+            <!--=========================================================-->
+            <form   class="row login_form" action="connexion.php" method="post">
+							
+              <div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="login" name="login" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="mdpconnect" name="mdpconnect" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="text" class="form-control" id="pwd" name="pwd" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
-									<input type="checkbox" name="rememberme" id="f-option2" name="selector">
+									<input type="checkbox" id="f-option2" name="selector">
 									<label for="f-option2">Keep me logged in</label>
 								</div>
 							</div>
 							<div class="col-md-12 form-group">
-								<button type="submit" value="submit" class="button button-login w-100"  onClick="proceed();" name="formconnexion">Log In</button>
-								<a href="recuperer1.php">Forgot Password?</a>
+								<button type="submit" value="submit" class="button button-login w-100">Log In</button>
+								
 							</div>
 						</form>
+
+           
 					</div>
 				</div>
 			</div>
