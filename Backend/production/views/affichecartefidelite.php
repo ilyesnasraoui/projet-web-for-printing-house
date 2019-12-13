@@ -5,10 +5,38 @@ include '../core/cartefc.php';
 $cartef = new cartefc();
 $listcartef = $cartef->affichercartef();
 ?>
+
+<?php
+ function filterTable($query)
+     {
+      $connect = mysqli_connect("localhost","root","","s_i_a_d");
+      $filter_Result = mysqli_query($connect,$query);
+      return $filter_Result;
+     }
+
+  if (isset($_GET['search']))
+{
+    $valueToSearch = $_GET['valueToSearch'];
+    $query="SELECT * FROM carte_fidelite WHERE  id_client LIKE '%$valueToSearch%' or id_carte LIKE '%$valueToSearch%' or points LIKE '%$valueToSearch%'";
+    $search_result =filterTable($query);
+
+}
+   else {
+
+    $query = "SELECT * FROM carte_fidelite";
+    $search_result = filterTable($query);
+
+   }
+
+
+
+?>
+
 <!-- ************************  !-->
   <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -24,9 +52,10 @@ $listcartef = $cartef->affichercartef();
     <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -105,7 +134,7 @@ $listcartef = $cartef->affichercartef();
                 <img src="../img/logo.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Mohamed Ilyes Nasraoui</h2>
               </div>
             </div>
@@ -114,61 +143,83 @@ $listcartef = $cartef->affichercartef();
             <br />
 
              <!-- sidebar menu -->
-             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu" >
-              <div class="menu_section" style="height: 500px">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
+             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+               <div class="menu_section">
+                 <h3>General</h3>
+                 <ul class="nav side-menu">
 
-                  <li><a><i class="fa fa-edit"></i> Prmotion <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutpromotions.html">ajout promotion</a></li>
-                      <li><a href="affichepromotion.php">afficher promotion</a></li>
-                      
-                     
-                    </ul>
-                  </li>
+                     <li><a><i class="fa fa-edit"></i> Admins <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                       <li><a href="ajouterAdmin.php">Ajouter Admin</a></li>
+                       <li><a href="gestionAdmins.php">Gestion Admins</a></li>
+                     </ul>
+                   </li>
 
-                  <li><a><i class="fa fa-edit"></i> carte fidelité <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
-                      <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
-                      
-                     
-                    </ul>
-                  </li>>
+                     <li><a><i class="fa fa-edit"></i> Clients <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                       <li><a href="TabClients.php">Afficher clients</a></li>
+                     </ul>
+                   </li>
+
+                   <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
+                     <ul class="nav child_menu">
+                       <li><a href="ajoutp1.html">ajout produit</a></li>
+                       <li><a href="afichprod1.php">afficher produit</a></li>
+                       <li><a href="cher1.php">reglage produits produit</a></li>
+                       <li><a href="stat.php">statistique produit</a></li>
+
+                     </ul>
+                   </li>
+
+                   <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                       <li><a href="ajouts1.html">ajout stock</a></li>
+                       <li><a href="mstock1.html">modifier stock</a></li>
+                       <li><a href="sstock1.html">supprimer stock</a></li>
+                       <li><a href="afichstock1.php">afficher stock</a></li>
+                       <li><a href="tri1.php">trier stock</a></li>
+                     </ul>
+                   </li>
+
+                   <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                       <li><a href="nouveaux_livreurs.php">Demandes livreurs </a></li>
+
+                       </ul>
+                   </li>
+
+                   <li><a><i class="fa fa-edit"></i> Prmotion <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                     <li><a href="ajoutpromotions.html">ajout promotion</a></li>
+                     <li><a href="affichepromotion.php">afficher promotion</a></li>
+
+
+                   </ul>
+                 </li>
+
+                 <li><a><i class="fa fa-edit"></i> carte fidelité <span class="fa fa-chevron-down"></span></a>
+                   <ul class="nav child_menu">
+                     <li><a href="ajoutecartefidelite.html">ajout carte fidelité</a></li>
+                     <li><a href="affichecartefidelite.php">afficher carte fidelité</a></li>
+
+
+                   </ul>
+                 </li>
 
 
 
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
+                 <li><a><i class="fa fa-edit"></i> commande <span class="fa fa-chevron-down"></span></a>
+                      <ul class="nav child_menu">
+                     <li><a href="order.php">tous les commande</a></li>
+                   </ul>
+                 </li>
 
 
 
-                    
-                  
-                  
-                  
-                  
-    
-              </div>
 
-            </div>
+               </div>
+
+             </div>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -289,98 +340,127 @@ $listcartef = $cartef->affichercartef();
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="title_left"> 
-   
+              <div class="title_left">
 
-   <table class="table table-hover" border="3">
+
+<form action="affichecartefidelite.php" method="get">
+  <input type="text" name="valueToSearch" placeholder="value To Search"> <br><br>
+  <input type="submit" name="search" value="Filtrer"><br><br>
+   <table  class="table table-hover" border="3" style="margin-left:150px; margin-top: 100px; ">
     <tr>
         <td style="background-color: black;font-size: 20px;" >id_carte</td>
         <td style="background-color: black;font-size: 20px;">points</td>
 
         <td style="background-color: black;font-size: 20px;" >id_client</td>
-        
+
         <td style="background-color: black;font-size: 20px;">Modifier</td>
 
         <td style="background-color: black;font-size: 20px;">supprimer</td>
+        <td style="background-color: black;font-size: 20px;">telecharger un pdf </td>
     </tr>
-<?php
+
+<?php while ($row =mysqli_fetch_array($search_result,MYSQLI_NUM)):?>
 
 
 
 
-foreach ($listcartef as $row)
-{
-    echo '
+
+
+
         <tr>
-            <td>'.$row["id_carte"].'</td>
-            <td>'.$row["points"].'</td>
-            <td>'.$row["id_client"].'</td>
-        
+            <td> <?php echo $row["0"]?></td>
+            <td> <?php echo $row["1"]?></td>
+            <td> <?php echo $row["2"]?></td>
+
             <td>
                 <form action="modifiercartefidelite.php" method="post">
                     <input type="hidden"
-                     name="id_carte" value="'.$row["id_carte"].'">
-                    <input type="hidden"  name="points" value="'.$row["points"].'">
-                   
-                    <input type="hidden" name="id_client" value="'.$row["id_client"].'">
-                    
+                     name="id_carte" value="<?php echo $row["0"]?>">
+                    <input type="hidden"  name="points" value="<?php echo $row["1"]?>">
+
+                    <input type="hidden" name="id_client" value="<?php echo $row["2"]?>">
+
                     <input class="btn btn-warning"type="submit" value="modifier">
                 </form>
             </td>
-            <td> 
+            <td>
                 <form action="supprimercartefidelite.php" method="post">
-                    <input type="hidden"  name="id_carte" value="'.$row["id_carte"].'">
+                    <input type="hidden"  name="id_carte" value="<?php echo $row["0"]?>">
                     <input class="btn btn-danger" type="submit" value="supprimer">
                 </form>
             </td>
+
+
+             <td>
+                <form action="testpdf.php" method="post">
+                    <input type="hidden"
+                     name="id_carte" value="<?php echo $row["0"]?>">
+                    <input type="hidden"  name="points" value="<?php echo $row["1"]?>">
+
+                    <input type="hidden" name="id_client" value="<?php echo $row["2"]?>">
+
+                    <input class="btn btn-success btn-lg btn-block"type="submit" value="telecharger un pdf" >
+                </form>
+            </td>
+
+
+
+
+
+
+
+
         </tr>
 
-    ';
-}
-?>
-</table>
 
-     
+
+<?php endwhile;?>
+</table>
+</form>
+
+
+ <a href="" onclick='window.print();return false'>Imprimer le contenue du la page
+
   </body>
 </html>
 
               </div>
 
               <div class="title_right">
-                
+
               </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -423,7 +503,11 @@ foreach ($listcartef as $row)
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
+
+
+
+
+
   </body>
 </html>
-  

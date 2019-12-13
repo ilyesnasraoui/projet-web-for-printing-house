@@ -1,6 +1,11 @@
   <?php
 session_start();
-if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
+require_once "../config.php";
+require_once "../core/ProduitC.php";
+require_once "../core/CategorieC.php";
+
+//if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin")
+{
 ?>
 
 
@@ -27,7 +32,7 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -144,18 +149,57 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
         <!-- page content -->
           <!-- top tiles -->
-        
+          <?php $ps=new ProduitC();
+                                      $data=$ps->countProd();
+                                      $count=0;
+                                      foreach($data as $rw)
+                                        $count=$rw['count'];
+                                      $cat=new CategorieC();
+                                      $array=$cat->afficherCategorie();
+                                      $prod=new ProduitC();
+
+
+                                ?>
+         <div class="right_col" role="main">
+          <!-- top tiles -->
+          <div class="row" style="display: inline-block;" >
+                      <div class="tile_count">
+
+            <?php
+                                        foreach($array as $row)
+                                        {
+                                            $cnt=0;
+                                            $data2=$prod->countProd_Cat($row['id_cat']);
+                                            foreach($data2 as $rw2)
+
+                                            $cnt=$rw2['count'];
+                                            $prc=$cnt/$count;
+                                            $prc*=100;
+                                            $prc=round($prc,2);
+                                            echo'
+
+            <div class="col-md-3 col-sm-4  tile_stats_count">
+              <table>
+                <span class="count_top"><i class="fa fa-database"></i> '.$row['nom'].'</span>
+                <tr>
+            <td>  <pre> '.$prc.'%  </td></pre>
+            <td>'.$cnt.' </i> </br From </br>Total Products</td> </tr>
+              </table>
+            </div>';} ?>
+
+          </div>
+        </div>
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                
+
               </div>
 
               <div class="title_right">
-                
+
               </div>
               <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
@@ -183,31 +227,31 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
 </div>
             </div>
-            
-                  
-          
-            
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -250,12 +294,13 @@ if(isset($_SESSION['login_user']) and $_SESSION['login_user']=="admin"){
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+
   </body>
   <?php
 }
-else{
-header("location: ajoutp1.php"); 
-}
+/*else
+{
+header("location: index.php");
+}*/
 ?>
 </html>

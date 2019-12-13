@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
-	<link rel="icon" href="img/Fevicon.png" type="image/png">
+  <title>s_i_a_d- produit</title>
+  <link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
-	<link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
-	<link rel="stylesheet" href="vendors/linericon/style.css">
+  <link rel="stylesheet" href="vendors/themify-icons/themify-icons.css">
+  <link rel="stylesheet" href="vendors/linericon/style.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.theme.default.min.css">
   <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
   <link rel="stylesheet" href="vendors/nice-select/nice-select.css">
@@ -18,124 +18,174 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+
+  <script>
+function showResult(str) {
+
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("DATA").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","SearchP.php?<?php if(isset($_GET['ID_Cat'])) if($_GET['ID_Cat']!="") echo"ID_Cat=".$_GET['ID_Cat']."&"; ?>kword=".concat(document.getElementById("kword").value));
+  xmlhttp.send();
+}
+</script>
   <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="produit.php">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.php">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-                </ul>
-							</li>
-
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
+  <?php
+  session_start();
+  ?>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
+  <section class="blog-banner-area" id="category">
+    <div class="container h-100">
+      <div class="blog-banner">
+        <div class="text-center">
+          <h1>Shop products</h1>
+          <nav aria-label="breadcrumb" class="banner-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Shop products</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-margin--small mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="sidebar-categories">
+            <div class="head">Browse Categories</div>
+            <ul class="main-categories">
+              <li class="common-filter">
+                <form action="#">
+                  <ul>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Visit card<span> </span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">A stamp of the office<span></span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Wedding card<span></span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">certificate<span> </span></label></li>
+                    <!--<li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li> -->
+                  </ul>
+                </form>
               </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
             </ul>
           </div>
         </div>
-      </nav>
-    </div>
-  </header>
+        <div class="col-xl-9 col-lg-8 col-md-7">
+          <!-- Start Filter Bar -->
+          <div class="filter-bar d-flex flex-wrap align-items-center">
+            <div class="sorting">
+              <select>
+                <option value="1">Default sorting</option>
+                <option value="1">Default sorting</option>
+                <option value="1">Default sorting</option>
+              </select>
+            </div>
+            <div class="sorting mr-auto">
+              <select>
+                <option value="1">Show 12</option>
+                <option value="1">Show 12</option>
+                <option value="1">Show 12</option>
+              </select>
+            </div>
+            <div>
+              <div class="input-group filter-bar-search">
+                <input type="text" placeholder="Search" id="kword" onkeyup="showResult(this.value)">
+                <div class="input-group-append">
+                 <a href="QRReader.php"> <button type="button"><i class="ti-search"></i></button></a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          </div>
 <?php
-session_start ();
-include "../Core/panier&commande_CORE.php";
-$f=new fonctionC();
-$p=$f->getProds();
+include_once "../config.php";
+include "../core/ProduitC.php";
+$f=new ProduitC();
+if(isset($_GET['ID_Cat']))
+$p=$f->afficherProduits_Cat($_GET['ID_Cat']);
+else
+$p=$f->afficherProduits();
 ?>
-    <section class="cat_product_area section_gap">
-        <div class="container">
-            <div class="row flex-row-reverse">
-                <div class="col-lg-9">
-                    <div class="product_top_bar">
+<section class="cat_product_area section_gap">
+  <div class="container">
+      <div class="row flex-row-reverse">
+          <div class="col-lg-9">
+              <div class="product_top_bar">
+                  <div class="left_dorp">
+                      <div class="latest_product_inner" id="DATA">
 
-                    </div>
-
-                    <div class="latest_product_inner">
-                        <div class="row">
-                          <?php
+                        <?php
                             foreach ($p as $t)
                             {
 
                               echo '
-                              <div class="col-lg-4 col-md-6">
-                                  <div class="single-product">
-                                      <div class="product-img">
-                                          <img
-                                              class="card-img"
-                                              src="views/img/'.$t["image"].'"
-                                              alt=""
-                                          />
-                                          <div class="p_icon">
-                                              <a href="#">
-                                                  <i class="far fa-eye"></i>
-                                              </a>
-                                              <a href="#">
-                                                  <i class="far fa-heart"></i>
-                                              </a>
-                                              <form style="display: inline-block;"  method="post" action="..\Backend\production\views\forms.php">
-                                                  <input type="hidden" name="pId" value="'.$t["id_produit"].'" >
-                                                  <input type="hidden" name="form" value="addCart" >
-                                                  <button id="add-to-cart" type="submit"><i class="fas fa-cart-plus"></i></button>
+                        <div class="row">
 
-                                              </form>
+                              <div class="card-body">
+                                <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
+                                <div class="col-md-6 col-lg-6">
 
-                                          </div>
-                                      </div>
-                                      <div class="product-btm">
-                                          <a href="#" class="d-block">
-                                              <h4>'.$t["nom"].'</h4>
-                                          </a>
-                                          <div class="mt-3">
-                                             <span class="mr-4">'.$t["prix"].' dt</span>
+                            <div class="card text-center card-product">
+                              <div class="card-product__img">
+                              <a href="single-product.php?ID='.$t["id_produit"].'">
+                                <img class="card-img" src="../Backend/production/views/'.$t["image"].'" alt="product img"></a>
+                                <p class="card-product__price">'.$t["prix"].' DT</p>
 
-                                          </div>
-                                      </div>
-                                  </div>
+                                <form style="display: inline-block;"  method="post" action="..\Backend\production\views\forms.php">
+                                                   <input type="hidden" name="pId" value="'.$t["id_produit"].'" >
+                                                    <input type="hidden" name="form" value="addCart" >
+                                                    <ul class="card-product__imgOverlay">
+                                                      <li><button><i class="ti-search"></i></button></li>
+                                                      <li><button><i class="ti-shopping-cart"></i></button></li>
+                                                      <li><button><i class="ti-heart"></i></button></li>
+                                                    </ul>
+                                            </form>
                               </div>
+                            </div>
+                          </div>
+                              </div>
+
+
+
+
+
+
+
                               ';
                             }
                            ?>
 
 
-                        </div>
+
+                        </div>';
+                            }
+                           ?>
                     </div>
                 </div>
-
-
             </div>
-        </div>
+              </div>
+                </div>
+                  </div>
+
     </section>
     <footer class="footer">
       <div class="footer-area">

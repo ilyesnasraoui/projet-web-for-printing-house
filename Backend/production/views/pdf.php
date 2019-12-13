@@ -1,7 +1,7 @@
 <?php
   //require 'connect.php';
-  $objectPdo = new PDO('mysql:host=localhost;dbname=bij', 'root', '');
-  $pdoStat = $objectPdo->prepare('SELECT * FROM produit ORDER BY codeProd ASC ');
+  $objectPdo = new PDO('mysql:host=localhost;dbname=s_i_a_d', 'root', '');
+  $pdoStat = $objectPdo->prepare('SELECT * FROM produits ORDER BY id_produit ASC ');
   $executeIsOK = $pdoStat->execute();
   $produit= $pdoStat->fetchAll();
 
@@ -89,21 +89,22 @@
     <tr>
       <th scope="col">Code Produit</th>
       <th scope="col">nom</th>
-      <th scope="col">Couleur</th>
-      <th scope="col">Type</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Date</th>
+      <th scope="col">prix</th>
+      <th scope="col">description</th>
+      <th scope="col">quantite</th>
+      <th scope="col">categorie</th>
     </tr>
   </thead>
   <tbody>
           <?php foreach ($produit as $produit): ?> 
               <tr>
-                <td><?PHP echo $produit['codeProd']; ?></td>
+                <td><?PHP echo $produit['id_produit']; ?></td>
                 <td><?PHP echo $produit['nom']; ?></td>
-                <td><?PHP echo $produit['couleur']; ?></td>
-                <td><?PHP echo $produit['typee']; ?></td>
                 <td><?PHP echo $produit['prix']; ?></td>
-                <td><?PHP echo $produit['dateC']; ?></td>
+                <td><?PHP echo $produit['description']; ?></td>
+                <td><?PHP echo $produit['quantite']; ?></td>
+               
+                <td><?PHP echo $produit['fk_id_categorie']; ?></td>
 
                 <td>
       

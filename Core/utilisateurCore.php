@@ -1,10 +1,11 @@
+
 <?php
- include "../config.php";
+ //include "../config.php";
 class utilisateurCore{
  function inscritption($utilisateur,$confirmkey)
  {
   $confirme=0;
-            $sql="insert into membre (pseudo,mail,motdepasse,confirmkey,confirme) values (:pseudo,:mail,:motdepasse,:confirmkey,:confirme)";
+            $sql="insert into membre (pseudo,mail,motdepasse,confirmkey,confirme) values (:pseudo,:mail,:motdepasse,:confirmkey)";
         $db = config::getConnexion();
         try{
         $req=$db->prepare($sql);
@@ -16,7 +17,6 @@ class utilisateurCore{
         $req->bindValue(':mail',$mail);
         $req->bindValue(':motdepasse',$motdepasse);
         $req->bindValue(':confirmkey',$confirmkey);
-        $req->bindValue(':confirme',$confirme);
             $req->execute();
 
         }
@@ -102,35 +102,41 @@ function VerifierEmail($mail){
             $mailexist = $reqmail->rowCount();
 return $mailexist;
 }
-//verifier unicité de mail
+
 function EnvoyerMail($mail,$pseudo,$key)
 {
+ // ini_set('SMTP', 'smtp.gmail.com');
+  //ini_set('sendmail_from', 'louayjeddou9@gmail.com');
    $header="MIME-Version: 1.0\r\n";
-$header.='From:"FashionMakeup.com"<support@fashionmakeup.com>'."\n";
+$header.='From:"SIAD.com"<support@SIAD.com>'."\n";
 $header.='Content-Type:text/html; charset="uft-8"'."\n";
 $header.='Content-Transfer-Encoding: 8bit';
+
 $message='
 <html>
     <body>
         <div align="center">
-         <a href="http://localhost/myFiles/fashionmakeup/client/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
+         <a href="http://localhost/projet/projet/views/confirmation.php?pseudo='.$pseudo.'&key='.$key.'">Confirmer votre compte</a>
         </div>
     </body>
 </html>
 ';
-mail($mail, "Activation de compte FashionMakeup", $message, $header);
+
+mail($mail, "Activation de compte SIAD", $message, $header);
+
 }
-//Envoie de mail
-//Envoie de mail de rénitialisation de mot de passe
+
+
+
 function RecupererMail($pseudo,$recup_code,$recup_mail){
       $header="MIME-Version: 1.0\r\n";
-         $header.='From:"fashionmakeup.com"<support@fashionmakeup.com>'."\n";
+         $header.='From:"SIAD.COM"<imprimerieaicha.com>'."\n";
          $header.='Content-Type:text/html; charset="utf-8"'."\n";
          $header.='Content-Transfer-Encoding: 8bit';
          $message = '
          <html>
          <head>
-           <title>Récupération de mot de passe - fashionmakeup.com</title>
+           <title>Récupération de mot de passe -siad.com</title>
            <meta charset="utf-8" />
          </head>
          <body>
@@ -141,11 +147,12 @@ function RecupererMail($pseudo,$recup_code,$recup_mail){
                    <td>
 
                      <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
-                     cliquer <a href="http://localhost/myFiles/fashionmakeup/client/views/recupererMdp.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe
-                     A bientôt !
+                     Voici votre code de récupération: <b>'.$recup_code.'</b>
+                     cliquer <a href="http://localhost/projet/projet/views/recuperer1.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe
 
                    </td>
                  </tr>
+                 </div>
                  <tr>
                    <td align="center">
                      <font size="2">
@@ -159,7 +166,7 @@ function RecupererMail($pseudo,$recup_code,$recup_mail){
          </body>
          </html>
          ';
-         mail($recup_mail, "Récupération de mot de passe - fashionmakeup.com", $message, $header);
+         mail($recup_mail, "Récupération de mot de passe - SIAD.com", $message, $header);
 }
 //Envoie de mail de rénitialisation de mot de passe
 //Newsletter

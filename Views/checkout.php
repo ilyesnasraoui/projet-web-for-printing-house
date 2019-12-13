@@ -4,15 +4,15 @@ require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 require_once "D:\wamp64\www\projet\projet\Entities\addresse.php";
 $i= new fonctionC();
 $c=$i->getCart(getHostByName(getHostName()));
-$uname1="YOUSSEF";
-$add=$i->showAdress($uname1);
+// $uname1="YOUSSEF";
+$add=$i->showAdress($_SESSION['pseudo']);
 ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
+  <title>s_i_a_d- checkout</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -27,55 +27,12 @@ $add=$i->showAdress($uname1);
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
-
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
@@ -132,10 +89,12 @@ $add=$i->showAdress($uname1);
 
                                             <footer class="address-footer">
                                                 <input type="hidden" name="form" value="addOrder">
-                                                <input type="hidden" name="uname" value="<?php echo $uname1; ?>">
+                                                <input type="hidden" name="uname" value="<?php echo $_SESSION['pseudo']; ?>">
 
                                                 <a href="adresses.php" ><i class="fa fa-edit"></i> Edit Or Add adress</a>
-                                                <button type="submit" class="btn-sm btn-success" style="float: right;">Confirm Order</button>
+                                                <button type="submit"  class="btn-sm btn-success" style="float: right;">Confirm Order</button>
+
+
                                             </footer>
                                         </article>
 
@@ -163,7 +122,7 @@ $add=$i->showAdress($uname1);
                             <li class="media">
                                 <div class="mb-3">
                                   <a href="#" title="">
-                                    <img style="border: 2px solid #4A8239;" width="50px" class="media-object rounded-circle" src="views/img/'.$d["image"].'" alt="">
+                                    <img style="border: 2px solid #4A8239;" width="50px" class="media-object rounded-circle" src="../Backend/'.$d["image"].'" alt="">
                                   </a>
                                 </div>
                                 <hr>

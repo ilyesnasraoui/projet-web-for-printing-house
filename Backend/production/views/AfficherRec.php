@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -56,53 +56,8 @@
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                                    <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="AfficherRec.php">Afficher</a></li>
-                      <li><a href="pdf/index.php">Imprimer</a></li>
-                      <li><a href="StatRec.php">Stat</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Demande<span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="AfficherDem.php">Afficher</a></li>
-                      <li><a href="pdfD/index.php">Imprimer</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
-                      </ul>
-                  </li>
-                  
-              </div>
-
-            </div>
+            <?php include "sidebar.php";
+       ?>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -245,7 +200,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <?PHP
                         include "../core/ReclamationC.php";
-                       
+
                         $reclamation1C=new ReclamationC();
                     $listeRec=$reclamation1C->AfficherRec();
                         ?>
@@ -277,7 +232,7 @@
                                             {
                                                 echo "<span class='label label-success'>Received</span>";
                                             }
-                                            ?>   
+                                            ?>
 
                                         </td>
  <form method="POST" action="DetailRec.php">
@@ -285,11 +240,11 @@
                                                 <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                             </form>
                                         </td>                                        <td style="text-align: center;">
-                                           
+
                                     </tr>
                                     <?PHP
                                     }
-                      ?> 
+                      ?>
                 </tbody>
                 </table>
 
@@ -351,6 +306,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-    
+
   </body>
 </html>

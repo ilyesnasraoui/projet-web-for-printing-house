@@ -79,4 +79,22 @@ function supprimerpromotion($id_promo){
     }
 
 
+    function afficherpromotiontrier()
+    {
+
+        $sql="select * from s_i_a_d.promotion order by pourcentage asc";
+
+        $db = config::getConnexion();
+        try
+        {
+            $list=$db->query($sql);
+            return $list;
+        }
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }
+    }
+
+
 }

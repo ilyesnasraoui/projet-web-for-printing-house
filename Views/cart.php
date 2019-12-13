@@ -9,7 +9,7 @@ $c=$i->getCart(getHostByName(getHostName()));?>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
+  <title>s_i_a_d- Cart</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -24,55 +24,12 @@ $c=$i->getCart(getHostByName(getHostName()));?>
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
-
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
@@ -99,8 +56,8 @@ $c=$i->getCart(getHostByName(getHostName()));?>
   <div class="container cart-container">
               <div class="row">
                   <div class="col-md-12 col-sm-12 ol-lg-12">
-                          <div class="table-content wnro__table table-responsive">
-                              <table>
+                    <div class="table-stats table-hover order-table ov-h">
+                        <table class="table ">
                                   <thead>
                                   <tr class="title-top">
                                       <th class="product-thumbnail">Image</th>
@@ -121,19 +78,18 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                                           <td colspan="6"><h3>Your Cart Is Empty</h3></td>
                                       </tr>
                                       <tr>
-                                          <td colspan="6"><h3>Go to <a href="products.php">shop</a></h3></td>
+                                          <td colspan="6"><h3>Go to <a href="produit.php">shop</a></h3></td>
                                       </tr>
                                       ';
                                   }
                                   foreach ($c as $row)
                                   {
-                                      $d=$i->getProd($row["p_id"]);
 
+                                      $d=$i->getProd($row["p_id"]);
                                       $v=$v+$d["prix"]*$row["qty"];
                                       echo '
-
                                   <tr>
-                                      <td class="product-thumbnail"><a href="#"><img src="/views/img/'.$d["image"].'" width="80px" alt="product img"></a></td>
+                                      <td class="product-thumbnail"><a href="#"><img src="../Backend/'.$d["image"].'" width="80px" alt="product img"></a></td>
                                       <td class="product-name"><a href="#">'.$d["nom"].'</a></td>
                                       <td class="product-price"><span class="amount">'.$d["prix"].' TND</span></td>
                                       <td class="product-quantity">
@@ -141,7 +97,7 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                                               <input min="1" type="number" name="qty" value="'.$row["qty"].'">
                                               <input type="hidden" name="pId" value="'.$row["p_id"].'">
                                               <input type="hidden" name="form" value="updateCart" >
-                                              <button  type="submit" class="btn btn-outline-success"><i class="fa fa-angle-double-right"></i></button>
+                                              <button  type="submit" class="btn btn-outline-success"><i class="fas fa-edit"></i></button
                                           </form>
                                       </td>
                                       <td class="product-subtotal">'.($d["prix"]*$row["qty"]).'</td>
@@ -149,10 +105,11 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                                           <form action="..\Backend\production\views\forms.php" method="post">
                                               <input type="hidden" name="pId" value="'.$row["p_id"].'">
                                               <input type="hidden" name="form" value="deleteCart" >
-                                              <button style="width: 40%;" type="submit" class="btn btn-outline-danger">X</button>
+                                              <button  type="submit" class="btn btn-outline-danger">X</button>
                                           </form>
                                       </td>
                                   </tr>
+
                                   ';
                                   }
                                   ?>
@@ -175,7 +132,7 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                       </div>
                   </div>
                   <div class="row">
-                
+
             </div>
               </div>
 

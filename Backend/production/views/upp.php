@@ -1,7 +1,7 @@
 <?php
 require_once "../config.php";
 require_once "../core/ProduitC.php";
-if(isset($_POST['nom']) and isset($_POST['prix']) and isset($_POST['typee']) and isset($_POST['description']) and isset($_POST['quantite'])) {
+if(isset($_POST['nom']) and isset($_POST['prix']) and isset($_POST['idcat']) and isset($_POST['description']) and isset($_POST['quantite'])) {
    echo "here";
 
 if(isset($_FILES['image'])){
@@ -43,7 +43,7 @@ if(isset($_FILES['image'])){
       $file_name="images/".$file_name;}
       
 
-	$prod=new Produit($_POST['id_produit'],$_POST['nom'],$_POST['prix'],$_POST['description'],$_POST['quantite'],$_POST['typee'],1,$file_name);
+	$prod=new Produit($_POST['id_produit'],$_POST['nom'],$_POST['prix'],$_POST['description'],$_POST['quantite'],1,$_POST['idcat'],$file_name);
 	$prod2=new ProduitC();
 	$prod2->modifierProduit($prod);
 

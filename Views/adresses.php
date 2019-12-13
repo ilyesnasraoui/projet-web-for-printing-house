@@ -3,15 +3,17 @@ session_start ();
 require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 require_once "D:\wamp64\www\projet\projet\Entities\addresse.php";
 $a=new fonctionC();
-$uname1="YOUSSEF";
-$listA=$a->showAdress($uname1);
+// $uname1="YOUSSEF";
+// $listA=$a->show
+$listA=$a->showAdress($_SESSION['pseudo']);
+$_POST['name']=$_SESSION['pseudo'];
 ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>S.I.A.D- Cart</title>
+  <title>s_i_a_d- My addresses</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
   <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css">
@@ -26,55 +28,13 @@ $listA=$a->showAdress($uname1);
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-	<header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item active submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-							</li>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 
-							<li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">Tracking</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
 <main>
     <div class="container adresses-container" >
         <div class="row">
@@ -101,11 +61,11 @@ echo '
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="D:\wamp64\www\projet\projet\Backend\production\views\forms.php" method="post">
+                                <form action="..\Backend\production\views\forms.php" method="post">
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-2">
                                             <label for="uname">Username</label>
-                                            <input type="text" id="uname" name="" class="form-control validate" value="'.$uname1.'" disabled>
+                                            <input type="text" id="uname" name="pseudo" class="form-control validate" value='.$_SESSION['pseudo'].' disabled>
                                         </div>
                                         <div class="md-form mb-2">
                                             <label class="text-capitalize" for="address-name">address name</label>
@@ -186,7 +146,7 @@ echo '
                                               <span aria-hidden="true">&times;</span>
                                             </button>
                                           </div>
-                                          <form action="D:\wamp64\www\projet\projet\Backend\production\views\forms.php" method="post">
+                                          <form action="..\Backend\production\views\forms.php" method="post">
                                             <div class="modal-body mx-3">
                                             <div class="md-form mb-5">
                                               <p class="text-center"> Address Name </p>
@@ -231,7 +191,7 @@ $x++;
                         <div class="modal-body mx-3">
                             <div class="md-form mb-2">
                                 <label for="uname">Username</label>
-                                <input type="text" id="uname" name="" class="form-control validate" value="<?php $uname="YOUSSEF"; echo $uname; ?>" disabled>
+                                <input type="text" id="uname" name="" class="form-control validate" value="<?php echo $_SESSION['pseudo']; ?>" disabled>
                             </div>
                             <div class="md-form mb-2">
                                 <label class="text-capitalize" for="address-name">address name</label>
@@ -290,7 +250,7 @@ $x++;
                                 <label class="text-capitalize" for="phone">phone number</label>
                                 <input type="text" id="phone" name="phone" class="form-control validate" value="" placeholder="phone number">
                             </div>
-                            <input type="hidden" name="uname" value="<?php echo $uname; ?>">
+                            <input type="hidden" name="uname" value="<?php echo $_SESSION['pseudo']; ?>">
                             <input type="hidden" name="form" value="addAdd">
                         </div>
                         <div class="modal-footer d-flex justify-content-center">

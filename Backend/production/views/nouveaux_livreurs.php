@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
+
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -49,7 +49,7 @@
                 <img src="images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                
+
                 <h2>Fourat</h2>
               </div>
             </div>
@@ -58,46 +58,8 @@
             <br />
 
             <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ajoutp1.html">ajout produit</a></li>
-                      <li><a href="afichprod1.php">afficher produit</a></li>
-                      <li><a href="cher1.php">reglage produits produit</a></li>
-                      <li><a href="stat.php">statistique produit</a></li>
-                     
-                    </ul>                  
-                  </li>
-
-                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="ajouts1.html">ajout stock</a></li>
-                      <li><a href="mstock1.html">modifier stock</a></li>
-                      <li><a href="sstock1.html">supprimer stock</a></li>
-                      <li><a href="afichstock1.php">afficher stock</a></li>
-                      <li><a href="tri1.php">trier stock</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
-                       <ul class="nav child_menu">
-                      <li><a href="nouveaux_livreurs.php">Demande livreurs </a></li>
-                      <li><a href="liste_livreur.php">Livreurs </a></li>
-
-                      </ul>
-                  </li>
-                  
-                  
-                  
-                  
-    
-              </div>
-
-            </div>
-            <!-- /sidebar menu -->
-
+            <?php include "sidebar.php";
+       ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
               <a data-toggle="tooltip" data-placement="top" title="Settings">
@@ -216,7 +178,7 @@
 
         <!-- page content -->
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
 
              <div class="right_col" role="main">
@@ -248,11 +210,16 @@ $listlivreur = $livreur->afficherLivreur();
 <script src="tableau.js"></script>
 <link rel="stylesheet" type="text/css" href="tableau.css">
 
+<<<<<<< HEAD
 <h2>Envoyer un mail de confirmation</h2>
 <form method="post" >
   <input type="text" name="mail">
   <a href="sendmail.php"><input type="submit" name="envoyer"></a>
 </form>
+=======
+
+
+>>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
 
 <table border="2" id="myTable" >
     <tr><center>Demandes livreurs</center></tr>
@@ -282,7 +249,7 @@ foreach ($listlivreur as $row)
             <td>'.$row["license"].'</td>
             <td>'.$row["license_validity"].'</td>
             <td>'.$row["adresse"].'</td>
-            <td> 
+            <td>
                 <form action="suppLivreur.php" method="post">
                     <input type="hidden" id="cin" name="cin" value="'.$row["cin"].'">
                     <input style="background: none; border: none; color: blue; text-decoration: underline;" type="submit" value="supprimer">
@@ -321,8 +288,13 @@ $(document).ready( function () {
 
 
    <fieldset >
+<<<<<<< HEAD
       
       <form   method="POST" action="acceptlivreur.php" onsubmit="return controle()" >
+=======
+
+      <form   method="POST" action="acceptlivreur.php" >
+>>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
         <center><legend><h2>Ajouter Livreur</h2></legend></center>
         <table id="example1" class="table table-striped">
           <tr>
@@ -330,13 +302,13 @@ $(document).ready( function () {
             <th><input type="number" name="cin" id="cin" /></th>
             
           </tr>
-    
+
           <tr>
             <th> Prenom  <div id="erreur2" style="color: red"></div></th>
             <th><input type="text" name="prenom" id="prenom" value=""/></th>
             
           </tr>
-    
+
           <tr>
             <th> Nom <div id="erreur3" style="color: red"></div></th>
             <th><input type="text" name="nom" id="nom" value=""/></th>
@@ -374,7 +346,7 @@ $(document).ready( function () {
             <th> Joiniabilité (si oui->1 sinon->0) </th>
             <th><input type="number" name="joiniable" id="joiniable" value=""/></th>
           </tr>
-        
+
           <tr>
             <th> Login </th>
             <th><input type="text" name="login" id="login" value=""/></th>
@@ -402,7 +374,7 @@ $(document).ready( function () {
               </div>
 </div>
               <div class="title_right">
-                
+
               </div>
             </div>
 
@@ -410,13 +382,14 @@ $(document).ready( function () {
 
 
 
- <!----------------------------------------------------------------------------------------------------------------------->     
+ <!----------------------------------------------------------------------------------------------------------------------->
     </fieldset>
   </body>
 </html>
 
               </div>
 
+<<<<<<< HEAD
              <div class="title_right">
                 
               </div>
@@ -425,27 +398,37 @@ $(document).ready( function () {
                   
           
             
+=======
+              <div class="title_right">
+
+              </div>
+            </div>
+>>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
 
 
 
-          
-             
 
-            
-             
+
+
+
+
+
+
+
+
 
                 <!-- Start to do list -->
-               
+
                 <!-- End to do list -->
-                
+
                 <!-- start of weather widget -->
-               
+
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+
+
     </div>
 
     <!-- jQuery -->
@@ -488,7 +471,6 @@ $(document).ready( function () {
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-  
+
   </body>
 </html>
-  

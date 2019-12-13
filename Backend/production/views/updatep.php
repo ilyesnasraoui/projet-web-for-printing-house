@@ -233,13 +233,16 @@
             <th><textarea name="description" value="<?php echo $row['description']; ?>"/><?php echo $row['description']; ?></textarea> </th>
           </tr>
          <tr>
-<td>type</td>
-<td><select name="typee" >
-
-    <option value="bague ">bague  </option>
-    <option value="collier">collier</option>
-        <option value="boucle">boucle</option>
-            <option value="autre">autre</option>
+<td>Categorie</td>
+<td><select name="idcat" >
+<?php
+include_once "../config.php";
+include "../core/CategorieC.php";
+$cat=new CategorieC();
+$lst=$cat->afficherCategorie();
+foreach ($lst as $rw) 
+                    echo'
+    <option value="'.$rw['id_cat'].'">'.$rw['nom'].'</option>'; ?>
 
   </select></td>
 </tr>
