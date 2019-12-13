@@ -1,8 +1,8 @@
 <?php
 
-/*    $cin=$_POST["cin"];
+    $cin=$_POST["cin"];
     $joiniable=$_POST["joiniable"];
-  */  
+    
 
 ?>
 <!DOCTYPE html>

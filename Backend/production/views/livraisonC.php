@@ -54,7 +54,7 @@ class livraisonC
 
     function suppLivraison($id_livraison)
     {
-        $sql="DELETE FROM `s_i_a_d`.`livraison` WHERE `id_livraison` LIKE '$id_livraison' ESCAPE '#'";
+        $sql="DELETE FROM `s_i_a_d.sql`.`livraison` WHERE `id_livraison` LIKE '$id_livraison' ESCAPE '#'";
         $db = config::getConnexion();
         try
         {

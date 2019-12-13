@@ -1,5 +1,4 @@
 <?php
-include 'dbconfig.php';
 class livreur
 {
     private $cin;

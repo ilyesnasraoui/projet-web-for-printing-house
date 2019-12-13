@@ -79,7 +79,7 @@ class livreur_accepteC
 
     function suppLivreur($cin)
     {
-        $sql="DELETE FROM `s_i_a_d`.`livreur` WHERE `cin` LIKE '$cin' ESCAPE '#'";
+        $sql="DELETE FROM `s_i_a_d.sql`.`livreur` WHERE `cin` LIKE '$cin' ESCAPE '#'";
         $db = config::getConnexion();
         try
         {
