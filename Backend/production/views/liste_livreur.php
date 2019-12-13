@@ -243,60 +243,23 @@
 
 
     <fieldset >
-
  <!----------------------------------------------------------------------------------------------------------------------->
-<?php
+ <?php
 
-$mysqli = new mysqli("localhost", "root", "", "s_i_a_d.sql");
-
-$output='';
-
-if(isset($_POST['search'])){
-  $searchq=$_POST['search'];
-  $searchq=preg_replace("#[^0-9a-z]#i","", $searchq);
-
-<<<<<<< HEAD
-  $query= $mysqli->query("select * from livreur where nom like '%$searchq%' or prenom like '%$searchq%'") or die ("could not search");
-  
-  $count=mysqli_num_rows($query);
-  if($count==0)
-   { $output='no result!';}
-  else 
-  {
-    while($row=mysqli_fetch_array($query)){
-      $nom=$row['nom'];
-      $prenom=$row['prenom'];
-      $output .='<div>'.$prenom.''.$nom.'</div>';
-    }
-  }
-}
-=======
-
->>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
-
-
-  ?>
- 
-<form method="post">
-  <center><h2>rechercher:</h2>
-  <input type="text" name="search" placeholder="rechercher...">
-  <input type="submit" name="submit" value="rechercher"></center>
-</form>
-<br>
-<br>
-<?php  print("$output");?>
-
-<?php
 include 'livreur_accepteC.php';
-$livreur = new livreur_accepteC();
-$listelivreur=$livreur->afficherLivreur();
-?>
 
-<table border="2" id="example">
+$livreur = new livreur_accepteC();
+$listlivreur = $livreur->afficherLivreur();
+
+
+
+
+?>
+<table border="2">
     <tr>
+        <td>CIN</td>
         <td>Nom</td>
         <td>Prenom</td>
-        <td>CIN</td>
         <td>Date Naissance</td>
         <td>telephone</td>
         <td>license</td>
@@ -311,13 +274,13 @@ $listelivreur=$livreur->afficherLivreur();
     </tr>
 <?php
 
-foreach ($listelivreur as $row)
+foreach ($listlivreur as $row)
 {
     echo '
         <tr>
+            <td>'.$row["cin"].'</td>
             <td>'.$row["nom"].'</td>
             <td>'.$row["prenom"].'</td>
-            <td>'.$row["cin"].'</td>
             <td>'.$row["birthday"].'</td>
             <td>'.$row["telephone"].'</td>
             <td>'.$row["license"].'</td>
@@ -345,10 +308,6 @@ foreach ($listelivreur as $row)
 }
 ?>
 </table>
-<a href="trier_nom.php"><button>trier par nom</button> </a>
-<a href="trier_prenom.php"><button>trier par prenom</button> </a>
-
-
 <!----------------------------------------------------------------------------------------------------------------------->
  <div class="right_col" role="main">
           <div class="">
@@ -392,14 +351,8 @@ foreach ($listelivreur as $row)
 </html>
 
               </div>
+
               <div class="title_right">
-<<<<<<< HEAD
-              </div>
-            </div>
-            
-          
-         
-=======
 
               </div>
             </div>
@@ -428,10 +381,7 @@ foreach ($listelivreur as $row)
 
 
 
->>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
     </div>
-    
-
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>

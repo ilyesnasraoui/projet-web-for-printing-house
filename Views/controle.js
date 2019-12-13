@@ -7,7 +7,47 @@ function controle() {
     var license=document.getElementById('license').value.length;
     var i=0;
     var adresse=document.getElementById('adresse').value.length;
-    
+    /*var date=document.getElementById("birthday").value;
+
+	var an=date.substring(0,4);
+	var mois=date.substring(5,7);
+	var jour=date.substring(8,9);
+//----------------------------------------------------------
+	jour=jour +date.charAt(9);
+
+	var dd = new Date;
+	var j=dd.getYear( );
+
+	var numero=dd.getDate( ); 	
+	var moiis=dd.getMonth( );
+	var annee=1900+j;
+	
+	if(Number(an)<annee)
+		document.getElementById('erreur').innerText= "Entrer une date valide!";
+    else
+    {
+    	document.getElementById('erreur').innerText= "";
+    	i++;
+    }	
+
+	if (Number(an)==annee&&Number(mois)<moiis+1) 
+		document.getElementById('erreur').innerText= "Entrer une date valide!";
+    else
+    {
+    	document.getElementById('erreur').innerText= "";
+    	i++;
+    }
+      	
+	if (Number(an)==annee&&Number(mois)==moiis+1&&Number(jour)<numero)
+			document.getElementById('erreur').innerText= "Entrer une date valide!";
+    else
+    {
+    	document.getElementById('erreur').innerText= "";
+    	i++;
+    }
+      	
+
+*/
     if(cin!=8)
         document.getElementById('erreur1').innerText= "Entrer un CIN valide!";
     else{

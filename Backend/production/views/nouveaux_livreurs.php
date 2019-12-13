@@ -29,7 +29,53 @@
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
     <title>ajout prod</title>
-  
+  <script type="text/javascript">
+    function verif()
+    {
+      var i=0;
+      if(f1.codeProd.value=="")
+      {
+        alert("saisir votre code de produit");
+        i--;
+        return false;
+      }
+      if(f1.image.value=="")
+      {
+        alert("saisir votre image");
+        i--;
+        return false;
+      }
+      if(f1.nom.value=="")
+      {
+        alert("saisir votre nom");
+        i--;
+        return false;
+      }
+      if(f1.couleur.value=="")
+      {
+        alert("saisir votre couleur");
+        i--;
+        return false;
+      }
+      if(f1.typee.value=="")
+      {
+        alert("saisir votre type");
+        i--;
+        return false;
+      }
+      if(f1.dateC.value=="")
+      {
+        alert("saisir votre date de Creation");
+        i--;
+        return false;
+      }
+      if(i==6)
+      {
+        return true;
+      }
+    }
+
+    </script>
   </head>
 
   <body class="nav-md">
@@ -206,27 +252,17 @@ include 'livreurC.php';
 $liste_accepte=$livreur_accepte->infoLivreur();*/
 $livreur = new livreurC();
 $listlivreur = $livreur->afficherLivreur();
+
+
+
+
 ?>
-<script src="tableau.js"></script>
-<link rel="stylesheet" type="text/css" href="tableau.css">
-
-<<<<<<< HEAD
-<h2>Envoyer un mail de confirmation</h2>
-<form method="post" >
-  <input type="text" name="mail">
-  <a href="sendmail.php"><input type="submit" name="envoyer"></a>
-</form>
-=======
-
-
->>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
-
-<table border="2" id="myTable" >
+<table border="2" >
     <tr><center>Demandes livreurs</center></tr>
     <tr>
+        <td>CIN</td>
         <td>Nom</td>
         <td>Prenom</td>
-        <td>CIN</td>
         <td>Date Naissance</td>
         <td>telephone</td>
         <td>license</td>
@@ -240,10 +276,9 @@ foreach ($listlivreur as $row)
 {
     echo '
         <tr>
-            
+            <td>'.$row["cin"].'</td>
             <td>'.$row["nom"].'</td>
             <td>'.$row["prenom"].'</td>
-            <td>'.$row["cin"].'</td>
             <td>'.$row["birthday"].'</td>
             <td>'.$row["telephone"].'</td>
             <td>'.$row["license"].'</td>
@@ -260,15 +295,6 @@ foreach ($listlivreur as $row)
 }
 ?>
 </table>
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );  
-</script>
-
-
-
-
 <!----------------------------------------------------------------------------------------------------------------------->
  <div class="right_col" role="main">
           <div class="">
@@ -288,42 +314,32 @@ $(document).ready( function () {
 
 
    <fieldset >
-<<<<<<< HEAD
-      
-      <form   method="POST" action="acceptlivreur.php" onsubmit="return controle()" >
-=======
 
       <form   method="POST" action="acceptlivreur.php" >
->>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
         <center><legend><h2>Ajouter Livreur</h2></legend></center>
         <table id="example1" class="table table-striped">
           <tr>
-            <th> CIN <div id="erreur1" style="color: red"></div></th>
+            <th> CIN </th>
             <th><input type="number" name="cin" id="cin" /></th>
-            
           </tr>
 
           <tr>
-            <th> Prenom  <div id="erreur2" style="color: red"></div></th>
+            <th> Prenom </th>
             <th><input type="text" name="prenom" id="prenom" value=""/></th>
-            
           </tr>
 
           <tr>
-            <th> Nom <div id="erreur3" style="color: red"></div></th>
+            <th> Nom </th>
             <th><input type="text" name="nom" id="nom" value=""/></th>
-            
           </tr>
           <tr>
-          <th> Telephone <div id="erreur4" style="color: red"></div></th>
+          <th> Telephone </th>
           <th><input type="number" name="telephone" id="telephone" value=""/></th>
-          
         </tr>
 
         <tr>
-            <th> Adresse<div id="erreur6" style="color: red"></div> </th>
+            <th> Adresse </th>
             <th><input type="text" name="adresse" id="adresse" value=""/></th>
-             
           </tr>
 
           <tr>
@@ -332,9 +348,8 @@ $(document).ready( function () {
           </tr>
 
           <tr>
-            <th> License <div id="erreur5" style="color: red"></div></th>
+            <th> License </th>
             <th><input type="text" name="license" id="license" value=""/></th>
-            
           </tr>
 
           <tr>
@@ -364,7 +379,7 @@ $(document).ready( function () {
       </center>
       </form>
 
-  <script src="valide.js"></script>
+
 
     </fieldset>
 
@@ -389,21 +404,10 @@ $(document).ready( function () {
 
               </div>
 
-<<<<<<< HEAD
-             <div class="title_right">
-                
-              </div>
-            </div>
-          
-                  
-          
-            
-=======
               <div class="title_right">
 
               </div>
             </div>
->>>>>>> d9604ec259b3892769773d56a9f6dc7cef7704f1
 
 
 
