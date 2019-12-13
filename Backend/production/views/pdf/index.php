@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Backend </title>
+    <title>Reclamations </title>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   
@@ -80,7 +80,7 @@
                     <ul class="nav child_menu">
                       <li><a href="../AfficherRec.php">Afficher</a></li>
                       <li><a href="index.php">Imprimer</a></li>
-                      <li><a href="index3.html">Stat</a></li>
+                      <li><a href="../Stat.php">Stat</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Demande <span class="fa fa-chevron-down"></span></a>

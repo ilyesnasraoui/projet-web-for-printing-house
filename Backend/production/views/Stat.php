@@ -1,55 +1,4 @@
-<?php
-include "../config.php";
-session_start();
-$bdd = config::getConnexion();
-$role=1;
-$confirmkey=0;
- $confirme=1;
- $avatar='0.gif';
-
-if(isset($_POST['forminscription'])) {
-   $pseudo = htmlspecialchars($_POST['pseudo']);
-   $mail = htmlspecialchars($_POST['mail']);
-   $mdp = sha1($_POST['mdp']);
-   $mdp2 = sha1($_POST['mdp2']);
-   if(!empty($_POST['pseudo']) AND !empty($_POST['mail']) AND !empty($_POST['mdp']) AND !empty($_POST['mdp2'])) {
-      $pseudolength = strlen($pseudo);
-      if($pseudolength <= 255) {
-            if(filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-               $reqmail = $bdd->prepare("SELECT * FROM membre WHERE mail = ?");
-               $reqmail->execute(array($mail));
-               $mailexist = $reqmail->rowCount();
-               if($mailexist == 0) {
-                  if($mdp == $mdp2) {
-                      if (isset($_POST['captcha'])) {
-
-    if ($_POST['captcha'] == $_SESSION['captcha']) {
-                     $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo, mail, motdepasse, role, confirmkey , confirme, avatar) VALUES(?, ?, ?, ?, ?, ?, ?)");
-                     $insertmbr->execute(array($pseudo, $mail, $mdp, $role, $confirmkey, $confirme, $avatar));
-                     $erreur = "Votre compte a bien été créé !";
-                      }else{
-        $erreur="captcha invalide";
-    }
-}
-                  } else {
-                     $erreur = "Vos mots de passes ne correspondent pas !";
-                  }
-               } else {
-                  $erreur = "Adresse mail déjà utilisée !";
-               }
-            } else {
-               $erreur = "Votre adresse mail n'est pas valide !";
-            }
-      } else {
-         $erreur = "Votre pseudo ne doit pas dépasser 255 caractères !";
-      }
-   } else {
-      $erreur = "Tous les champs doivent être complétés !";
-   }
-}
-?>
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -57,9 +6,9 @@ if(isset($_POST['forminscription'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Société Imprimerie Aicha De Distribution! | </title>
+    <title>Backend </title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -69,7 +18,7 @@ if(isset($_POST['forminscription'])) {
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -79,54 +28,6 @@ if(isset($_POST['forminscription'])) {
 
     <!-- Custom Theme Style -->
     <link href="../../build/css/custom.min.css" rel="stylesheet">
-    <title>ajout prod</title>
-  <script type="text/javascript">
-    function verif()
-    {
-      var i=0;
-      if(f1.codeProd.value=="")
-      {
-        alert("saisir votre code de produit");
-        i--;
-        return false;
-      }
-      if(f1.image.value=="")
-      {
-        alert("saisir votre image");
-        i--;
-        return false;
-      }
-      if(f1.nom.value=="")
-      {
-        alert("saisir votre nom");
-        i--;
-        return false;
-      }
-      if(f1.couleur.value=="")
-      {
-        alert("saisir votre couleur");
-        i--;
-        return false;
-      }
-      if(f1.typee.value=="")
-      {
-        alert("saisir votre type");
-        i--;
-        return false;
-      }
-      if(f1.dateC.value=="")
-      {
-        alert("saisir votre date de Creation");
-        i--;
-        return false;
-      }
-      if(i==6)
-      {
-        return true;
-      }
-    }
-
-    </script>
   </head>
 
   <body class="nav-md">
@@ -143,11 +44,11 @@ if(isset($_POST['forminscription'])) {
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-
-                <h2>Fourat</h2>
+                <span>Welcome,</span>
+                <h2>John Doe</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -155,8 +56,53 @@ if(isset($_POST['forminscription'])) {
             <br />
 
             <!-- sidebar menu -->
-            <?php include "sidebar.php";
-       ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ajoutp1.html">ajout produit</a></li>
+                      <li><a href="afichprod1.php">afficher produit</a></li>
+                      <li><a href="cher1.php">reglage produits produit</a></li>
+                      <li><a href="stat.php">statistique produit</a></li>
+                     
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="ajouts1.html">ajout stock</a></li>
+                      <li><a href="mstock1.html">modifier stock</a></li>
+                      <li><a href="sstock1.html">supprimer stock</a></li>
+                      <li><a href="afichstock1.php">afficher stock</a></li>
+                      <li><a href="tri1.php">trier stock</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherRec.php">Afficher</a></li>
+                      <li><a href="pdf/index.php">Imprimer</a></li>
+                      <li><a href="Stat.php">Stat</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Demande<span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherDem.php">Afficher</a></li>
+                      <li><a href="pdfD/index.php">Imprimer</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
+                      </ul>
+                  </li>
+                  
+              </div>
+
+            </div>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -189,7 +135,7 @@ if(isset($_POST['forminscription'])) {
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Fourat
+                    <img src="images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -276,108 +222,66 @@ if(isset($_POST['forminscription'])) {
         <!-- /top navigation -->
 
         <!-- page content -->
+        <div class="right_col" role="main">
           <!-- top tiles -->
 
           <!-- /top tiles -->
-
-             <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Afficher Produit</title>
-  </head>
-  <body>
-<!-- content -->
- <meta charset="UTF-8">
-
-
-   <div class="col-lg-6">
-          <div class="login_form_inner register_form_inner">
-            <h3>Create an account</h3>
-            <form class="row login_form"  id="register_form" method="post" name="forminscription">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <form method="POST" action="AfficherRec.php">
+                <div class="col-sm-2">
+                <select name="etat" id="prob" class="form-control">
+                    <option></option>
+                    <option value="1">Traiter</option>
+                    <option value="0">Non Traiter</option>
+                </select>
               </div>
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" id="mail" name="mail" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
-              </div>
-              <div class="col-md-12 form-group">
-                <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
-              </div>
-              <div class="col-md-12 form-group">
-                <input type="password" class="form-control" id="mdp2" name="mdp2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
-              </div>
-              <div class="col-md-12 form-group">
-                <div class="creat_account">
-                </div>
-              </div>
-                  <div class="col-md-12 form-group">
+              </form>
+             </div>
+           </div>
+           <br><br>
 
-  <table>
-      <td><img src="captcha.php"> </td>
-      <td><input type="text" name="captcha" class="form-control"></td>
-  </table>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <?PHP
+                        include "../core/ReclamationC.php";
+                       
+                       
+                    $reclamation2C=new ReclamationC();
 
 
-                                        </div>
-              <div class="col-md-12 form-group">
-                <button type="submit" value="submit" class="button button-register w-100" onClick="proceed();" name="forminscription">Register</button>
-              </div>
-            </form>
-          </div>
-        </div>
-<?php
-     if(isset($erreur))
-             {
-                echo '<font color="red">'.$erreur."</font>";
-             }
-         ?>
+$test=$reclamation2C->probliveraison100();
+$test1=$reclamation2C->probproduit100();
+$test2=$reclamation2C->probmanquant100();
+$test3=$reclamation2C->probsite100();
+$test4=$reclamation2C->probautre100();
+$test5=$reclamation2C->prob();
+echo "Nombre de probleme : ".$test5."  <br>" ; 
+echo "probleme de Visit Card : ".$test."% <br>" ; 
+echo "probleme Certificate : ".$test1."% <br>" ; 
+echo "probleme Stamp : ".$test2."% <br>" ; 
+echo "probleme Wedding card : ".$test3."% <br>" ; 
+echo "Autre probleme : ".$test4."% <br>" ; 
+                        ?>
+                        
 
-<!-- end content -->
-
-  </body>
-</html>
-
-
-              </div>
-
-              <div class="title_right">
-
-              </div>
             </div>
 
+          </div>
+          <br />
 
 
 
 
 
-
-
-
-
-
-
-
-                <!-- Start to do list -->
-
-                <!-- End to do list -->
-
-                <!-- start of weather widget -->
-
+        </div>
         <!-- /page content -->
 
         <!-- footer content -->
 
-
-
+        <!-- /footer content -->
+      </div>
     </div>
-
-
-
 
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
@@ -414,11 +318,11 @@ if(isset($_POST['forminscription'])) {
     <script src="../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script src="../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../../vendors/moment/min/moment.min.js"></script>
-    <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-
+    
   </body>
 </html>

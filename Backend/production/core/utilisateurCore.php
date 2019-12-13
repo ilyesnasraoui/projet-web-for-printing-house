@@ -148,7 +148,7 @@ function RecupererMail($pseudo,$recup_code,$recup_mail){
 
                      <div align="center">Bonjour <b>'.$pseudo.'</b>,</div>
                      Voici votre code de récupération: <b>'.$recup_code.'</b>
-                     cliquer <a href="http://localhost/projet/views/recuperer1.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe 
+                     cliquer <a href="http://localhost/projet/views/recuperer1.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe
 
                      cliquer <a href="http://localhost/myFiles/fashionmakeup/client/views/recupererMdp.php?section=code&code='.$recup_code.'">ici</a> pour rénitialiser votre mot de passe A bientôt !
 

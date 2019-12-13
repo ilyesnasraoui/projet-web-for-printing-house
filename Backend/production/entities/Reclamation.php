@@ -4,39 +4,34 @@
 		private $id;
 		private $probleme;
 		private $email;
-		private $message;
 		private $etat;
-		private $date_rec;
-		private $image ;
+		private $date_creation;
+		private $autre ;
 
 		
-		function __construct($email,$probleme,$message,$date_rec,$image )
+		function __construct($email,$probleme,$autre,$date_creation,$etat )
 		{
 			$this->email = $email;
 			$this->probleme = $probleme;
-			$this->message = $message;
-			$this->date_rec = $date_rec;
+			$this->autre = $autre;
+			$this->date_creation = $date_creation;
 			$this->etat = 0 ;
-			$this->image = $image ;
 		}
 
 		function get_etat(){
 		return $this->etat;
-	    }
-	    function get_image(){
-		return $this->image;
 	    }
 
 	    function get_prob(){
 		return $this->probleme;
 		}
 
-		function get_message(){
+		function get_autre(){
 		return $this->message;
 		}
 
 		function get_date(){
-		return $this->date_rec;
+		return $this->date_creation;
 		}
 
 		function get_email(){

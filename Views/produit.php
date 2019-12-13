@@ -177,8 +177,7 @@ $p=$f->afficherProduits();
 
 
                         </div>';
-                            }
-                           ?>
+                          
                     </div>
                 </div>
             </div>

@@ -5,7 +5,14 @@ $cat=new CategorieC();
 $lst=$cat->afficherCategorie();
 require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
 $i= new fonctionC();
-$c=$i->getCart(getHostByName(getHostName()));?>
+$c=$i->getCart(getHostByName(getHostName()));
+$bdd = config::getConnexion();
+$getid = $_SESSION['id'];
+$requser = $bdd->prepare('SELECT * FROM membre WHERE id = ?');
+$requser->execute(array($getid));
+$userinfo = $requser->fetch();
+?>
+
 
 <header class="header_area">
    <div class="main_menu">
@@ -58,8 +65,8 @@ $c=$i->getCart(getHostByName(getHostName()));?>
            </ul>
          </div>
         <li class="nav-item submenu dropdown">
-               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false"><img  src="img/profil.gif" style="float: right; margin:0 0px 0 0px; " ></a>
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false"><img  src="membres/avatars/<?php echo $userinfo['avatar']; ?>" width="60" style="float: right; margin:0 0px 0 0px; " ></a>
                <ul class="dropdown-menu">
                  <li class="nav-item"><a class="nav-link" href="edit.php">Edit profile</a></li>
                  <li class="nav-item"><a class="nav-link" href="deconnexion.php">Log out</a></li>

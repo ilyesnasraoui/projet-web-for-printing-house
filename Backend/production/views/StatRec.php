@@ -8,26 +8,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Backend </title>
+    <title>Reclamations </title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.js"></script>
+
+  <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--external css-->
+  <link href="../../lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="../../css/style.css" rel="stylesheet">
+  <link href="../../css/style-responsive.css" rel="stylesheet">
+  <link href="../../css/stylePromos.css" rel="stylesheet">
+  <!---Animated Icons---->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/jq-2.1.4,jszip-2.5.0,pdfmake-0.1.18,dt-1.10.9,af-2.0.0,b-1.0.3,b-colvis-1.0.3,b-html5-1.0.3,b-print-1.0.3,se-1.0.1/datatables.min.css"/>
 
     <!-- Bootstrap -->
-    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     
     <!-- bootstrap-progressbar -->
-    <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
-    <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="../../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../../build/css/custom.min.css" rel="stylesheet">
+    <link href="../../../build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
@@ -36,7 +52,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -44,7 +60,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="../../images/img.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -62,15 +78,15 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="AfficherRec.php">Afficher</a></li>
-                      <li><a href="pdf/index.php">Imprimer</a></li>
-                      <li><a href="../Stat.php">Stat</a></li>
+                      <li><a href="../AfficherRec.php">Afficher</a></li>
+                      <li><a href="index.php">Imprimer</a></li>
+                      <li><a href="index3.php">Stat</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> Demande <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Afficher</a></li>
-                      <li><a href="form_advanced.html">Imprimer</a></li>
+                      <li><a href="form.html">General Form</a></li>
+                      <li><a href="form_advanced.html">Advanced Components</a></li>
                       <li><a href="form_validation.html">Form Validation</a></li>
                       <li><a href="form_wizards.html">Form Wizard</a></li>
                       <li><a href="form_upload.html">Form Upload</a></li>
@@ -246,58 +262,42 @@
           <!-- top tiles -->
 
           <!-- /top tiles -->
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <form method="POST" action="AfficherRec.php">
-                <div class="col-sm-2">
-                <select name="etat" id="prob" class="form-control">
-                    <option></option>
-                    <option value="1">Traiter</option>
-                    <option value="0">Non Traiter</option>
-                </select>
-              </div>
-              </form>
-             </div>
-           </div>
-           <br><br>
 
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-<form method="POST" action="TraiterRec.php" >
-                        <?php 
-                      include "../core/ReclamationC.php";
-                      $reclamationC=new ReclamationC();
-                      if (isset($_POST["id"])){
-                        $reclamationC->RecupererRec($_POST["id"]);
-                        $reclamation1C= $reclamationC->RecupererRec($_POST["id"]);
-                          foreach($reclamation1C as $row){
-                          $probleme=$row['probleme'];
-                          $autre=$row['autre'];
-                          $date_creation=$row['date_creation'];
-                          $email=$row['email'];
-                          $etat=$row['etat'];}
-                          }
-                      else
-                      {
-                        echo "Errrrrrrrrrrrrrreur";
-                      }
 
-                       ?>
-                      <fieldset style="display: block; margin-left: 2px; margin-right: 2px; padding-top: 0.35em; padding-bottom: 0.625em;padding-left: 0.75em;padding-right: 0.75em; border: 2px groove ;">
-                      <legend><?php echo "Reclamation"." ".$email;?></legend>
-                      Date : <?php echo $date_creation; ?><br>
-                      Mail : <?php echo $email; ?><br>
-                      Probleme : <?php echo $probleme; ?> <br>
-  
-                     </fieldset>
+   <br />
+   <div class="table-responsive">
+    <?PHP
+include "../../core/ReclamationC.php";
 
 
- <input type="submit" name="Valider" value="Valider" >
- <input type="hidden" value="<?PHP echo $row['id'] ; ?>" name="id">
- <input type="submit" name="Refuser" value="Refuser" >
- <input type="hidden" value="<?PHP echo $row['id'] ; ?>" name="id">
-</form>
-                       
+$reclamation2C=new ReclamationC();
+
+
+$test=$reclamation2C->probliveraison100();
+$test1=$reclamation2C->probproduit100();
+$test2=$reclamation2C->probmanquant100();
+$test3=$reclamation2C->probsite100();
+$test4=$reclamation2C->probautre100();
+$test5=$reclamation2C->prob();
+echo "Nombre de probleme : ".$test5."  <br>" ; 
+echo "probleme de liveraison : ".$test."% <br>" ; 
+echo "probleme produit : ".$test1."% <br>" ; 
+echo "prob produit manquant : ".$test2."% <br>" ; 
+echo "probleme sur le site : ".$test3."% <br>" ; 
+echo "Autre probleme : ".$test4."% <br>" ; 
+
+//var_dump($listeEmployes->fetchAll());
+?>
+   </div>
+
+  <br />
+  <br />
+  <style type="text/css"> </style>
+ <form>
+   
+            </div>
 
           </div>
           <br />
@@ -318,43 +318,63 @@
     <!-- jQuery -->
     <script src="../../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="../../vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../../../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
-    <script src="../../vendors/nprogress/nprogress.js"></script>
+    <script src="../../../vendors/nprogress/nprogress.js"></script>
     <!-- Chart.js -->
-    <script src="../../vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="../../../../vendors/Chart.js/dist/Chart.min.js"></script>
     <!-- gauge.js -->
-    <script src="../../vendors/gauge.js/dist/gauge.min.js"></script>
+    <script src="../../../vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="../../vendors/iCheck/icheck.min.js"></script>
+    <script src="../../../vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../../vendors/skycons/skycons.js"></script>
+    <script src="../../../vendors/skycons/skycons.js"></script>
     <!-- Flot -->
-    <script src="../../vendors/Flot/jquery.flot.js"></script>
-    <script src="../../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../../vendors/Flot/jquery.flot.resize.js"></script>
+    <script src="../../../vendors/Flot/jquery.flot.js"></script>
+    <script src="../../../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../../../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../../../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../../../vendors/Flot/jquery.flot.resize.js"></script>
     <!-- Flot plugins -->
-    <script src="../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../../vendors/flot.curvedlines/curvedLines.js"></script>
+    <script src="../../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../../../vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
-    <script src="../../vendors/DateJS/build/date.js"></script>
+    <script src="../../../vendors/DateJS/build/date.js"></script>
     <!-- JQVMap -->
-    <script src="../../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <script src="../../../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../../../vendors/moment/min/moment.min.js"></script>
+    <script src="../../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../../build/js/custom.min.js"></script>
+    <script src="../../../build/js/custom.min.js"></script>
     
   </body>
 </html>
+<script type="text/javascript" language="javascript" >
+ $(document).ready(function(){
+
+  $('#customer_data').DataTable({
+   "processing" : true,
+   "serverSide" : true,
+   "ajax" : {
+    url:"fetch.php",
+    type:"POST"
+   },
+   dom: 'lBfrtip',
+   buttons: [
+    'excel', 'csv','pdf', 'copy'
+   ],
+   "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ]
+  });
+  
+ });
+ 
+</script>

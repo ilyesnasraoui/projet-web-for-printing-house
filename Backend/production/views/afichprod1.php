@@ -203,7 +203,7 @@ echo '
 ?>
     </tbody>
 </table>
-<a href="trier.php">jjouo</a>
+<a href="trier.php">trier</a>
 
 <br>
         <center>

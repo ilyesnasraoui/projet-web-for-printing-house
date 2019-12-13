@@ -43,7 +43,7 @@
                   </div>
                   <div class="card-body">
                     <p >Visit card</p>
-                    <h4 class="card-product__title"><a href="#">101DT 33.33% -8jrs</a></h4>
+                    <h4 class="card-product__title"><a href="#">101DT 33% -8jrs</a></h4>
                     <p class="card-product__price" style="text-decoration: line-through;">150DT</p>
                   </div>
                 </div>
