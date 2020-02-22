@@ -2,7 +2,7 @@
 include "../config.php";
 session_start();
 $bdd = config::getConnexion();
-include_once ('cookieconnect.php'); 
+include_once ('cookieconnect.php');
 
 if(isset($_SESSION['id'])) {
    $requser = $bdd->prepare("SELECT * FROM membre WHERE id = ?");
@@ -31,6 +31,32 @@ if(isset($_SESSION['id'])) {
          $msg = "Vos deux mdp ne correspondent pas !";
       }
    }
+   if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])) {
+   $tailleMax = 2097152;
+   $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
+   if($_FILES['avatar']['size'] <= $tailleMax) {
+      $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+      if(in_array($extensionUpload, $extensionsValides)) {
+         $chemin = "membres/avatars/".$_SESSION['id'].".".$extensionUpload;
+         $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+         if($resultat) {
+            $updateavatar = $bdd->prepare('UPDATE membre SET avatar = :avatar WHERE id = :id');
+            $updateavatar->execute(array(
+               'avatar' => $_SESSION['id'].".".$extensionUpload,
+               'id' => $_SESSION['id']
+
+               ));
+            header('Location: userProfile.php?id='.$_SESSION['id']);
+         } else {
+            $msg = "Erreur durant l'importation de votre photo de profil";
+         }
+      } else {
+         $msg = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
+      }
+   } else {
+      $msg = "Votre photo de profil ne doit pas dépasser 2Mo";
+   }
+}
 ?>
 <html lang="en">
 <head>
@@ -50,59 +76,17 @@ if(isset($_SESSION['id'])) {
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-  <header class="header_area">
-    <div class="main_menu">
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt="" style="height: 100px"></a>
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo2.png" alt="" style="height: 50px"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-              <li class="nav-item active"><a class="nav-link" href="userProfile.html">Home</a></li>
-               <li class="nav-item"><a class="nav-link" href="Promotions.html">Promotions</a></li>
-              <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
-                  <li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
-                  <li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
-                  <li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            </ul>
-
-            <ul class="nav-shop">
-              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-              <li class="nav-item"><a class="button button-header" href="#">Buy Now</a></li>
-            </ul>
-          </div>
-          <li class="nav-item submenu dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false"><img  src="img/profil.gif" ></a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="edit.php">Edit profile</a></li>
-                  <li class="nav-item"><a class="nav-link" href="deconnexion.php">Log out</a></li>
-                </ul>
-              </li>
-        </div>
-      </nav>
-    </div>
-  </header>
+    <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <!--================ End Header Menu Area =================-->
 <div class="login_form_inner register_form_inner">
                   <h3>EDIT PROFILE</h3>
          <div align="left">
-            <form class="row login_form"   method="post" >
+            <form class="row login_form"   method="post" enctype="multipart/form-data">
               <div class="col-md-12 form-group">
                <input type="text" class="form-control" id="pseudo" name="newpseudo"  placeholder="Pseudo" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pseudo'" value="<?php echo $user['pseudo']; ?>">
               </div>
@@ -115,6 +99,10 @@ if(isset($_SESSION['id'])) {
               <div class="col-md-12 form-group">
                 <input type="password" class="form-control" id="mdp2" name="newmdp2" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Confirm Password'">
                </div>
+               <div class="col-md-12 form-group">
+                <label> Avatar: </label>
+                <input type="file" class="form-control"  name="avatar">
+               </div>
               <div class="col-md-12 form-group">
                 <button type="submit" value="submit" class="button button-register w-100"  >Submit</button>
               </div>
@@ -124,7 +112,7 @@ if(isset($_SESSION['id'])) {
       </div>
    </body>
 </html>
-<?php   
+<?php
 }
 else {
    header("Location: connexion.php");
@@ -205,5 +193,3 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="js/main.js"></script>
 </body>
 </html>
-
-

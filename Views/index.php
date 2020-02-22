@@ -17,9 +17,13 @@
 </head>
 <body>
   <!--================ Start Header Menu Area =================-->
-<?php
-  include "header.php";
-  ?>
+  <?php
+  session_start();
+   if (isset($_SESSION['pseudo'])){
+      include "header2.php";}
+      else
+          { include "header.php";}
+      ?>
 	<!--================ End Header Menu Area =================-->
 
   <main class="site-main">

@@ -18,11 +18,11 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  
+
 
   <script>
 function showResult(str) {
-  
+
   if (window.XMLHttpRequest) {
     // code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -37,11 +37,17 @@ function showResult(str) {
   xmlhttp.open("GET","SearchP.php?<?php if(isset($_GET['ID_Cat'])) if($_GET['ID_Cat']!="") echo"ID_Cat=".$_GET['ID_Cat']."&"; ?>kword=".concat(document.getElementById("kword").value));
   xmlhttp.send();
 }
-</script>h
+</script>
   <!--================ Start Header Menu Area =================-->
   <?php
-  include "header.php";
+  session_start();
   ?>
+  <?php
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <section class="blog-banner-area" id="category">
     <div class="container h-100">
       <div class="blog-banner">
@@ -133,7 +139,7 @@ $p=$f->afficherProduits();
 
                               echo '
                         <div class="row">
-                          
+
                               <div class="card-body">
                                 <h4 class="card-product__title"> <h4>'.$t["nom"].'</h4></h4>
                                 <div class="col-md-6 col-lg-6">
@@ -158,9 +164,9 @@ $p=$f->afficherProduits();
                           </div>
                               </div>
 
-                              
-                          
-                              
+
+
+
 
 
 
@@ -171,8 +177,7 @@ $p=$f->afficherProduits();
 
 
                         </div>';
-                            }
-                           ?>
+                          
                     </div>
                 </div>
             </div>

@@ -3,8 +3,9 @@ include_once "../config.php";
 include "../core/CategorieC.php";
 $cat=new CategorieC();
 $lst=$cat->afficherCategorie();
-
-?>
+require_once "D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php";
+$i= new fonctionC();
+$c=$i->getCart(getHostByName(getHostName()));?>
 <header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
@@ -59,7 +60,7 @@ $lst=$cat->afficherCategorie();
 
             <ul class="nav-shop">
               <li class="nav-item"><button><i class="ti-search"></i></button></li>
-              <li class="nav-item"><button> <a href="cart.php"> <i class="ti-shopping-cart"></i><span class="nav-shop__circle"></span></button></a> </li>
+              <li class="nav-item"><button> <a href="cart.php"><i class="ti-shopping-cart"></i><span class="nav-shop__circle"><?php echo $c->rowCount()?></span></button></a> </li>
             </ul>
           </div>
         </div>

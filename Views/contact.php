@@ -18,8 +18,12 @@
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  session_start();
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+      { include "header.php";}
+     ?>
 	<!--================ End Header Menu Area =================-->
 
 
@@ -44,33 +48,30 @@
 	<!-- ================ contact section start ================= -->
   <section class="section-margin--small">
     <div class="container">
-      <div class="d-none d-sm-block mb-5 pb-4">
-        <div id="map" style="height: 420px;"></div>
-        <script>
-          function initMap() {
-            var uluru = {lat: -25.363, lng: 131.044};
-            var grayStyles = [
-              {
-                featureType: "all",
-                stylers: [
-                  { saturation: -90 },
-                  { lightness: 50 }
-                ]
-              },
-              {elementType: 'labels.text.fill', stylers: [{color: '#A3A3A3'}]}
-            ];
-            var map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: -31.197, lng: 150.744},
-              zoom: 9,
-              styles: grayStyles,
-              scrollwheel:  false
-            });
-          }
+      <section class="blog-banner-area" id="contact">
+        <div class="container h-100">
+          <div class="blog-banner">
+            <div class="text-center">
+                       <div class="back">
+      <h2>Réclamation</h2>
+    </div>
+        <!---->
 
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
 
-      </div>
+
+                <li class="nav-item"><a class="nav-link" style="color:DodgerBlue;" href="reclamation.php">Envoyer une réclamation</a></li>
+              </br>
+              <li class="nav-item"><a class="nav-link" style="color:DodgerBlue;" href="avis.php">Donner votre avis</a></li>
+
+              <nav aria-label="breadcrumb" class="banner-breadcrumb">
+                <ol class="breadcrumb">
+
+                          </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
       <div class="row">

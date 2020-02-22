@@ -25,8 +25,11 @@ $c=$i->getCart(getHostByName(getHostName()));?>
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
 	<!--================ End Header Menu Area =================-->
 
 	<!-- ================ start banner area ================= -->
@@ -86,7 +89,7 @@ $c=$i->getCart(getHostByName(getHostName()));?>
                                       $v=$v+$d["prix"]*$row["qty"];
                                       echo '
                                   <tr>
-                                      <td class="product-thumbnail"><a href="#"><img src="../views/img/'.$d["image"].'" width="80px" alt="product img"></a></td>
+                                      <td class="product-thumbnail"><a href="#"><img src="../Backend/'.$d["image"].'" width="80px" alt="product img"></a></td>
                                       <td class="product-name"><a href="#">'.$d["nom"].'</a></td>
                                       <td class="product-price"><span class="amount">'.$d["prix"].' TND</span></td>
                                       <td class="product-quantity">

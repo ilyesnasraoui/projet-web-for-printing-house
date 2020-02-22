@@ -1,10 +1,11 @@
-<?php 
+<?php
 include_once "../entities/Produit.php";
 class ProduitC {
 
 	function ajouterProduit($P){
-		$sql="insert into produits  
-		values ('',:nom,:prix,:description,:quantite,:type,:id_cat,:image)";
+		$i=0;
+		$sql="insert into produits
+		values ('$i',:nom,:prix,:description,:quantite,:type,:id_cat,:image)";
 		$db = config::getConnexion();
 		try{
         $req=$db->prepare($sql);
@@ -17,11 +18,12 @@ class ProduitC {
 		$req->bindValue(':quantite',$P->getquantite());
 		$req->bindValue(':image',$P->getimage());
             $req->execute();
-           
+
         }
         catch (Exception $e){
             echo 'Erreur: '.$e->getMessage();
-        }		
+        }
+				$i++;
 	}
 
 	function afficherProduits(){
@@ -34,7 +36,19 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
+	}
+	function  trier(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From produits ORDER BY nom";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
 	}
 
 	function countProd()
@@ -49,7 +63,7 @@ class ProduitC {
         catch (Exception $e)
         {
             die('Erreur: '.$e->getMessage());
-        } 
+        }
   }
   function countProd_Cat($id)
   {
@@ -63,7 +77,7 @@ class ProduitC {
         catch (Exception $e)
         {
             die('Erreur: '.$e->getMessage());
-        } 
+        }
   }
 
 	function afficherProduits_Cat($id){
@@ -76,7 +90,7 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
 	}
 	function afficherProduits_Cat_kword($id,$kword){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
@@ -88,7 +102,7 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
 	}
 	function afficherProduits_kword($kword){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
@@ -100,7 +114,7 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
 	}
 	function afficherProduits2(){
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
@@ -112,7 +126,7 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
 	}
 
 	function getProduit($id){
@@ -125,7 +139,7 @@ class ProduitC {
 		}
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
-        }	
+        }
 	}
 
 	function supprimerProduit($id){
@@ -143,7 +157,7 @@ class ProduitC {
 	}
 
 	function modifierProduit($P){
-		$sql="UPDATE produits 
+		$sql="UPDATE produits
 				SET nom=:nom,
 					description=:description,
 					prix=:prix,
@@ -153,10 +167,10 @@ class ProduitC {
 					image=:image
 
 					WHERE id_produit=:id";
-		
+
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-try{		
+try{
 		        $req=$db->prepare($sql);
 		$req->bindValue(':id',$P->getid_produit());
 		$req->bindValue(':nom',$P->getnom());
@@ -168,7 +182,7 @@ try{
 		$req->bindValue(':image',$P->getimage());
 
             $s=$req->execute();
-			
+
            // header('Location: index.php');
         }
         catch (Exception $e){

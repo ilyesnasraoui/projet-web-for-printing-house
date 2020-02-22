@@ -21,8 +21,13 @@
   <!--================ Start Header Menu Area =================-->
   <?php
   session_start ();
-    include "header.php";
     ?>
+    <?php
+    if (isset($_SESSION['pseudo'])){
+       include "header2.php";}
+       else
+           { include "header.php";}
+       ?>
 <?php
 
 require_once 'D:\wamp64\www\projet\projet\Core\panier&commande_CORE.php';

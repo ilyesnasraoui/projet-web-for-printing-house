@@ -29,8 +29,12 @@ $_POST['name']=$_SESSION['pseudo'];
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
+
 <main>
     <div class="container adresses-container" >
         <div class="row">
@@ -57,7 +61,7 @@ echo '
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <form action="D:\wamp64\www\projet\projet\Backend\production\views\forms.php" method="post">
+                                <form action="..\Backend\production\views\forms.php" method="post">
                                     <div class="modal-body mx-3">
                                         <div class="md-form mb-2">
                                             <label for="uname">Username</label>
@@ -142,7 +146,7 @@ echo '
                                               <span aria-hidden="true">&times;</span>
                                             </button>
                                           </div>
-                                          <form action="D:/wamp64/www/projet/projet/Backend/production/views/forms.php" method="post">
+                                          <form action="..\Backend\production\views\forms.php" method="post">
                                             <div class="modal-body mx-3">
                                             <div class="md-form mb-5">
                                               <p class="text-center"> Address Name </p>

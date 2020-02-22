@@ -76,7 +76,7 @@ else if ($_POST["form"]=="addAdd")
         $add=new address($_POST['uname'],$_POST['address-name'],$_POST['name'],$_POST['street'],$_POST['city'],$_POST['zip'],$_POST['state'],'Tunisia',$_POST['phone']);
         $f=new fonctionC();
         $f->addAddress($add);
-        header('location:D:/wamp64/www/projet/projet/views/adresses.php');
+        header('location:../../../views/adresses.php');
     }
     else
     {
@@ -89,7 +89,7 @@ else if ($_POST["form"]=="deleteAdd")
     {
         $f=new fonctionC();
         $f->deleteAdd($_POST['add_id']);
-        header('location:../views/adresses.php');
+        header('location:../../../views/adresses.php');
     }
 }
 else if ($_POST["form"]=="editAdd")
@@ -99,7 +99,7 @@ else if ($_POST["form"]=="editAdd")
 
         $f=new fonctionC();
         $f->editAdd($_POST['add_id'],$_POST['address-name'],$_POST['name'],$_POST['street'],$_POST['city'],$_POST['state'],$_POST['zip'],$_POST['phone']);
-        header('location:D:/wamp64/www/projet/projet/views/adresses.php');
+        header('location:../../../views/adresses.php');
     }
     else
     {

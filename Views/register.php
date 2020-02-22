@@ -5,6 +5,7 @@ include "../Core/utilisateurCore.php";
 session_start();
 $bdd = config::getConnexion();
 $role=0;
+$avatar='0.gif';
 if(isset($_POST['forminscription'])) {
    $pseudo = htmlspecialchars($_POST['pseudo']);
    $mail = htmlspecialchars($_POST['mail']);
@@ -28,8 +29,8 @@ $confirm=0;
                         $key .= mt_rand(0,9);}
 
     if ($_POST['captcha'] == $_SESSION['captcha']) {
-                     $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo, mail, motdepasse, role, confirmkey , confirme) VALUES(?, ?, ?, ?, ?, ?)");
-                     $insertmbr->execute(array($pseudo, $mail, $mdp, $role, $key , $confirm));
+                     $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo, mail, motdepasse, role, confirmkey , confirme, avatar) VALUES(?, ?, ?, ?, ?, ?, ?)");
+                     $insertmbr->execute(array($pseudo, $mail, $mdp, $role, $key , $confirm, $avatar));
                         $utilisateur1 = new utilisateur($pseudo,$mail,$mdp);
                         $utilisateur1C = new utilisateurCore();
                       $utilisateur1C->EnvoyerMail($mail,$pseudo,$key);
@@ -78,8 +79,11 @@ $confirm=0;
 <body>
   <!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+  if (isset($_SESSION['pseudo'])){
+     include "header2.php";}
+     else
+         { include "header.php";}
+     ?>
   <!--================ End Header Menu Area =================-->
 
   <!-- ================ start banner area ================= -->

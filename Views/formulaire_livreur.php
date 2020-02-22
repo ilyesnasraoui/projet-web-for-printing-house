@@ -20,8 +20,11 @@
 <body>
 	<!--================ Start Header Menu Area =================-->
   <?php
-    include "header.php";
-    ?>
+   if ($_SESSION['pseudo'] != null){
+      include "header2.php";}
+      else
+          { include "header.php";}
+      ?>
 	<!--================ End Header Menu Area =================-->
 
   <!-- ================ start banner area ================= -->

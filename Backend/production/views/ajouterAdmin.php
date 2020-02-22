@@ -5,6 +5,7 @@ $bdd = config::getConnexion();
 $role=1;
 $confirmkey=0;
  $confirme=1;
+ $avatar='0.gif';
 
 if(isset($_POST['forminscription'])) {
    $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -23,8 +24,8 @@ if(isset($_POST['forminscription'])) {
                       if (isset($_POST['captcha'])) {
 
     if ($_POST['captcha'] == $_SESSION['captcha']) {
-                     $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo, mail, motdepasse, role, confirmkey , confirme) VALUES(?, ?, ?, ?, ?, ?)");
-                     $insertmbr->execute(array($pseudo, $mail, $mdp, $role, $confirmkey, $confirme));
+                     $insertmbr = $bdd->prepare("INSERT INTO membre(pseudo, mail, motdepasse, role, confirmkey , confirme, avatar) VALUES(?, ?, ?, ?, ?, ?, ?)");
+                     $insertmbr->execute(array($pseudo, $mail, $mdp, $role, $confirmkey, $confirme, $avatar));
                      $erreur = "Votre compte a bien été créé !";
                       }else{
         $erreur="captcha invalide";

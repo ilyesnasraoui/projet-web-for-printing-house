@@ -4,7 +4,7 @@
 
 include('database_connection.php');
 
-$column = array('id', 'mail',  'probleme', 'etat','date' , 'message');
+$column = array('id', 'email',  'probleme', 'etat','date_creation' , 'autre');
 
 $query = "select * FROM reclamation ";
 
@@ -12,11 +12,11 @@ if(isset($_POST['search']['value']))
 {
  $query .= '
  WHERE id LIKE "%'.$_POST['search']['value'].'%" 
- OR mail LIKE "%'.$_POST['search']['value'].'%" 
+ OR email LIKE "%'.$_POST['search']['value'].'%" 
  OR probleme LIKE "%'.$_POST['search']['value'].'%" 
  OR etat LIKE "%'.$_POST['search']['value'].'%" 
- OR date LIKE "%'.$_POST['search']['value'].'%" 
- OR message LIKE "%'.$_POST['search']['value'].'%" 
+ OR date_creation LIKE "%'.$_POST['search']['value'].'%" 
+ OR autre LIKE "%'.$_POST['search']['value'].'%" 
  ';
 }
 
@@ -54,11 +54,11 @@ foreach($result as $row)
 {
  $sub_array = array();
  $sub_array[] = $row['id'];
- $sub_array[] = $row['mail'];
+ $sub_array[] = $row['email'];
  $sub_array[] = $row['probleme'];
  $sub_array[] = $row['etat'];
- $sub_array[] = $row['date'];
- $sub_array[] = $row['message'];
+ $sub_array[] = $row['date_creation'];
+ $sub_array[] = $row['autre'];
  $data[] = $sub_array;
 }
 

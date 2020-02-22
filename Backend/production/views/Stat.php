@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+    <link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Société Imprimerie Aicha De Distribution! | </title>
+    <title>Backend </title>
 
     <!-- Bootstrap -->
     <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+    
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -33,8 +33,96 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-            <?php include "sidebar.php";
-        ?>
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Société Imprimerie Aicha De Distribution!</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="../images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>John Doe</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ajoutp1.html">ajout produit</a></li>
+                      <li><a href="afichprod1.php">afficher produit</a></li>
+                      <li><a href="cher1.php">reglage produits produit</a></li>
+                      <li><a href="stat.php">statistique produit</a></li>
+                     
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="ajouts1.html">ajout stock</a></li>
+                      <li><a href="mstock1.html">modifier stock</a></li>
+                      <li><a href="sstock1.html">supprimer stock</a></li>
+                      <li><a href="afichstock1.php">afficher stock</a></li>
+                      <li><a href="tri1.php">trier stock</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherRec.php">Afficher</a></li>
+                      <li><a href="pdf/index.php">Imprimer</a></li>
+                      <li><a href="Stat.php">Stat</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Demande<span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherDem.php">Afficher</a></li>
+                      <li><a href="pdfD/index.php">Imprimer</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
+                      </ul>
+                  </li>
+                  
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
 
         <!-- top navigation -->
         <div class="top_nav">
@@ -47,7 +135,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Fourat
+                    <img src="images/img.jpg" alt="">John Doe
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -134,117 +222,65 @@
         <!-- /top navigation -->
 
         <!-- page content -->
+        <div class="right_col" role="main">
           <!-- top tiles -->
-        
+
           <!-- /top tiles -->
-
-             <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class=" col-xs-20">
-                <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Afficher Produit</title>
-  </head>
-  <body>
-   <?php
-include"../config.php";
-include"../core/ProduitC.php";
-
-$Prod=new ProduitC();
-$liste=$Prod->afficherProduits();
-
-
-?>
-
-
-
-<table   id="example1" class="table table-striped">
-  <thead>
-    <tr>
-      <th >Code Produit</th>
-      <th> Image </th>
-      <th >nom</th>
-      <th >Description</th>
-      <th >Type</th>
-      <th> Prix </th>
-      <th >Categorie</th>
-    </tr>
-  </thead>
-  <tbody>
-          <?php
-foreach ($liste as $res) {
-
-echo '
-<tr>
-  <td>'.$res['id_produit'].'</td>
-  <td><a><img class="" src="'.$res['image'].'" style="width: 100px; height:100px;"></a></td>
-  <td>'.$res['nom'].'</td>
-  <td>'.$res['description'].'</td>
-  <td>'.$res['type'].'</td>
-  <td>'.$res['prix'].'</td>
-  <td>'.$res['fk_id_categorie'].'</td>
-  <td>
-  <form method="POST" action="suppp.php">
-  <input type="submit" class="btn btn-danger" value="Supprimer">
-  <input type="hidden" name="deleteID" value="'.$res['id_produit'].'">
-  </form>
-  <form method="POST" action="updatep.php">
-  <input type="submit" class="btn btn" value="Modifier">
-  <input type="hidden" name="updateID" value="'.$res['id_produit'].'">
-  </form>
-
-
-</tr>';
-
-}
-?>
-    </tbody>
-</table>
-
-<br>
-        <center>
-        	<form name="f1"  method="POST" action="pdf.php" onSubmit="return verif()" >
-        <td><button type="submit" name="Imprimer" value="Imprimer" class="btn btn-danger">Imprimer</button></td>
-      </center>
-    </form>
-    </fieldset>  
-  </body>
-</html>
-
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <form method="POST" action="AfficherRec.php">
+                <div class="col-sm-2">
+                <select name="etat" id="prob" class="form-control">
+                    <option></option>
+                    <option value="1">Traiter</option>
+                    <option value="0">Non Traiter</option>
+                </select>
               </div>
+              </form>
+             </div>
+           </div>
+           <br><br>
 
-              <div class="title_right">
-                
-              </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <?PHP
+                        include "../core/ReclamationC.php";
+                       
+                       
+                    $reclamation2C=new ReclamationC();
+
+
+$test=$reclamation2C->probliveraison100();
+$test1=$reclamation2C->probproduit100();
+$test2=$reclamation2C->probmanquant100();
+$test3=$reclamation2C->probsite100();
+$test4=$reclamation2C->probautre100();
+$test5=$reclamation2C->prob();
+echo "Nombre de probleme : ".$test5."  <br>" ; 
+echo "probleme de Visit Card : ".$test."% <br>" ; 
+echo "probleme Certificate : ".$test1."% <br>" ; 
+echo "probleme Stamp : ".$test2."% <br>" ; 
+echo "probleme Wedding card : ".$test3."% <br>" ; 
+echo "Autre probleme : ".$test4."% <br>" ; 
+                        ?>
+                        
+
             </div>
-            
-                  
-          
-            
+
+          </div>
+          <br />
 
 
 
-          
-             
 
-            
-             
 
-                <!-- Start to do list -->
-               
-                <!-- End to do list -->
-                
-                <!-- start of weather widget -->
-               
+        </div>
         <!-- /page content -->
 
         <!-- footer content -->
-      
-          
-         
+
+        <!-- /footer content -->
+      </div>
     </div>
 
     <!-- jQuery -->
@@ -282,12 +318,11 @@ echo '
     <script src="../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script src="../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <!-- bootstrap-daterangepicker -->
-    <script src="../../vendors/moment/min/moment.min.js"></script>
-    <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-	
+    
   </body>
 </html>
-  

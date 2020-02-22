@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -56,8 +56,53 @@
             <br />
 
             <!-- sidebar menu -->
-            <?php include "sidebar.php";
-       ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-edit"></i> Produit <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ajoutp1.html">ajout produit</a></li>
+                      <li><a href="afichprod1.php">afficher produit</a></li>
+                      <li><a href="cher1.php">reglage produits produit</a></li>
+                      <li><a href="stat.php">statistique produit</a></li>
+                     
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Stock <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="ajouts1.html">ajout stock</a></li>
+                      <li><a href="mstock1.html">modifier stock</a></li>
+                      <li><a href="sstock1.html">supprimer stock</a></li>
+                      <li><a href="afichstock1.php">afficher stock</a></li>
+                      <li><a href="tri1.php">trier stock</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherRec.php">Afficher</a></li>
+                      <li><a href="pdf/index.php">Imprimer</a></li>
+                      <li><a href="Stat.php">Stat</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Demande<span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="AfficherDem.php">Afficher</a></li>
+                      <li><a href="pdfD/index.php">Imprimer</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-edit"></i> Livreurs <span class="fa fa-chevron-down"></span></a>
+                       <ul class="nav child_menu">
+                      <li><a href="nouveaux_livreurs.php">Liste des des nouveaux livreurs </a></li>
+                      </ul>
+                  </li>
+                  
+              </div>
+
+            </div>
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
@@ -200,7 +245,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <?PHP
                         include "../core/ReclamationC.php";
-
+                       
                         $reclamation1C=new ReclamationC();
                     $listeRec=$reclamation1C->AfficherRec();
                         ?>
@@ -208,11 +253,13 @@
                             <table class="table table-striped table-bordered dataTable no-footer">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center;">ID </th>
-                                        <th style="text-align: center;">Date</th>
-                                        <th style="text-align: center;">Probleme</th>
-                                        <th style="text-align: center;">Statut</th>
-                                        <th style="text-align: center;">Action</th>
+                                        <th style="text-align: center;">Problème </th>
+                                        <th style="text-align: center;">autre</th>
+                                        <th style="text-align: center;">date_creation</th>
+                                        <th style="text-align: center;">email</th>
+                                        <th style="text-align: center;">etat</th>
+                                        <th style="text-align: center;">traitement</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -220,31 +267,35 @@
                                     foreach($listeRec as $row){
                                         ?>
                                     <tr>
-                                        <th style="text-align: center;"><?PHP echo $row['id']; ?></th>
-                                        <td style="text-align: center;"><?PHP echo $row['date']; ?></td>
-                                        <td style="text-align: center;"><?PHP echo $row['probleme']; ?></td>
+                                        <th style="text-align: center;"><?PHP echo $row['probleme']; ?></th>
+                                        <td style="text-align: center;"><?PHP echo $row['autre']; ?></td>
+                                        <td style="text-align: center;"><?PHP echo $row['date_creation']; ?></td>
+                                        <td style="text-align: center;"><?PHP echo $row['email']; ?></td>
+                                        <td style="text-align: center;"><?PHP echo $row['etat']; ?></td>
+
                                         <td style="text-align: center;">
                                          <?PHP if($row['etat']==0)
                                             {
-                                                echo "<span class='label label-warning'>On hold</span>";
+                                                echo "<span class='label label-warning'>Non traitée</span>";
                                             }
                                             else
                                             {
-                                                echo "<span class='label label-success'>Received</span>";
+                                                echo "<span class='label label-success'>Traitée</span>";
                                             }
-                                            ?>
+                                            ?>   
 
                                         </td>
+                                        
  <form method="POST" action="DetailRec.php">
                                                 <input type="submit" name="modifier" value="View" class="btn btn-primary btn-sm">
                                                 <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                             </form>
-                                        </td>                                        <td style="text-align: center;">
-
+                                        </td>                                        
+                                           
                                     </tr>
                                     <?PHP
                                     }
-                      ?>
+                      ?> 
                 </tbody>
                 </table>
 
@@ -306,6 +357,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-
+    
   </body>
 </html>

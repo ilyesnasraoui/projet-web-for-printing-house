@@ -122,13 +122,13 @@ class ReclamationC {
 /*--------------------Fonction stat-----------------------------*/
 
 /*---------------------------------calcule simple---------------------------------------------------*/
-	function probliveraison()
+	function calculerVisit()
 	{
 
 	try{
                 $c =new Config();
 				$driver = $c->getConnexion();
-				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Produit livre non commande'");
+				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Visit card'");
 				$stmt->execute();
 			 	$l=$stmt->fetchAll(PDO::FETCH_ASSOC);
 			 	return $l['0']['te'];
@@ -136,13 +136,13 @@ class ReclamationC {
 				echo "Erreur: ".$ex->getMessage();
 	}
    }
-		function probproduit()
+		function calculerCertificate()
 	{
 
 	try{
                 $c =new Config();
 				$driver = $c->getConnexion();
-				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Produit endommage ou casse'");
+				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Certificate'");
 				$stmt->execute();
 			 	$l=$stmt->fetchAll(PDO::FETCH_ASSOC);
 			 	return $l['0']['te'];
@@ -150,13 +150,13 @@ class ReclamationC {
 				echo "Erreur: ".$ex->getMessage();
 	}
 }
-		function probmanquant()
+		function calculerStamp()
 	{
 
 	try{
                 $c =new Config();
 				$driver = $c->getConnexion();
-				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Produit Manquant a la livraison'");
+				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Stamp'");
 				$stmt->execute();
 			 	$l=$stmt->fetchAll(PDO::FETCH_ASSOC);
 			 	return $l['0']['te'];
@@ -164,13 +164,13 @@ class ReclamationC {
 				echo "Erreur: ".$ex->getMessage();
 	}
 }
-		function probsite()
+		function calculerWedding()
 	{
 
 	try{
                 $c =new Config();
 				$driver = $c->getConnexion();
-				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Information erronee dans le catalogue ou sur le site web'");
+				$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme='Wedding card'");
 				$stmt->execute();
 			 	$l=$stmt->fetchAll(PDO::FETCH_ASSOC);
 			 	return $l['0']['te'];
@@ -178,13 +178,13 @@ class ReclamationC {
 				echo "Erreur: ".$ex->getMessage();
 	}
 }
-		function probautre()
+		function calculerAutre()
 	{
 
 	try{
         $c =new Config();
 		$driver = $c->getConnexion();
-		$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme != 'Produit endommage ou casse' AND probleme != 'Produit Manquant a la livraison' AND probleme !='Produit livre non commande' AND probleme !='Information erronee dans le catalogue ou sur le site web'");
+		$stmt = $driver->prepare("SELECT COUNT(*) as te FROM reclamation WHERE probleme != 'Visit card' AND probleme != 'Certificate' AND probleme !='Stamp' AND probleme !='Wedding card'");
 		$stmt->execute();
 		$l=$stmt->fetchAll(PDO::FETCH_ASSOC);
 		return $l['0']['te'];}
@@ -213,28 +213,28 @@ function prob()
 function probliveraison100()
 {
 	$x=new ReclamationC();
-	return ($x->probliveraison()*100)/$x->prob();
+	return ($x->calculerVisit()*100)/$x->prob();
 }
 
 function probautre100()
 {
 	$x=new ReclamationC();
-	return ($x->probautre()*100)/$x->prob();
+	return ($x->calculerAutre()*100)/$x->prob();
 }
 function probproduit100()
 {
 	$x=new ReclamationC();
-	return ($x->probproduit()*100)/$x->prob();
+	return ($x->calculerCertificate()*100)/$x->prob();
 }
 function probmanquant100()
 {
 	$x=new ReclamationC();
-	return ($x->probmanquant()*100)/$x->prob();
+	return ($x->calculerStamp()*100)/$x->prob();
 }
 function probsite100()
 {
 	$x=new ReclamationC();
-	return ($x->probsite()*100)/$x->prob();
+	return ($x->calculerWedding()*100)/$x->prob();
 }
 /*---------------------------------calcule simple %---------------------------------------------------*/
 

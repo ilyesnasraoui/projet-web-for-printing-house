@@ -18,7 +18,7 @@
     <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
+    
     <!-- bootstrap-progressbar -->
     <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -56,8 +56,74 @@
             <br />
 
             <!-- sidebar menu -->
-            <?php include "sidebar.php";
-       ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Reclamation <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="AfficherRec.php">Afficher</a></li>
+                      <li><a href="pdf/index.php">Imprimer</a></li>
+                      <li><a href="../Stat.php">Stat</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Demande <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="form.html">Afficher</a></li>
+                      <li><a href="form_advanced.html">Imprimer</a></li>
+                      <li><a href="form_validation.html">Form Validation</a></li>
+                      <li><a href="form_wizards.html">Form Wizard</a></li>
+                      <li><a href="form_upload.html">Form Upload</a></li>
+                      <li><a href="form_buttons.html">Form Buttons</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Live On</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="e_commerce.html">E-commerce</a></li>
+                      <li><a href="projects.html">Projects</a></li>
+                      <li><a href="project_detail.html">Project Detail</a></li>
+                      <li><a href="contacts.html">Contacts</a></li>
+                      <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="page_403.html">403 Error</a></li>
+                      <li><a href="page_404.html">404 Error</a></li>
+                      <li><a href="page_500.html">500 Error</a></li>
+                      <li><a href="plain_page.html">Plain Page</a></li>
+                      <li><a href="login.html">Login Page</a></li>
+                      <li><a href="pricing_tables.html">Pricing Tables</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-sitemap"></i> Multilevel Menu <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="#level1_1">Level One</a>
+                        <li><a>Level One<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li class="sub_menu"><a href="level2.html">Level Two</a>
+                            </li>
+                            <li><a href="#level2_1">Level Two</a>
+                            </li>
+                            <li><a href="#level2_2">Level Two</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li><a href="#level1_2">Level One</a>
+                        </li>
+                    </ul>
+                  </li>                  
+                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Landing Page <span class="label label-success pull-right">Coming Soon</span></a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
@@ -198,17 +264,17 @@
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
 <form method="POST" action="TraiterRec.php" >
-                        <?php
+                        <?php 
                       include "../core/ReclamationC.php";
                       $reclamationC=new ReclamationC();
                       if (isset($_POST["id"])){
                         $reclamationC->RecupererRec($_POST["id"]);
                         $reclamation1C= $reclamationC->RecupererRec($_POST["id"]);
                           foreach($reclamation1C as $row){
-                          $id=$row['id'];
-                          $mail=$row['mail'];
                           $probleme=$row['probleme'];
-                          $date=$row['date'];
+                          $autre=$row['autre'];
+                          $date_creation=$row['date_creation'];
+                          $email=$row['email'];
                           $etat=$row['etat'];}
                           }
                       else
@@ -218,11 +284,11 @@
 
                        ?>
                       <fieldset style="display: block; margin-left: 2px; margin-right: 2px; padding-top: 0.35em; padding-bottom: 0.625em;padding-left: 0.75em;padding-right: 0.75em; border: 2px groove ;">
-                      <legend><?php echo "Reclamation"." ".$id;?></legend>
-                      Date : <?php echo $date; ?><br>
-                      Mail : <?php echo $mail; ?><br>
+                      <legend><?php echo "Reclamation"." ".$email;?></legend>
+                      Date : <?php echo $date_creation; ?><br>
+                      Mail : <?php echo $email; ?><br>
                       Probleme : <?php echo $probleme; ?> <br>
-
+  
                      </fieldset>
 
 
@@ -231,7 +297,7 @@
  <input type="submit" name="Refuser" value="Refuser" >
  <input type="hidden" value="<?PHP echo $row['id'] ; ?>" name="id">
 </form>
-
+                       
 
           </div>
           <br />
@@ -289,6 +355,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../../build/js/custom.min.js"></script>
-
+    
   </body>
 </html>
